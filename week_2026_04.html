@@ -25,16 +25,24 @@
 </head>
 <body class="gradient-bg min-h-screen text-white">
     <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <!-- 语言切换按钮 -->
+        <div class="fixed top-4 right-4 z-50">
+            <button id="langToggle" onclick="toggleLanguage()" class="bg-white/10 hover:bg-white/20 border border-gray-600 rounded-lg px-4 py-2 text-white text-sm transition flex items-center gap-2">
+                <span id="langIcon">🌐</span>
+                <span id="langText">English</span>
+            </button>
+        </div>
+
         <!-- 头部 -->
         <header class="text-center mb-12">
-            <h1 class="text-4xl font-bold mb-2">Nothing 软件 Reddit 用户反馈周报</h1>
+            <h1 class="text-4xl font-bold mb-2" data-cn="Nothing 软件 Reddit 用户反馈周报" data-en="Nothing Software Reddit User Feedback Weekly">Nothing 软件 Reddit 用户反馈周报</h1>
             <div class="flex items-center justify-center gap-4 mt-4">
-                <label class="text-gray-400">选择周次：</label>
+                <label class="text-gray-400" data-cn="选择周次：" data-en="Select Week:">选择周次：</label>
                 <select id="weekSelector" class="bg-white/10 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-500" onchange="changeWeek(this.value)">
                     <option value="week_2026_04.html" selected>2026 年第 4 周</option>
                 </select>
             </div>
-            <p class="text-sm text-gray-500 mt-3">数据来源: Reddit r/Nothing | 每周五 17:00 自动更新</p>
+            <p class="text-sm text-gray-500 mt-3" data-cn="数据来源: Reddit r/Nothing | 每周五 17:00 自动更新" data-en="Data Source: Reddit r/Nothing | Auto-updated every Friday 17:00">数据来源: Reddit r/Nothing | 每周五 17:00 自动更新</p>
         </header>
 
         <script>
@@ -47,19 +55,19 @@
         <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div class="card rounded-xl p-6 text-center">
                 <div class="text-3xl font-bold text-blue-400">26</div>
-                <div class="text-gray-400 mt-1">软件相关帖子</div>
+                <div class="text-gray-400 mt-1" data-cn="软件相关帖子" data-en="Software Posts">软件相关帖子</div>
             </div>
             <div class="card rounded-xl p-6 text-center">
                 <div class="text-3xl font-bold text-purple-400">176</div>
-                <div class="text-gray-400 mt-1">总评论数</div>
+                <div class="text-gray-400 mt-1" data-cn="总评论数" data-en="Total Comments">总评论数</div>
             </div>
             <div class="card rounded-xl p-6 text-center">
                 <div class="text-3xl font-bold text-red-400">42.3%</div>
-                <div class="text-gray-400 mt-1">负面反馈占比</div>
+                <div class="text-gray-400 mt-1" data-cn="负面反馈占比" data-en="Negative Ratio">负面反馈占比</div>
             </div>
             <div class="card rounded-xl p-6 text-center">
                 <div class="text-3xl font-bold text-orange-400">9</div>
-                <div class="text-gray-400 mt-1">热门问题数</div>
+                <div class="text-gray-400 mt-1" data-cn="热门问题数" data-en="Hot Issues">热门问题数</div>
             </div>
         </section>
 
@@ -70,17 +78,17 @@
                 <div class="card rounded-xl p-6">
                     <h2 class="text-xl font-bold mb-4 flex items-center">
                         <span class="w-2 h-6 bg-red-500 rounded mr-3"></span>
-                        TOP 问题排行
+                        <span data-cn="TOP 问题排行" data-en="TOP Issues">TOP 问题排行</span>
                     </h2>
                     <div class="overflow-x-auto">
                         <table class="w-full">
                             <thead>
                                 <tr class="text-left text-gray-400 border-b border-gray-700">
                                     <th class="pb-3 w-12">#</th>
-                                    <th class="pb-3">问题描述</th>
-                                    <th class="pb-3 w-24">分类</th>
-                                    <th class="pb-3 w-16 text-center">热度</th>
-                                    <th class="pb-3 w-20 text-center">情感</th>
+                                    <th class="pb-3" data-cn="问题描述" data-en="Description">问题描述</th>
+                                    <th class="pb-3 w-24" data-cn="分类" data-en="Category">分类</th>
+                                    <th class="pb-3 w-16 text-center" data-cn="热度" data-en="Heat">热度</th>
+                                    <th class="pb-3 w-20 text-center" data-cn="情感" data-en="Sentiment">情感</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -88,15 +96,15 @@
                                 <tr class="border-b border-gray-800 hover:bg-white/5">
                                     <td class="py-4 font-bold text-gray-500">1</td>
                                     <td class="py-4">
-                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qjmhh6/the_battery_icon_is_better_like_this/" target="_blank" class="hover:text-blue-400 transition">
+                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qjmhh6/the_battery_icon_is_better_like_this/" target="_blank" class="hover:text-blue-400 transition issue-title" data-cn="电池图标这样更好" data-en="The battery icon is better like this">
                                             电池图标这样更好
                                         </a>
                                         <div class="text-xs text-gray-500 mt-1">
-                                            229 赞 · 68 评论
+                                            229 <span data-cn="赞" data-en="upvotes">赞</span> · 68 <span data-cn="评论" data-en="comments">评论</span>
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6">
+                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6" data-cn="界面与体验" data-en="ui_ux">
                                             界面与体验
                                         </span>
                                     </td>
@@ -106,7 +114,7 @@
                                         </span>
                                     </td>
                                     <td class="py-4 text-center">
-                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral">
+                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral" data-cn="中性" data-en="neutral">
                                             中性
                                         </span>
                                     </td>
@@ -115,15 +123,15 @@
                                 <tr class="border-b border-gray-800 hover:bg-white/5">
                                     <td class="py-4 font-bold text-gray-500">2</td>
                                     <td class="py-4">
-                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qhpyd4/new_update_for_np_2/" target="_blank" class="hover:text-blue-400 transition">
+                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qhpyd4/new_update_for_np_2/" target="_blank" class="hover:text-blue-400 transition issue-title" data-cn="np 2 的新更新" data-en="New update for np 2">
                                             np 2 的新更新
                                         </a>
                                         <div class="text-xs text-gray-500 mt-1">
-                                            26 赞 · 17 评论
+                                            26 <span data-cn="赞" data-en="upvotes">赞</span> · 17 <span data-cn="评论" data-en="comments">评论</span>
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #6B728020; color: #6B7280">
+                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #6B728020; color: #6B7280" data-cn="其他软件问题" data-en="other">
                                             其他软件问题
                                         </span>
                                     </td>
@@ -133,7 +141,7 @@
                                         </span>
                                     </td>
                                     <td class="py-4 text-center">
-                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral">
+                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral" data-cn="中性" data-en="neutral">
                                             中性
                                         </span>
                                     </td>
@@ -142,15 +150,15 @@
                                 <tr class="border-b border-gray-800 hover:bg-white/5">
                                     <td class="py-4 font-bold text-gray-500">3</td>
                                     <td class="py-4">
-                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qkfal9/can_someone_help_me_where_can_i_find_dual/" target="_blank" class="hover:text-blue-400 transition">
+                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qkfal9/can_someone_help_me_where_can_i_find_dual/" target="_blank" class="hover:text-blue-400 transition issue-title" data-cn="有人可以帮助我吗！在哪里可以找到双浮动图标和隐藏图标？" data-en="Can someone help me! Where can I find dual floating icons and hidden icons?">
                                             有人可以帮助我吗！在哪里可以找到双浮动图标和隐藏图标？
                                         </a>
                                         <div class="text-xs text-gray-500 mt-1">
-                                            34 赞 · 8 评论
+                                            34 <span data-cn="赞" data-en="upvotes">赞</span> · 8 <span data-cn="评论" data-en="comments">评论</span>
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6">
+                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6" data-cn="界面与体验" data-en="ui_ux">
                                             界面与体验
                                         </span>
                                     </td>
@@ -160,7 +168,7 @@
                                         </span>
                                     </td>
                                     <td class="py-4 text-center">
-                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral">
+                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral" data-cn="中性" data-en="neutral">
                                             中性
                                         </span>
                                     </td>
@@ -169,15 +177,15 @@
                                 <tr class="border-b border-gray-800 hover:bg-white/5">
                                     <td class="py-4 font-bold text-gray-500">4</td>
                                     <td class="py-4">
-                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qjmnj9/just_wanted_to_share_my_recent_shots/" target="_blank" class="hover:text-blue-400 transition">
+                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qjmnj9/just_wanted_to_share_my_recent_shots/" target="_blank" class="hover:text-blue-400 transition issue-title" data-cn="只是想分享一下我最近拍的照片" data-en="Just wanted to share my recent shots">
                                             只是想分享一下我最近拍的照片
                                         </a>
                                         <div class="text-xs text-gray-500 mt-1">
-                                            23 赞 · 9 评论
+                                            23 <span data-cn="赞" data-en="upvotes">赞</span> · 9 <span data-cn="评论" data-en="comments">评论</span>
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #EF444420; color: #EF4444">
+                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #EF444420; color: #EF4444" data-cn="系统性能" data-en="performance">
                                             系统性能
                                         </span>
                                     </td>
@@ -187,7 +195,7 @@
                                         </span>
                                     </td>
                                     <td class="py-4 text-center">
-                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral">
+                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral" data-cn="中性" data-en="neutral">
                                             中性
                                         </span>
                                     </td>
@@ -196,15 +204,15 @@
                                 <tr class="border-b border-gray-800 hover:bg-white/5">
                                     <td class="py-4 font-bold text-gray-500">5</td>
                                     <td class="py-4">
-                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qio7xi/absolutely_loving_the_customization_and_ui_on_my/" target="_blank" class="hover:text-blue-400 transition">
+                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qio7xi/absolutely_loving_the_customization_and_ui_on_my/" target="_blank" class="hover:text-blue-400 transition issue-title" data-cn="非常喜欢我的全新 Nothing Phone 3 上的定制和 UI" data-en="Absolutely Loving the customization and UI on my brand new Nothing Phone 3">
                                             非常喜欢我的全新 Nothing Phone 3 上的定制和 UI
                                         </a>
                                         <div class="text-xs text-gray-500 mt-1">
-                                            17 赞 · 10 评论
+                                            17 <span data-cn="赞" data-en="upvotes">赞</span> · 10 <span data-cn="评论" data-en="comments">评论</span>
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6">
+                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6" data-cn="界面与体验" data-en="ui_ux">
                                             界面与体验
                                         </span>
                                     </td>
@@ -214,7 +222,7 @@
                                         </span>
                                     </td>
                                     <td class="py-4 text-center">
-                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral">
+                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral" data-cn="中性" data-en="neutral">
                                             中性
                                         </span>
                                     </td>
@@ -223,15 +231,15 @@
                                 <tr class="border-b border-gray-800 hover:bg-white/5">
                                     <td class="py-4 font-bold text-gray-500">6</td>
                                     <td class="py-4">
-                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qk565e/condition_of_nothing_phone_3a_pro_in_2026/" target="_blank" class="hover:text-blue-400 transition">
+                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qk565e/condition_of_nothing_phone_3a_pro_in_2026/" target="_blank" class="hover:text-blue-400 transition issue-title" data-cn="2026 年手机 3a pro 的状况" data-en="Condition of nothing phone 3a pro in 2026">
                                             2026 年手机 3a pro 的状况
                                         </a>
                                         <div class="text-xs text-gray-500 mt-1">
-                                            7 赞 · 10 评论
+                                            7 <span data-cn="赞" data-en="upvotes">赞</span> · 10 <span data-cn="评论" data-en="comments">评论</span>
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #EF444420; color: #EF4444">
+                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #EF444420; color: #EF4444" data-cn="系统性能" data-en="performance">
                                             系统性能
                                         </span>
                                     </td>
@@ -241,7 +249,7 @@
                                         </span>
                                     </td>
                                     <td class="py-4 text-center">
-                                        <span class="px-2 py-1 rounded text-xs sentiment-negative">
+                                        <span class="px-2 py-1 rounded text-xs sentiment-negative" data-cn="负面" data-en="negative">
                                             负面
                                         </span>
                                     </td>
@@ -250,15 +258,15 @@
                                 <tr class="border-b border-gray-800 hover:bg-white/5">
                                     <td class="py-4 font-bold text-gray-500">7</td>
                                     <td class="py-4">
-                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qj55s2/sketchy_little_app/" target="_blank" class="hover:text-blue-400 transition">
+                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qj55s2/sketchy_little_app/" target="_blank" class="hover:text-blue-400 transition issue-title" data-cn="粗略的小应用程序" data-en="Sketchy little app">
                                             粗略的小应用程序
                                         </a>
                                         <div class="text-xs text-gray-500 mt-1">
-                                            11 赞 · 6 评论
+                                            11 <span data-cn="赞" data-en="upvotes">赞</span> · 6 <span data-cn="评论" data-en="comments">评论</span>
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #6B728020; color: #6B7280">
+                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #6B728020; color: #6B7280" data-cn="其他软件问题" data-en="other">
                                             其他软件问题
                                         </span>
                                     </td>
@@ -268,7 +276,7 @@
                                         </span>
                                     </td>
                                     <td class="py-4 text-center">
-                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral">
+                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral" data-cn="中性" data-en="neutral">
                                             中性
                                         </span>
                                     </td>
@@ -277,15 +285,15 @@
                                 <tr class="border-b border-gray-800 hover:bg-white/5">
                                     <td class="py-4 font-bold text-gray-500">8</td>
                                     <td class="py-4">
-                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qhtdpa/nothing_os_4/" target="_blank" class="hover:text-blue-400 transition">
+                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qhtdpa/nothing_os_4/" target="_blank" class="hover:text-blue-400 transition issue-title" data-cn="没有什么 os 4" data-en="Nothing os 4">
                                             没有什么 os 4
                                         </a>
                                         <div class="text-xs text-gray-500 mt-1">
-                                            7 赞 · 8 评论
+                                            7 <span data-cn="赞" data-en="upvotes">赞</span> · 8 <span data-cn="评论" data-en="comments">评论</span>
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6">
+                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6" data-cn="界面与体验" data-en="ui_ux">
                                             界面与体验
                                         </span>
                                     </td>
@@ -295,7 +303,7 @@
                                         </span>
                                     </td>
                                     <td class="py-4 text-center">
-                                        <span class="px-2 py-1 rounded text-xs sentiment-negative">
+                                        <span class="px-2 py-1 rounded text-xs sentiment-negative" data-cn="负面" data-en="negative">
                                             负面
                                         </span>
                                     </td>
@@ -304,15 +312,15 @@
                                 <tr class="border-b border-gray-800 hover:bg-white/5">
                                     <td class="py-4 font-bold text-gray-500">9</td>
                                     <td class="py-4">
-                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qisq89/new_battery_icon_sucks/" target="_blank" class="hover:text-blue-400 transition">
+                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qisq89/new_battery_icon_sucks/" target="_blank" class="hover:text-blue-400 transition issue-title" data-cn="新的电池图标很糟糕" data-en="New battery icon sucks">
                                             新的电池图标很糟糕
                                         </a>
                                         <div class="text-xs text-gray-500 mt-1">
-                                            0 赞 · 11 评论
+                                            0 <span data-cn="赞" data-en="upvotes">赞</span> · 11 <span data-cn="评论" data-en="comments">评论</span>
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6">
+                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6" data-cn="界面与体验" data-en="ui_ux">
                                             界面与体验
                                         </span>
                                     </td>
@@ -322,7 +330,7 @@
                                         </span>
                                     </td>
                                     <td class="py-4 text-center">
-                                        <span class="px-2 py-1 rounded text-xs sentiment-negative">
+                                        <span class="px-2 py-1 rounded text-xs sentiment-negative" data-cn="负面" data-en="negative">
                                             负面
                                         </span>
                                     </td>
@@ -331,15 +339,15 @@
                                 <tr class="border-b border-gray-800 hover:bg-white/5">
                                     <td class="py-4 font-bold text-gray-500">10</td>
                                     <td class="py-4">
-                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qioth1/3a_night_shots/" target="_blank" class="hover:text-blue-400 transition">
+                                        <a href="https://www.reddit.com/r/NOTHING/comments/1qioth1/3a_night_shots/" target="_blank" class="hover:text-blue-400 transition issue-title" data-cn="3a 夜间拍摄" data-en="3a Night Shots">
                                             3a 夜间拍摄
                                         </a>
                                         <div class="text-xs text-gray-500 mt-1">
-                                            18 赞 · 1 评论
+                                            18 <span data-cn="赞" data-en="upvotes">赞</span> · 1 <span data-cn="评论" data-en="comments">评论</span>
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #EF444420; color: #EF4444">
+                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #EF444420; color: #EF4444" data-cn="系统性能" data-en="performance">
                                             系统性能
                                         </span>
                                     </td>
@@ -349,7 +357,7 @@
                                         </span>
                                     </td>
                                     <td class="py-4 text-center">
-                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral">
+                                        <span class="px-2 py-1 rounded text-xs sentiment-neutral" data-cn="中性" data-en="neutral">
                                             中性
                                         </span>
                                     </td>
@@ -366,7 +374,7 @@
                 <div class="card rounded-xl p-6 mb-6">
                     <h2 class="text-xl font-bold mb-4 flex items-center">
                         <span class="w-2 h-6 bg-blue-500 rounded mr-3"></span>
-                        问题分类分布
+                        <span data-cn="问题分类分布" data-en="Category Distribution">问题分类分布</span>
                     </h2>
                     <div class="space-y-3">
                         
@@ -374,7 +382,7 @@
                         
                         <div>
                             <div class="flex justify-between text-sm mb-1">
-                                <span>界面与体验</span>
+                                <span data-cn="界面与体验" data-en="UI/UX">界面与体验</span>
                                 <span class="text-gray-400">7 (26.9%)</span>
                             </div>
                             <div class="w-full bg-gray-700 rounded-full h-2">
@@ -386,7 +394,7 @@
                         
                         <div>
                             <div class="flex justify-between text-sm mb-1">
-                                <span>系统性能</span>
+                                <span data-cn="系统性能" data-en="Performance">系统性能</span>
                                 <span class="text-gray-400">9 (34.6%)</span>
                             </div>
                             <div class="w-full bg-gray-700 rounded-full h-2">
@@ -398,7 +406,7 @@
                         
                         <div>
                             <div class="flex justify-between text-sm mb-1">
-                                <span>相机软件</span>
+                                <span data-cn="相机软件" data-en="Camera">相机软件</span>
                                 <span class="text-gray-400">1 (3.8%)</span>
                             </div>
                             <div class="w-full bg-gray-700 rounded-full h-2">
@@ -410,7 +418,7 @@
                         
                         <div>
                             <div class="flex justify-between text-sm mb-1">
-                                <span>Glyph 灯效</span>
+                                <span data-cn="Glyph 灯效" data-en="Glyph">Glyph 灯效</span>
                                 <span class="text-gray-400">1 (3.8%)</span>
                             </div>
                             <div class="w-full bg-gray-700 rounded-full h-2">
@@ -422,7 +430,7 @@
                         
                         <div>
                             <div class="flex justify-between text-sm mb-1">
-                                <span>连接问题</span>
+                                <span data-cn="连接问题" data-en="Connectivity">连接问题</span>
                                 <span class="text-gray-400">2 (7.7%)</span>
                             </div>
                             <div class="w-full bg-gray-700 rounded-full h-2">
@@ -434,7 +442,7 @@
                         
                         <div>
                             <div class="flex justify-between text-sm mb-1">
-                                <span>其他软件问题</span>
+                                <span data-cn="其他软件问题" data-en="Other">其他软件问题</span>
                                 <span class="text-gray-400">6 (23.1%)</span>
                             </div>
                             <div class="w-full bg-gray-700 rounded-full h-2">
@@ -449,20 +457,20 @@
                 <div class="card rounded-xl p-6">
                     <h2 class="text-xl font-bold mb-4 flex items-center">
                         <span class="w-2 h-6 bg-purple-500 rounded mr-3"></span>
-                        情感分布
+                        <span data-cn="情感分布" data-en="Sentiment Distribution">情感分布</span>
                     </h2>
                     <div class="flex justify-around text-center">
                         <div>
                             <div class="text-2xl font-bold text-red-400">11</div>
-                            <div class="text-xs text-gray-400">负面</div>
+                            <div class="text-xs text-gray-400" data-cn="负面" data-en="Negative">负面</div>
                         </div>
                         <div>
                             <div class="text-2xl font-bold text-gray-400">13</div>
-                            <div class="text-xs text-gray-400">中性</div>
+                            <div class="text-xs text-gray-400" data-cn="中性" data-en="Neutral">中性</div>
                         </div>
                         <div>
                             <div class="text-2xl font-bold text-green-400">2</div>
-                            <div class="text-xs text-gray-400">正面</div>
+                            <div class="text-xs text-gray-400" data-cn="正面" data-en="Positive">正面</div>
                         </div>
                     </div>
                 </div>
@@ -474,114 +482,118 @@
             <div class="card rounded-xl p-6">
                 <h2 class="text-xl font-bold mb-4 flex items-center">
                     <span class="w-2 h-6 bg-yellow-500 rounded mr-3"></span>
-                    热门讨论
+                    <span data-cn="热门讨论" data-en="Hot Discussions">热门讨论</span>
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     
                     <a href="https://www.reddit.com/r/NOTHING/comments/1qjmhh6/the_battery_icon_is_better_like_this/" target="_blank" class="block bg-white/5 rounded-lg p-4 hover:bg-white/10 transition cursor-pointer">
                         <div class="flex items-start justify-between">
                             <div class="flex-1">
-                                <span class="font-medium hover:text-blue-400 transition">
+                                <span class="font-medium hover:text-blue-400 transition" data-cn="电池图标这样更好" data-en="The battery icon is better like this">
                                     电池图标这样更好
                                 </span>
-                                <p class="text-sm text-gray-400 mt-2">我今晚收到了新的更新，电池图标好多了，里面有百分比
+                                <p class="text-sm text-gray-400 mt-2" data-cn="我今晚收到了新的更新，电池图标好多了，里面有百分比
+
+我很好奇，你对此有何看法？" data-en="I got the new update tonight and the battery icon is so much better with the percentage inside it
+
+I'm curious, what's your opinion on it ?">我今晚收到了新的更新，电池图标好多了，里面有百分比
 
 我很好奇，你对此有何看法？</p>
                             </div>
-                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #3B82F620;">
+                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #3B82F620;" data-cn="界面与体验" data-en="ui_ux">
                                 界面与体验
                             </span>
                         </div>
                         <div class="flex items-center mt-3 text-xs text-gray-500">
                             <span>u/NTGV_</span>
                             <span class="mx-2">·</span>
-                            <span>229 赞</span>
+                            <span>229 <span data-cn="赞" data-en="upvotes">赞</span></span>
                             <span class="mx-2">·</span>
-                            <span>68 评论</span>
+                            <span>68 <span data-cn="评论" data-en="comments">评论</span></span>
                         </div>
                     </a>
                     
                     <a href="https://www.reddit.com/r/NOTHING/comments/1qhpyd4/new_update_for_np_2/" target="_blank" class="block bg-white/5 rounded-lg p-4 hover:bg-white/10 transition cursor-pointer">
                         <div class="flex items-start justify-between">
                             <div class="flex-1">
-                                <span class="font-medium hover:text-blue-400 transition">
+                                <span class="font-medium hover:text-blue-400 transition" data-cn="np 2 的新更新" data-en="New update for np 2">
                                     np 2 的新更新
                                 </span>
-                                <p class="text-sm text-gray-400 mt-2">我应该更新吗？没什么电话 2.</p>
+                                <p class="text-sm text-gray-400 mt-2" data-cn="我应该更新吗？没什么电话 2." data-en="should I update ? nothing phone 2.">我应该更新吗？没什么电话 2.</p>
                             </div>
-                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #6B728020;">
+                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #6B728020;" data-cn="其他软件问题" data-en="other">
                                 其他软件问题
                             </span>
                         </div>
                         <div class="flex items-center mt-3 text-xs text-gray-500">
                             <span>u/highprotien-diet</span>
                             <span class="mx-2">·</span>
-                            <span>26 赞</span>
+                            <span>26 <span data-cn="赞" data-en="upvotes">赞</span></span>
                             <span class="mx-2">·</span>
-                            <span>17 评论</span>
+                            <span>17 <span data-cn="评论" data-en="comments">评论</span></span>
                         </div>
                     </a>
                     
                     <a href="https://www.reddit.com/r/NOTHING/comments/1qisq89/new_battery_icon_sucks/" target="_blank" class="block bg-white/5 rounded-lg p-4 hover:bg-white/10 transition cursor-pointer">
                         <div class="flex items-start justify-between">
                             <div class="flex-1">
-                                <span class="font-medium hover:text-blue-400 transition">
+                                <span class="font-medium hover:text-blue-400 transition" data-cn="新的电池图标很糟糕" data-en="New battery icon sucks">
                                     新的电池图标很糟糕
                                 </span>
-                                <p class="text-sm text-gray-400 mt-2">NothingOS 4 有一个很好的电池图标，我不知道他们为什么要改变它。新的看起来像苹果垃圾，而且与其他状态栏图标的主题完全不匹配</p>
+                                <p class="text-sm text-gray-400 mt-2" data-cn="NothingOS 4 有一个很好的电池图标，我不知道他们为什么要改变它。新的看起来像苹果垃圾，而且与其他状态栏图标的主题完全不匹配" data-en="NothingOS 4 had a good battery icon, I don't know why they had to change it. The new one looks like Apple trash and doesn't match the theme of the other status bar icons at all ">NothingOS 4 有一个很好的电池图标，我不知道他们为什么要改变它。新的看起来像苹果垃圾，而且与其他状态栏图标的主题完全不匹配</p>
                             </div>
-                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #3B82F620;">
+                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #3B82F620;" data-cn="界面与体验" data-en="ui_ux">
                                 界面与体验
                             </span>
                         </div>
                         <div class="flex items-center mt-3 text-xs text-gray-500">
                             <span>u/TheNerdNamedChuck</span>
                             <span class="mx-2">·</span>
-                            <span>0 赞</span>
+                            <span>0 <span data-cn="赞" data-en="upvotes">赞</span></span>
                             <span class="mx-2">·</span>
-                            <span>11 评论</span>
+                            <span>11 <span data-cn="评论" data-en="comments">评论</span></span>
                         </div>
                     </a>
                     
                     <a href="https://www.reddit.com/r/NOTHING/comments/1qk565e/condition_of_nothing_phone_3a_pro_in_2026/" target="_blank" class="block bg-white/5 rounded-lg p-4 hover:bg-white/10 transition cursor-pointer">
                         <div class="flex items-start justify-between">
                             <div class="flex-1">
-                                <span class="font-medium hover:text-blue-400 transition">
+                                <span class="font-medium hover:text-blue-400 transition" data-cn="2026 年手机 3a pro 的状况" data-en="Condition of nothing phone 3a pro in 2026">
                                     2026 年手机 3a pro 的状况
                                 </span>
-                                <p class="text-sm text-gray-400 mt-2">有谁已经使用phone 3a pro一段时间了，请分享一下您的经验，有什么问题吗？有任何速度减慢或性能问题吗？</p>
+                                <p class="text-sm text-gray-400 mt-2" data-cn="有谁已经使用phone 3a pro一段时间了，请分享一下您的经验，有什么问题吗？有任何速度减慢或性能问题吗？" data-en="Anyone who has been using nothing phone 3a pro for some time now, please share your experience, any issues? any slowdowns or performance hiccups?">有谁已经使用phone 3a pro一段时间了，请分享一下您的经验，有什么问题吗？有任何速度减慢或性能问题吗？</p>
                             </div>
-                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #EF444420;">
+                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #EF444420;" data-cn="系统性能" data-en="performance">
                                 系统性能
                             </span>
                         </div>
                         <div class="flex items-center mt-3 text-xs text-gray-500">
                             <span>u/Historical-Lead-9110</span>
                             <span class="mx-2">·</span>
-                            <span>7 赞</span>
+                            <span>7 <span data-cn="赞" data-en="upvotes">赞</span></span>
                             <span class="mx-2">·</span>
-                            <span>10 评论</span>
+                            <span>10 <span data-cn="评论" data-en="comments">评论</span></span>
                         </div>
                     </a>
                     
                     <a href="https://www.reddit.com/r/NOTHING/comments/1qio7xi/absolutely_loving_the_customization_and_ui_on_my/" target="_blank" class="block bg-white/5 rounded-lg p-4 hover:bg-white/10 transition cursor-pointer">
                         <div class="flex items-start justify-between">
                             <div class="flex-1">
-                                <span class="font-medium hover:text-blue-400 transition">
+                                <span class="font-medium hover:text-blue-400 transition" data-cn="非常喜欢我的全新 Nothing Phone 3 上的定制和 UI" data-en="Absolutely Loving the customization and UI on my brand new Nothing Phone 3">
                                     非常喜欢我的全新 Nothing Phone 3 上的定制和 UI
                                 </span>
-                                <p class="text-sm text-gray-400 mt-2"></p>
+                                <p class="text-sm text-gray-400 mt-2" data-cn="" data-en=""></p>
                             </div>
-                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #3B82F620;">
+                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #3B82F620;" data-cn="界面与体验" data-en="ui_ux">
                                 界面与体验
                             </span>
                         </div>
                         <div class="flex items-center mt-3 text-xs text-gray-500">
                             <span>u/Hot_Armadillo_2186</span>
                             <span class="mx-2">·</span>
-                            <span>17 赞</span>
+                            <span>17 <span data-cn="赞" data-en="upvotes">赞</span></span>
                             <span class="mx-2">·</span>
-                            <span>10 评论</span>
+                            <span>10 <span data-cn="评论" data-en="comments">评论</span></span>
                         </div>
                     </a>
                     
@@ -594,38 +606,46 @@
             <div class="card rounded-xl p-6">
                 <h2 class="text-xl font-bold mb-4 flex items-center">
                     <span class="w-2 h-6 bg-cyan-500 rounded mr-3"></span>
-                    热门评论 Top 3
+                    <span data-cn="热门评论 Top 3" data-en="Top 3 Hot Comments">热门评论 Top 3</span>
                 </h2>
                 <div class="space-y-4">
                     
                     <a href="https://www.reddit.com/r/Nothing/comments/1qjmhh6/comment/o100pjn/" target="_blank" class="block bg-white/5 rounded-lg p-4 border-l-4 border-cyan-500/50 hover:bg-white/10 transition cursor-pointer">
-                        <p class="text-gray-300 leading-relaxed">https://preview.redd.it/ukq3ma3ybueg1.png?width=363&amp;format=png&amp;auto=webp&amp;s=be5f8316bbea84140e6c8e90c7f61caa73750517
+                        <p class="text-gray-300 leading-relaxed" data-cn="https://preview.redd.it/ukq3ma3ybueg1.png?width=363&amp;format=png&amp;auto=webp&amp;s=be5f8316bbea84140e6c8e90c7f61caa73750517
+
+NGL我觉得两个都不错。从上下文来看，这就是旧人的样子。我在更新之前拍了屏幕截图。" data-en="https://preview.redd.it/ukq3ma3ybueg1.png?width=363&amp;format=png&amp;auto=webp&amp;s=be5f8316bbea84140e6c8e90c7f61caa73750517
+
+NGL I think both are nice. This is how old one looks like for context. I took the screen shot before updating.">https://preview.redd.it/ukq3ma3ybueg1.png?width=363&amp;format=png&amp;auto=webp&amp;s=be5f8316bbea84140e6c8e90c7f61caa73750517
 
 NGL我觉得两个都不错。从上下文来看，这就是旧人的样子。我在更新之前拍了屏幕截图。</p>
                         <div class="flex items-center mt-3 text-xs text-gray-500">
                             <span>u/Demonsong_483</span>
                             <span class="mx-2">·</span>
-                            <span class="text-cyan-400 font-medium">38 赞</span>
+                            <span class="text-cyan-400 font-medium">38 <span data-cn="赞" data-en="upvotes">赞</span></span>
                         </div>
                     </a>
                     
                     <a href="https://www.reddit.com/r/Nothing/comments/1qjmhh6/comment/o101fgb/" target="_blank" class="block bg-white/5 rounded-lg p-4 border-l-4 border-cyan-500/50 hover:bg-white/10 transition cursor-pointer">
-                        <p class="text-gray-300 leading-relaxed">旧的也很好，但数字占用了很多空间，因此我们可以放入的图标数量减少了</p>
+                        <p class="text-gray-300 leading-relaxed" data-cn="旧的也很好，但数字占用了很多空间，因此我们可以放入的图标数量减少了" data-en="The old one was good too but the numbers were taking a lot of space so the numbers of icons we could put in were reduced">旧的也很好，但数字占用了很多空间，因此我们可以放入的图标数量减少了</p>
                         <div class="flex items-center mt-3 text-xs text-gray-500">
                             <span>u/NTGV_</span>
                             <span class="mx-2">·</span>
-                            <span class="text-cyan-400 font-medium">15 赞</span>
+                            <span class="text-cyan-400 font-medium">15 <span data-cn="赞" data-en="upvotes">赞</span></span>
                         </div>
                     </a>
                     
                     <a href="https://www.reddit.com/r/Nothing/comments/1qkfal9/comment/o1669b6/" target="_blank" class="block bg-white/5 rounded-lg p-4 border-l-4 border-cyan-500/50 hover:bg-white/10 transition cursor-pointer">
-                        <p class="text-gray-300 leading-relaxed">只需像平常一样在小窗口中打开应用程序并将其粘贴到屏幕的一侧
+                        <p class="text-gray-300 leading-relaxed" data-cn="只需像平常一样在小窗口中打开应用程序并将其粘贴到屏幕的一侧
+
+隐藏图标是如果您长按应用程序抽屉中的应用程序图标，就会出现一只眼睛" data-en="Just open an app in a small window as you usually would and stick it to the side of ur screen
+
+Hidden icons are if you long-press an app icon in app drawer there's an eye">只需像平常一样在小窗口中打开应用程序并将其粘贴到屏幕的一侧
 
 隐藏图标是如果您长按应用程序抽屉中的应用程序图标，就会出现一只眼睛</p>
                         <div class="flex items-center mt-3 text-xs text-gray-500">
                             <span>u/Niki4_best</span>
                             <span class="mx-2">·</span>
-                            <span class="text-cyan-400 font-medium">9 赞</span>
+                            <span class="text-cyan-400 font-medium">9 <span data-cn="赞" data-en="upvotes">赞</span></span>
                         </div>
                     </a>
                     
@@ -635,9 +655,48 @@ NGL我觉得两个都不错。从上下文来看，这就是旧人的样子。�
 
         <!-- 页脚 -->
         <footer class="mt-12 text-center text-gray-500 text-sm">
-            <p>生成时间: 2026-01-23T18:42:07</p>
-            <p class="mt-1">数据仅供参考，基于 Reddit 公开数据分析</p>
+            <p><span data-cn="生成时间" data-en="Generated at">生成时间</span>: 2026-01-23T19:07:23</p>
+            <p class="mt-1" data-cn="数据仅供参考，基于 Reddit 公开数据分析" data-en="Data for reference only, based on Reddit public data analysis">数据仅供参考，基于 Reddit 公开数据分析</p>
         </footer>
     </div>
+
+    <script>
+        let currentLang = 'cn';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'cn' ? 'en' : 'cn';
+
+            // 更新按钮文字
+            document.getElementById('langText').textContent = currentLang === 'cn' ? 'English' : '中文';
+
+            // 更新所有带 data-cn 和 data-en 属性的元素
+            document.querySelectorAll('[data-cn][data-en]').forEach(el => {
+                const text = el.getAttribute('data-' + currentLang);
+                if (text) {
+                    // 处理可能需要截断的内容
+                    if (el.classList.contains('issue-title')) {
+                        el.textContent = text.length > 80 ? text.substring(0, 80) + '...' : text;
+                    } else if (el.tagName === 'P' && el.closest('.grid')) {
+                        el.textContent = text.length > 100 ? text.substring(0, 100) + '...' : text;
+                    } else if (el.tagName === 'SPAN' && el.closest('.font-medium')) {
+                        el.textContent = text.length > 60 ? text.substring(0, 60) + '...' : text;
+                    } else {
+                        el.textContent = text;
+                    }
+                }
+            });
+
+            // 保存语言偏好
+            localStorage.setItem('preferredLang', currentLang);
+        }
+
+        // 页面加载时恢复语言偏好
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && savedLang !== currentLang) {
+                toggleLanguage();
+            }
+        });
+    </script>
 </body>
 </html>

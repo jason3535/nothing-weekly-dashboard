@@ -25,11 +25,19 @@
 </head>
 <body class="gradient-bg min-h-screen text-white">
     <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <!-- 语言切换按钮 -->
+        <div class="fixed top-4 right-4 z-50">
+            <button id="langToggle" onclick="toggleLanguage()" class="bg-white/10 hover:bg-white/20 border border-gray-600 rounded-lg px-4 py-2 text-white text-sm transition flex items-center gap-2">
+                <span id="langIcon">🌐</span>
+                <span id="langText">English</span>
+            </button>
+        </div>
+
         <!-- 头部 -->
         <header class="text-center mb-12">
-            <h1 class="text-4xl font-bold mb-2">Nothing 软件 Reddit 用户反馈周报</h1>
+            <h1 class="text-4xl font-bold mb-2" data-cn="Nothing 软件 Reddit 用户反馈周报" data-en="Nothing Software Reddit User Feedback Weekly">Nothing 软件 Reddit 用户反馈周报</h1>
             <div class="flex items-center justify-center gap-4 mt-4">
-                <label class="text-gray-400">选择周次：</label>
+                <label class="text-gray-400" data-cn="选择周次：" data-en="Select Week:">选择周次：</label>
                 <select id="weekSelector" class="bg-white/10 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-500" onchange="changeWeek(this.value)">
                     {% for week in available_weeks %}
                     <option value="{{ week.file }}" {% if week.current %}selected{% endif %}>
@@ -38,7 +46,7 @@
                     {% endfor %}
                 </select>
             </div>
-            <p class="text-sm text-gray-500 mt-3">数据来源: Reddit r/Nothing | 每周五 17:00 自动更新</p>
+            <p class="text-sm text-gray-500 mt-3" data-cn="数据来源: Reddit r/Nothing | 每周五 17:00 自动更新" data-en="Data Source: Reddit r/Nothing | Auto-updated every Friday 17:00">数据来源: Reddit r/Nothing | 每周五 17:00 自动更新</p>
         </header>
 
         <script>
@@ -51,19 +59,19 @@
         <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div class="card rounded-xl p-6 text-center">
                 <div class="text-3xl font-bold text-blue-400">{{ stats.total_posts }}</div>
-                <div class="text-gray-400 mt-1">软件相关帖子</div>
+                <div class="text-gray-400 mt-1" data-cn="软件相关帖子" data-en="Software Posts">软件相关帖子</div>
             </div>
             <div class="card rounded-xl p-6 text-center">
                 <div class="text-3xl font-bold text-purple-400">{{ stats.total_engagement }}</div>
-                <div class="text-gray-400 mt-1">总评论数</div>
+                <div class="text-gray-400 mt-1" data-cn="总评论数" data-en="Total Comments">总评论数</div>
             </div>
             <div class="card rounded-xl p-6 text-center">
                 <div class="text-3xl font-bold text-red-400">{{ stats.negative_ratio }}%</div>
-                <div class="text-gray-400 mt-1">负面反馈占比</div>
+                <div class="text-gray-400 mt-1" data-cn="负面反馈占比" data-en="Negative Ratio">负面反馈占比</div>
             </div>
             <div class="card rounded-xl p-6 text-center">
                 <div class="text-3xl font-bold text-orange-400">{{ stats.hot_issues_count }}</div>
-                <div class="text-gray-400 mt-1">热门问题数</div>
+                <div class="text-gray-400 mt-1" data-cn="热门问题数" data-en="Hot Issues">热门问题数</div>
             </div>
         </section>
 
@@ -74,17 +82,17 @@
                 <div class="card rounded-xl p-6">
                     <h2 class="text-xl font-bold mb-4 flex items-center">
                         <span class="w-2 h-6 bg-red-500 rounded mr-3"></span>
-                        TOP 问题排行
+                        <span data-cn="TOP 问题排行" data-en="TOP Issues">TOP 问题排行</span>
                     </h2>
                     <div class="overflow-x-auto">
                         <table class="w-full">
                             <thead>
                                 <tr class="text-left text-gray-400 border-b border-gray-700">
                                     <th class="pb-3 w-12">#</th>
-                                    <th class="pb-3">问题描述</th>
-                                    <th class="pb-3 w-24">分类</th>
-                                    <th class="pb-3 w-16 text-center">热度</th>
-                                    <th class="pb-3 w-20 text-center">情感</th>
+                                    <th class="pb-3" data-cn="问题描述" data-en="Description">问题描述</th>
+                                    <th class="pb-3 w-24" data-cn="分类" data-en="Category">分类</th>
+                                    <th class="pb-3 w-16 text-center" data-cn="热度" data-en="Heat">热度</th>
+                                    <th class="pb-3 w-20 text-center" data-cn="情感" data-en="Sentiment">情感</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -92,15 +100,15 @@
                                 <tr class="border-b border-gray-800 hover:bg-white/5">
                                     <td class="py-4 font-bold text-gray-500">{{ issue.rank }}</td>
                                     <td class="py-4">
-                                        <a href="{{ issue.permalink }}" target="_blank" class="hover:text-blue-400 transition">
+                                        <a href="{{ issue.permalink }}" target="_blank" class="hover:text-blue-400 transition issue-title" data-cn="{{ issue.title }}" data-en="{{ issue.title_en }}">
                                             {{ issue.title[:80] }}{% if issue.title|length > 80 %}...{% endif %}
                                         </a>
                                         <div class="text-xs text-gray-500 mt-1">
-                                            {{ issue.score }} 赞 · {{ issue.num_comments }} 评论
+                                            {{ issue.score }} <span data-cn="赞" data-en="upvotes">赞</span> · {{ issue.num_comments }} <span data-cn="评论" data-en="comments">评论</span>
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: {{ issue.category_color }}20; color: {{ issue.category_color }}">
+                                        <span class="px-2 py-1 rounded text-xs" style="background-color: {{ issue.category_color }}20; color: {{ issue.category_color }}" data-cn="{{ issue.category_name }}" data-en="{{ issue.category }}">
                                             {{ issue.category_name }}
                                         </span>
                                     </td>
@@ -110,7 +118,7 @@
                                         </span>
                                     </td>
                                     <td class="py-4 text-center">
-                                        <span class="px-2 py-1 rounded text-xs sentiment-{{ issue.sentiment }}">
+                                        <span class="px-2 py-1 rounded text-xs sentiment-{{ issue.sentiment }}" data-cn="{% if issue.sentiment == 'negative' %}负面{% elif issue.sentiment == 'positive' %}正面{% else %}中性{% endif %}" data-en="{{ issue.sentiment }}">
                                             {% if issue.sentiment == 'negative' %}负面{% elif issue.sentiment == 'positive' %}正面{% else %}中性{% endif %}
                                         </span>
                                     </td>
@@ -127,7 +135,7 @@
                 <div class="card rounded-xl p-6 mb-6">
                     <h2 class="text-xl font-bold mb-4 flex items-center">
                         <span class="w-2 h-6 bg-blue-500 rounded mr-3"></span>
-                        问题分类分布
+                        <span data-cn="问题分类分布" data-en="Category Distribution">问题分类分布</span>
                     </h2>
                     <div class="space-y-3">
                         {% for category in categories %}
@@ -135,7 +143,7 @@
                         {% set percentage = (count / stats.total_posts * 100) if stats.total_posts > 0 else 0 %}
                         <div>
                             <div class="flex justify-between text-sm mb-1">
-                                <span>{{ category.name }}</span>
+                                <span data-cn="{{ category.name }}" data-en="{{ category.name_en }}">{{ category.name }}</span>
                                 <span class="text-gray-400">{{ count }} ({{ "%.1f"|format(percentage) }}%)</span>
                             </div>
                             <div class="w-full bg-gray-700 rounded-full h-2">
@@ -150,20 +158,20 @@
                 <div class="card rounded-xl p-6">
                     <h2 class="text-xl font-bold mb-4 flex items-center">
                         <span class="w-2 h-6 bg-purple-500 rounded mr-3"></span>
-                        情感分布
+                        <span data-cn="情感分布" data-en="Sentiment Distribution">情感分布</span>
                     </h2>
                     <div class="flex justify-around text-center">
                         <div>
                             <div class="text-2xl font-bold text-red-400">{{ stats.sentiment_distribution.get('negative', 0) }}</div>
-                            <div class="text-xs text-gray-400">负面</div>
+                            <div class="text-xs text-gray-400" data-cn="负面" data-en="Negative">负面</div>
                         </div>
                         <div>
                             <div class="text-2xl font-bold text-gray-400">{{ stats.sentiment_distribution.get('neutral', 0) }}</div>
-                            <div class="text-xs text-gray-400">中性</div>
+                            <div class="text-xs text-gray-400" data-cn="中性" data-en="Neutral">中性</div>
                         </div>
                         <div>
                             <div class="text-2xl font-bold text-green-400">{{ stats.sentiment_distribution.get('positive', 0) }}</div>
-                            <div class="text-xs text-gray-400">正面</div>
+                            <div class="text-xs text-gray-400" data-cn="正面" data-en="Positive">正面</div>
                         </div>
                     </div>
                 </div>
@@ -175,28 +183,28 @@
             <div class="card rounded-xl p-6">
                 <h2 class="text-xl font-bold mb-4 flex items-center">
                     <span class="w-2 h-6 bg-yellow-500 rounded mr-3"></span>
-                    热门讨论
+                    <span data-cn="热门讨论" data-en="Hot Discussions">热门讨论</span>
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {% for discussion in hot_discussions %}
                     <a href="{{ discussion.permalink }}" target="_blank" class="block bg-white/5 rounded-lg p-4 hover:bg-white/10 transition cursor-pointer">
                         <div class="flex items-start justify-between">
                             <div class="flex-1">
-                                <span class="font-medium hover:text-blue-400 transition">
+                                <span class="font-medium hover:text-blue-400 transition" data-cn="{{ discussion.title }}" data-en="{{ discussion.title_en }}">
                                     {{ discussion.title[:60] }}{% if discussion.title|length > 60 %}...{% endif %}
                                 </span>
-                                <p class="text-sm text-gray-400 mt-2">{{ discussion.selftext[:100] }}{% if discussion.selftext|length > 100 %}...{% endif %}</p>
+                                <p class="text-sm text-gray-400 mt-2" data-cn="{{ discussion.selftext }}" data-en="{{ discussion.selftext_en }}">{{ discussion.selftext[:100] }}{% if discussion.selftext|length > 100 %}...{% endif %}</p>
                             </div>
-                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: {{ categories | selectattr('id', 'equalto', discussion.category) | map(attribute='color') | first | default('#6B7280') }}20;">
+                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: {{ categories | selectattr('id', 'equalto', discussion.category) | map(attribute='color') | first | default('#6B7280') }}20;" data-cn="{{ discussion.category_name }}" data-en="{{ discussion.category }}">
                                 {{ discussion.category_name }}
                             </span>
                         </div>
                         <div class="flex items-center mt-3 text-xs text-gray-500">
                             <span>u/{{ discussion.author }}</span>
                             <span class="mx-2">·</span>
-                            <span>{{ discussion.score }} 赞</span>
+                            <span>{{ discussion.score }} <span data-cn="赞" data-en="upvotes">赞</span></span>
                             <span class="mx-2">·</span>
-                            <span>{{ discussion.num_comments }} 评论</span>
+                            <span>{{ discussion.num_comments }} <span data-cn="评论" data-en="comments">评论</span></span>
                         </div>
                     </a>
                     {% endfor %}
@@ -209,16 +217,16 @@
             <div class="card rounded-xl p-6">
                 <h2 class="text-xl font-bold mb-4 flex items-center">
                     <span class="w-2 h-6 bg-cyan-500 rounded mr-3"></span>
-                    热门评论 Top 3
+                    <span data-cn="热门评论 Top 3" data-en="Top 3 Hot Comments">热门评论 Top 3</span>
                 </h2>
                 <div class="space-y-4">
                     {% for comment in hot_comments %}
                     <a href="{{ comment.permalink }}" target="_blank" class="block bg-white/5 rounded-lg p-4 border-l-4 border-cyan-500/50 hover:bg-white/10 transition cursor-pointer">
-                        <p class="text-gray-300 leading-relaxed">{{ comment.body }}</p>
+                        <p class="text-gray-300 leading-relaxed" data-cn="{{ comment.body }}" data-en="{{ comment.body_en }}">{{ comment.body }}</p>
                         <div class="flex items-center mt-3 text-xs text-gray-500">
                             <span>u/{{ comment.author }}</span>
                             <span class="mx-2">·</span>
-                            <span class="text-cyan-400 font-medium">{{ comment.score }} 赞</span>
+                            <span class="text-cyan-400 font-medium">{{ comment.score }} <span data-cn="赞" data-en="upvotes">赞</span></span>
                         </div>
                     </a>
                     {% endfor %}
@@ -228,9 +236,48 @@
 
         <!-- 页脚 -->
         <footer class="mt-12 text-center text-gray-500 text-sm">
-            <p>生成时间: {{ generated_at[:19] }}</p>
-            <p class="mt-1">数据仅供参考，基于 Reddit 公开数据分析</p>
+            <p><span data-cn="生成时间" data-en="Generated at">生成时间</span>: {{ generated_at[:19] }}</p>
+            <p class="mt-1" data-cn="数据仅供参考，基于 Reddit 公开数据分析" data-en="Data for reference only, based on Reddit public data analysis">数据仅供参考，基于 Reddit 公开数据分析</p>
         </footer>
     </div>
+
+    <script>
+        let currentLang = 'cn';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'cn' ? 'en' : 'cn';
+
+            // 更新按钮文字
+            document.getElementById('langText').textContent = currentLang === 'cn' ? 'English' : '中文';
+
+            // 更新所有带 data-cn 和 data-en 属性的元素
+            document.querySelectorAll('[data-cn][data-en]').forEach(el => {
+                const text = el.getAttribute('data-' + currentLang);
+                if (text) {
+                    // 处理可能需要截断的内容
+                    if (el.classList.contains('issue-title')) {
+                        el.textContent = text.length > 80 ? text.substring(0, 80) + '...' : text;
+                    } else if (el.tagName === 'P' && el.closest('.grid')) {
+                        el.textContent = text.length > 100 ? text.substring(0, 100) + '...' : text;
+                    } else if (el.tagName === 'SPAN' && el.closest('.font-medium')) {
+                        el.textContent = text.length > 60 ? text.substring(0, 60) + '...' : text;
+                    } else {
+                        el.textContent = text;
+                    }
+                }
+            });
+
+            // 保存语言偏好
+            localStorage.setItem('preferredLang', currentLang);
+        }
+
+        // 页面加载时恢复语言偏好
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang && savedLang !== currentLang) {
+                toggleLanguage();
+            }
+        });
+    </script>
 </body>
 </html>
