@@ -1,0 +1,207 @@
+# Nothing 用户反馈看板配置
+
+reddit:
+  subreddit: "Nothing"
+  # 每个分类抓取的帖子数量
+  posts_limit: 100
+  # 请求间隔（秒），避免被限流
+  request_delay: 2
+
+# 排除关键词（不相关内容）
+exclude_keywords:
+  # 手表相关
+  - "watch"
+  - "cmf watch"
+  - "watch pro"
+  # 耳机相关
+  - "ear"
+  - "buds"
+  - "earbuds"
+  # 购买/推荐相关
+  - "should i get"
+  - "should i buy"
+  - "which one"
+  - "what should i"
+  - "worth buying"
+  - "vs"
+  - "or the"
+  - "recommend"
+  # 硬件问题
+  - "screen protector"
+  - "case"
+  - "charger"
+  - "cracked"
+  - "broken screen"
+  - "drop"
+  # 其他不相关
+  - "wallpaper"
+  - "homescreen"
+  - "lockscreen"
+  - "mri"
+  - "unboxing"
+  - "delivery"
+  - "shipping"
+
+# 软件相关关键词过滤
+keywords:
+  software:
+    - "Nothing OS"
+    - "NothingOS"
+    - "software"
+    - "update"
+    - "bug"
+    - "issue"
+    - "problem"
+    - "glitch"
+    - "crash"
+    - "fix"
+    - "patch"
+
+  ui_ux:
+    - "UI"
+    - "UX"
+    - "interface"
+    - "design"
+    - "animation"
+    - "gesture"
+    - "icon"
+    - "font"
+    - "theme"
+    - "widget"
+    - "notification"
+    - "settings"
+    - "launcher"
+
+  performance:
+    - "lag"
+    - "slow"
+    - "battery"
+    - "drain"
+    - "heat"
+    - "hot"
+    - "freeze"
+    - "stuttering"
+    - "performance"
+    - "optimization"
+
+  camera:
+    - "camera"
+    - "photo"
+    - "video"
+    - "recording"
+    - "portrait"
+    - "night mode"
+    - "HDR"
+    - "shutter"
+
+  glyph:
+    - "glyph"
+    - "LED"
+    - "light"
+    - "notification light"
+
+  connectivity:
+    - "wifi"
+    - "bluetooth"
+    - "5G"
+    - "signal"
+    - "network"
+    - "connection"
+    - "NFC"
+
+# 问题分类配置
+categories:
+  - id: "ui_ux"
+    name: "界面与体验"
+    name_en: "UI/UX"
+    color: "#3B82F6"
+
+  - id: "performance"
+    name: "系统性能"
+    name_en: "Performance"
+    color: "#EF4444"
+
+  - id: "camera"
+    name: "相机软件"
+    name_en: "Camera"
+    color: "#10B981"
+
+  - id: "glyph"
+    name: "Glyph 灯效"
+    name_en: "Glyph"
+    color: "#F59E0B"
+
+  - id: "connectivity"
+    name: "连接问题"
+    name_en: "Connectivity"
+    color: "#8B5CF6"
+
+  - id: "other"
+    name: "其他软件问题"
+    name_en: "Other"
+    color: "#6B7280"
+
+# 情感分析关键词
+sentiment:
+  negative:
+    - "bug"
+    - "issue"
+    - "problem"
+    - "broken"
+    - "bad"
+    - "worst"
+    - "terrible"
+    - "annoying"
+    - "frustrating"
+    - "disappointed"
+    - "hate"
+    - "useless"
+    - "fail"
+    - "crash"
+    - "unresponsive"
+    - "sucks"
+    - "suck"
+    - "ugly"
+    - "weird"
+    - "wrong"
+    - "horrible"
+    - "awful"
+    - "poor"
+    - "lacking"
+    - "missing"
+    - "why"
+    - "doesn't work"
+    - "not working"
+    - "can't"
+    - "cannot"
+    - "won't"
+    - "worse"
+    - "downgrade"
+    - "downgrading"
+    - "regret"
+    - "disappointed"
+    - "drain"
+    - "draining"
+    - "laggy"
+    - "stuttery"
+    - "choppy"
+    - "inconsistent"
+    - "unreliable"
+    - "unstable"
+
+  positive:
+    - "love"
+    - "great"
+    - "good"
+    - "amazing"
+    - "perfect"
+    - "excellent"
+    - "best"
+    - "awesome"
+    - "fixed"
+    - "improved"
+    - "smooth"
+    - "fast"
+    - "nice"
+    - "beautiful"
+    - "wonderful"

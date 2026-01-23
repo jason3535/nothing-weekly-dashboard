@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nothing 软件 Reddit 用户反馈周报 - {{ week_info.display }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .heat-high { color: #ef4444; }
+        .heat-medium { color: #f59e0b; }
+        .heat-low { color: #22c55e; }
+        .sentiment-negative { background-color: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+        .sentiment-positive { background-color: rgba(34, 197, 94, 0.2); color: #86efac; }
+        .sentiment-neutral { background-color: rgba(156, 163, 175, 0.2); color: #d1d5db; }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-white">
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <!-- 头部 -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-2">Nothing 软件 Reddit 用户反馈周报</h1>
+            <div class="flex items-center justify-center gap-4 mt-4">
+                <label class="text-gray-400">选择周次：</label>
+                <select id="weekSelector" class="bg-white/10 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-500" onchange="changeWeek(this.value)">
+                    {% for week in available_weeks %}
+                    <option value="{{ week.file }}" {% if week.current %}selected{% endif %}>
+                        {{ week.display }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <p class="text-sm text-gray-500 mt-3">数据来源: Reddit r/Nothing | 每周五 17:00 自动更新</p>
+        </header>
+
+        <script>
+            function changeWeek(file) {
+                window.location.href = file;
+            }
+        </script>
+
+        <!-- 概览卡片 -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="card rounded-xl p-6 text-center">
+                <div class="text-3xl font-bold text-blue-400">{{ stats.total_posts }}</div>
+                <div class="text-gray-400 mt-1">软件相关帖子</div>
+            </div>
+            <div class="card rounded-xl p-6 text-center">
+                <div class="text-3xl font-bold text-purple-400">{{ stats.total_engagement }}</div>
+                <div class="text-gray-400 mt-1">总评论数</div>
+            </div>
+            <div class="card rounded-xl p-6 text-center">
+                <div class="text-3xl font-bold text-red-400">{{ stats.negative_ratio }}%</div>
+                <div class="text-gray-400 mt-1">负面反馈占比</div>
+            </div>
+            <div class="card rounded-xl p-6 text-center">
+                <div class="text-3xl font-bold text-orange-400">{{ stats.hot_issues_count }}</div>
+                <div class="text-gray-400 mt-1">热门问题数</div>
+            </div>
+        </section>
+
+        <!-- 主要内容区域 -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- TOP 问题 -->
+            <div class="lg:col-span-2">
+                <div class="card rounded-xl p-6">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="w-2 h-6 bg-red-500 rounded mr-3"></span>
+                        TOP 问题排行
+                    </h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="text-left text-gray-400 border-b border-gray-700">
+                                    <th class="pb-3 w-12">#</th>
+                                    <th class="pb-3">问题描述</th>
+                                    <th class="pb-3 w-24">分类</th>
+                                    <th class="pb-3 w-16 text-center">热度</th>
+                                    <th class="pb-3 w-20 text-center">情感</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for issue in top_issues %}
+                                <tr class="border-b border-gray-800 hover:bg-white/5">
+                                    <td class="py-4 font-bold text-gray-500">{{ issue.rank }}</td>
+                                    <td class="py-4">
+                                        <a href="{{ issue.permalink }}" target="_blank" class="hover:text-blue-400 transition">
+                                            {{ issue.title[:80] }}{% if issue.title|length > 80 %}...{% endif %}
+                                        </a>
+                                        <div class="text-xs text-gray-500 mt-1">
+                                            {{ issue.score }} 赞 · {{ issue.num_comments }} 评论
+                                        </div>
+                                    </td>
+                                    <td class="py-4">
+                                        <span class="px-2 py-1 rounded text-xs" style="background-color: {{ issue.category_color }}20; color: {{ issue.category_color }}">
+                                            {{ issue.category_name }}
+                                        </span>
+                                    </td>
+                                    <td class="py-4 text-center">
+                                        <span class="{% if issue.heat > 50 %}heat-high{% elif issue.heat > 20 %}heat-medium{% else %}heat-low{% endif %} font-bold">
+                                            {{ issue.heat }}
+                                        </span>
+                                    </td>
+                                    <td class="py-4 text-center">
+                                        <span class="px-2 py-1 rounded text-xs sentiment-{{ issue.sentiment }}">
+                                            {% if issue.sentiment == 'negative' %}负面{% elif issue.sentiment == 'positive' %}正面{% else %}中性{% endif %}
+                                        </span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 分类分布 -->
+            <div class="lg:col-span-1">
+                <div class="card rounded-xl p-6 mb-6">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="w-2 h-6 bg-blue-500 rounded mr-3"></span>
+                        问题分类分布
+                    </h2>
+                    <div class="space-y-3">
+                        {% for category in categories %}
+                        {% set count = stats.category_distribution.get(category.id, 0) %}
+                        {% set percentage = (count / stats.total_posts * 100) if stats.total_posts > 0 else 0 %}
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>{{ category.name }}</span>
+                                <span class="text-gray-400">{{ count }} ({{ "%.1f"|format(percentage) }}%)</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="h-2 rounded-full" style="width: {{ percentage }}%; background-color: {{ category.color }}"></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- 情感分布 -->
+                <div class="card rounded-xl p-6">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="w-2 h-6 bg-purple-500 rounded mr-3"></span>
+                        情感分布
+                    </h2>
+                    <div class="flex justify-around text-center">
+                        <div>
+                            <div class="text-2xl font-bold text-red-400">{{ stats.sentiment_distribution.get('negative', 0) }}</div>
+                            <div class="text-xs text-gray-400">负面</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-gray-400">{{ stats.sentiment_distribution.get('neutral', 0) }}</div>
+                            <div class="text-xs text-gray-400">中性</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-green-400">{{ stats.sentiment_distribution.get('positive', 0) }}</div>
+                            <div class="text-xs text-gray-400">正面</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 热门讨论 -->
+        <section class="mt-8">
+            <div class="card rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center">
+                    <span class="w-2 h-6 bg-yellow-500 rounded mr-3"></span>
+                    热门讨论
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {% for discussion in hot_discussions %}
+                    <a href="{{ discussion.permalink }}" target="_blank" class="block bg-white/5 rounded-lg p-4 hover:bg-white/10 transition cursor-pointer">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <span class="font-medium hover:text-blue-400 transition">
+                                    {{ discussion.title[:60] }}{% if discussion.title|length > 60 %}...{% endif %}
+                                </span>
+                                <p class="text-sm text-gray-400 mt-2">{{ discussion.selftext[:100] }}{% if discussion.selftext|length > 100 %}...{% endif %}</p>
+                            </div>
+                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: {{ categories | selectattr('id', 'equalto', discussion.category) | map(attribute='color') | first | default('#6B7280') }}20;">
+                                {{ discussion.category_name }}
+                            </span>
+                        </div>
+                        <div class="flex items-center mt-3 text-xs text-gray-500">
+                            <span>u/{{ discussion.author }}</span>
+                            <span class="mx-2">·</span>
+                            <span>{{ discussion.score }} 赞</span>
+                            <span class="mx-2">·</span>
+                            <span>{{ discussion.num_comments }} 评论</span>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门评论 -->
+        <section class="mt-8">
+            <div class="card rounded-xl p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center">
+                    <span class="w-2 h-6 bg-cyan-500 rounded mr-3"></span>
+                    热门评论 Top 3
+                </h2>
+                <div class="space-y-4">
+                    {% for comment in hot_comments %}
+                    <a href="{{ comment.permalink }}" target="_blank" class="block bg-white/5 rounded-lg p-4 border-l-4 border-cyan-500/50 hover:bg-white/10 transition cursor-pointer">
+                        <p class="text-gray-300 leading-relaxed">{{ comment.body }}</p>
+                        <div class="flex items-center mt-3 text-xs text-gray-500">
+                            <span>u/{{ comment.author }}</span>
+                            <span class="mx-2">·</span>
+                            <span class="text-cyan-400 font-medium">{{ comment.score }} 赞</span>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="mt-12 text-center text-gray-500 text-sm">
+            <p>生成时间: {{ generated_at[:19] }}</p>
+            <p class="mt-1">数据仅供参考，基于 Reddit 公开数据分析</p>
+        </footer>
+    </div>
+</body>
+</html>
