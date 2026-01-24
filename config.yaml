@@ -191,6 +191,7 @@ sentiment:
 
   positive:
     - "love"
+    - "loving"
     - "great"
     - "good"
     - "amazing"
@@ -198,6 +199,7 @@ sentiment:
     - "excellent"
     - "best"
     - "awesome"
+    - "fantastic"
     - "fixed"
     - "improved"
     - "smooth"
@@ -205,3 +207,6 @@ sentiment:
     - "nice"
     - "beautiful"
     - "wonderful"
+    - "brilliant"
+    - "enjoy"
+    - "enjoying"
