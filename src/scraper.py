@@ -216,7 +216,7 @@ def scrape_weekly_data(config: dict, output_dir: Path) -> dict:
 
     # 获取本周热门帖
     print("\n获取热门帖子...")
-    hot_posts = scraper.get_posts(sort="hot", limit=50, time_filter="week")
+    hot_posts = scraper.get_posts(sort="hot", limit=100, time_filter="week")
     print(f"获取到 {len(hot_posts)} 篇热门帖子")
 
     # 合并去重

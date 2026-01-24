@@ -197,21 +197,41 @@ class DataProcessor:
         for post in posts:
             text = f"{post.get('title', '')} {post.get('selftext', '')}".lower()
 
-            # 先检查是否包含排除关键词
+            # 先检查是否包含排除关键词（使用单词边界匹配）
             should_exclude = False
             for exclude_kw in self.exclude_keywords:
-                if exclude_kw.lower() in text:
+                # 构建正则表达式模式，使用单词边界
+                # 转义特殊字符，将空格替换为 \s+（允许任意空白）
+                pattern = re.escape(exclude_kw.lower())
+                # 将空格替换为 \s+ 以匹配任意空白
+                pattern = pattern.replace(r'\ ', r'\s+')
+                # 添加单词边界
+                pattern = r'\b' + pattern + r'\b'
+
+                if re.search(pattern, text):
                     should_exclude = True
+                    print(f"  排除帖子: '{post.get('title', '')}' - 匹配排除关键词: '{exclude_kw}'")
                     break
 
             if should_exclude:
                 continue
 
-            # 检查是否包含任何相关关键词
+            # 检查是否包含任何相关关键词（使用单词边界匹配）
+            has_keyword = False
             for keyword in all_keywords:
-                if keyword.lower() in text:
-                    filtered.append(post)
+                # 构建正则表达式模式，使用单词边界
+                pattern = re.escape(keyword.lower())
+                # 将空格替换为 \s+ 以匹配任意空白
+                pattern = pattern.replace(r'\ ', r'\s+')
+                # 添加单词边界
+                pattern = r'\b' + pattern + r'\b'
+
+                if re.search(pattern, text, re.IGNORECASE):
+                    has_keyword = True
                     break
+
+            if has_keyword:
+                filtered.append(post)
 
         return filtered
 
@@ -265,12 +285,31 @@ class DataProcessor:
         """情感分析"""
         negative_keywords = self.sentiment_keywords.get("negative", [])
         positive_keywords = self.sentiment_keywords.get("positive", [])
+        sarcasm_patterns = self.sentiment_keywords.get("sarcasm_patterns", [])
 
         for post in posts:
             text = f"{post.get('title', '')} {post.get('selftext', '')}".lower()
 
             negative_count = sum(1 for kw in negative_keywords if kw.lower() in text)
             positive_count = sum(1 for kw in positive_keywords if kw.lower() in text)
+            original_positive = positive_count  # 保存原始值用于调试
+
+            # 检查是否包含讽刺模式
+            has_sarcasm = any(pattern in text for pattern in sarcasm_patterns)
+
+            # 如果有讽刺模式且包含正面词，调整计数（将正面词视为可能讽刺）
+            if has_sarcasm and positive_count > 0:
+                # 强烈的讽刺检测：将正面词视为负面
+                # 每个在讽刺语境中的正面词转换为负面计数
+                sarcasm_adjusted_negative = negative_count + positive_count
+                sarcasm_adjusted_positive = 0
+
+                print(f"  检测到讽刺模式: 标题='{post.get('title', '')[:50]}...'")
+                print(f"    原始计数: 正面={original_positive}, 负面={negative_count}")
+                print(f"    调整后: 正面={sarcasm_adjusted_positive}, 负面={sarcasm_adjusted_negative}")
+
+                negative_count = sarcasm_adjusted_negative
+                positive_count = sarcasm_adjusted_positive
 
             if negative_count > positive_count:
                 sentiment = "negative"

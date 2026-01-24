@@ -3,7 +3,7 @@
 reddit:
   subreddit: "Nothing"
   # 每个分类抓取的帖子数量
-  posts_limit: 100
+  posts_limit: 200
   # 请求间隔（秒），避免被限流
   request_delay: 2
 
@@ -56,6 +56,8 @@ keywords:
     - "crash"
     - "fix"
     - "patch"
+    - "upgrade"
+    - "upgraded"
 
   ui_ux:
     - "UI"
@@ -210,3 +212,26 @@ sentiment:
     - "brilliant"
     - "enjoy"
     - "enjoying"
+
+  # 讽刺/嘲讽模式（当与正面词一起出现时，可能表示负面情感）
+  sarcasm_patterns:
+    - "then i saw"
+    - "then i see"
+    - "unfortunately"
+    - "sadly"
+    - "but then"
+    - "however"
+    - "unfortunately"
+    - "sarcasm"
+    - "sarcastic"
+    - "ironic"
+    - "irony"
+    - "not really"
+    - "not actually"
+    - "just kidding"
+    - "jk"
+    - "/s"
+    - "facepalm"
+    - "eyeroll"
+    - "roll eyes"
+    - "smh"
