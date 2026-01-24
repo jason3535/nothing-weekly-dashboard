@@ -62,35 +62,61 @@ class DataProcessor:
             text_to_translate = text[:500] if len(text) > 500 else text
 
             # 保护专有名词：用占位符替换，翻译后再恢复
-            protected_matches = []
-            placeholder_map = {}
-
-            # 使用re.IGNORECASE标志进行不区分大小写的匹配
-            for i, pattern in enumerate(self.protected_terms):
+            # 首先收集所有不重叠的匹配
+            matches = []
+            for pattern in self.protected_terms:
                 # 查找所有匹配
                 for match in re.finditer(pattern, text_to_translate, re.IGNORECASE):
-                    original_term = match.group()
-                    # 生成唯一占位符
-                    placeholder = f"__PROTECTED_TERM_{len(placeholder_map)}__"
-                    placeholder_map[placeholder] = original_term
-                    protected_matches.append({
-                        'placeholder': placeholder,
-                        'original': original_term,
+                    matches.append({
                         'start': match.start(),
-                        'end': match.end()
+                        'end': match.end(),
+                        'text': match.group()
                     })
 
-            # 按起始位置降序排序，这样从后往前替换不会影响前面的位置
-            protected_matches.sort(key=lambda x: x['start'], reverse=True)
+            # 如果没有匹配，直接翻译
+            if not matches:
+                translated = self.translator.translate(text_to_translate)
+                self._translation_cache[text] = translated
+                time.sleep(0.3)
+                return translated
 
-            # 替换为占位符
-            protected_text = text_to_translate
-            for match in protected_matches:
-                protected_text = (
-                    protected_text[:match['start']] +
-                    match['placeholder'] +
-                    protected_text[match['end']:]
-                )
+            # 按起始位置排序并合并重叠区间
+            matches.sort(key=lambda x: x['start'])
+            non_overlapping = []
+            current = matches[0]
+
+            for match in matches[1:]:
+                if match['start'] <= current['end']:  # 重叠
+                    # 合并区间，保留更长的匹配文本
+                    current['end'] = max(current['end'], match['end'])
+                    # 选择更具体的匹配（更长的文本）
+                    if len(match['text']) > len(current['text']):
+                        current['text'] = match['text']
+                else:
+                    non_overlapping.append(current)
+                    current = match
+
+            non_overlapping.append(current)
+
+            # 生成占位符并替换
+            placeholder_map = {}
+            protected_text_parts = []
+            last_end = 0
+
+            for i, match in enumerate(non_overlapping):
+                # 添加前一段文本
+                protected_text_parts.append(text_to_translate[last_end:match['start']])
+
+                # 生成占位符并添加
+                placeholder = f"__PROTECTED_{i}__"
+                placeholder_map[placeholder] = match['text']
+                protected_text_parts.append(placeholder)
+
+                last_end = match['end']
+
+            # 添加最后一段文本
+            protected_text_parts.append(text_to_translate[last_end:])
+            protected_text = ''.join(protected_text_parts)
 
             # 翻译保护后的文本
             translated = self.translator.translate(protected_text)
