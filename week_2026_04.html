@@ -7,27 +7,199 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        /* 主题变量定义 */
+        :root {
+            /* 深色主题 (Nothing风格) */
+            --bg-primary: #000000;
+            --bg-secondary: #1a1a1a;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-tertiary: #666666;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent-red: #ff0000;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-yellow: #f59e0b;
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --gradient-start: #000000;
+            --gradient-middle: #1a1a1a;
+            --gradient-end: #2a2a2a;
+            --button-bg: rgba(255, 255, 255, 0.1);
+            --button-bg-hover: rgba(255, 255, 255, 0.2);
+            --button-border: rgba(255, 255, 255, 0.2);
+            --sentiment-negative-text: #ff6b6b;
+            --sentiment-positive-text: #4ade80;
+            --sentiment-neutral-text: #9ca3af;
+            --hover-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        :root[data-theme="light"] {
+            /* 浅色主题 */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --bg-card: rgba(0, 0, 0, 0.05);
+            --text-primary: #000000;
+            --text-secondary: #555555;
+            --text-tertiary: #888888;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --gradient-start: #ffffff;
+            --gradient-middle: #f5f5f5;
+            --gradient-end: #e5e5e5;
+            --button-bg: rgba(0, 0, 0, 0.1);
+            --button-bg-hover: rgba(0, 0, 0, 0.2);
+            --button-border: rgba(0, 0, 0, 0.2);
+            --sentiment-negative-text: #dc2626;
+            --sentiment-positive-text: #16a34a;
+            --sentiment-neutral-text: #6b7280;
+            --hover-bg: rgba(0, 0, 0, 0.05);
+        }
+
+        /* 基础样式 */
         .gradient-bg {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-middle) 50%, var(--gradient-end) 100%);
+            transition: background 0.3s ease;
         }
+
         .card {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--bg-card);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
-        .heat-high { color: #ef4444; }
-        .heat-medium { color: #f59e0b; }
-        .heat-low { color: #22c55e; }
-        .sentiment-negative { background-color: rgba(239, 68, 68, 0.2); color: #fca5a5; }
-        .sentiment-positive { background-color: rgba(34, 197, 94, 0.2); color: #86efac; }
-        .sentiment-neutral { background-color: rgba(156, 163, 175, 0.2); color: #d1d5db; }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, monospace;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* 文字颜色 */
+        .text-white {
+            color: var(--text-primary) !important;
+        }
+
+        .text-gray-300 {
+            color: var(--text-secondary) !important;
+        }
+
+        .text-gray-400 {
+            color: var(--text-secondary) !important;
+        }
+
+        .text-gray-500 {
+            color: var(--text-tertiary) !important;
+        }
+
+        /* 强调色 */
+        .text-blue-400 { color: var(--accent-blue); }
+        .text-purple-400 { color: var(--accent-purple); }
+        .text-red-400 { color: var(--accent-red); }
+        .text-orange-400 { color: var(--accent-yellow); }
+        .text-green-400 { color: var(--accent-green); }
+        .text-cyan-400 { color: var(--accent-cyan); }
+
+        /* 热度颜色 */
+        .heat-high { color: var(--accent-red); }
+        .heat-medium { color: var(--accent-yellow); }
+        .heat-low { color: var(--accent-green); }
+
+        /* 情感分析样式 */
+        .sentiment-negative {
+            background-color: rgba(255, 0, 0, 0.15);
+            color: var(--sentiment-negative-text);
+        }
+
+        .sentiment-positive {
+            background-color: rgba(34, 197, 94, 0.15);
+            color: var(--sentiment-positive-text);
+        }
+
+        .sentiment-neutral {
+            background-color: rgba(156, 163, 175, 0.15);
+            color: var(--sentiment-neutral-text);
+        }
+
+        /* 分类标签颜色 */
+        .category-ui_ux { background-color: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
+        .category-performance { background-color: rgba(239, 68, 68, 0.15); color: var(--accent-red); }
+        .category-camera { background-color: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
+        .category-glyph { background-color: rgba(245, 158, 11, 0.15); color: var(--accent-yellow); }
+        .category-connectivity { background-color: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
+        .category-other { background-color: rgba(107, 114, 128, 0.15); color: var(--text-secondary); }
+
+        /* 边框颜色 */
+        .border-gray-600,
+        .border-gray-700,
+        .border-gray-800 {
+            border-color: var(--border-color) !important;
+        }
+
+        /* 进度条背景 */
+        .bg-gray-700 {
+            background-color: var(--border-color) !important;
+        }
+
+        /* 链接悬停效果 */
+        a:hover {
+            color: var(--accent-red) !important;
+        }
+
+        /* 按钮样式 */
+        .theme-button {
+            background-color: var(--button-bg);
+            border: 1px solid var(--button-border);
+        }
+
+        .theme-button:hover {
+            background-color: var(--button-bg-hover);
+        }
+
+        /* 下拉菜单样式 */
+        .theme-select {
+            background-color: var(--button-bg);
+            border: 1px solid var(--button-border);
+            color: var(--text-primary);
+        }
+
+        .theme-select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        /* Nothing风格点阵字体效果 */
+        .nothing-font {
+            font-family: 'Courier New', monospace;
+            letter-spacing: -0.5px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* 表格行悬停 */
+        tr:hover {
+            background-color: var(--hover-bg) !important;
+        }
+
+        /* 通用悬停背景 */
+        .hover-bg-white\/5:hover {
+            background-color: var(--hover-bg) !important;
+        }
     </style>
 </head>
 <body class="gradient-bg min-h-screen text-white">
     <div class="container mx-auto px-4 py-8 max-w-7xl">
-        <!-- 语言切换按钮 -->
-        <div class="fixed top-4 right-4 z-50">
-            <button id="langToggle" onclick="toggleLanguage()" class="bg-white/10 hover:bg-white/20 border border-gray-600 rounded-lg px-4 py-2 text-white text-sm transition flex items-center gap-2">
+        <!-- 语言和主题切换按钮 -->
+        <div class="fixed top-4 right-4 z-50 flex gap-2">
+            <button id="themeToggle" onclick="toggleTheme()" class="theme-button rounded-lg px-4 py-2 text-white text-sm transition flex items-center gap-2">
+                <span id="themeIcon">🌙</span>
+                <span id="themeText">深色</span>
+            </button>
+            <button id="langToggle" onclick="toggleLanguage()" class="theme-button rounded-lg px-4 py-2 text-white text-sm transition flex items-center gap-2">
                 <span id="langIcon">🌐</span>
                 <span id="langText">English</span>
             </button>
@@ -38,7 +210,7 @@
             <h1 class="text-4xl font-bold mb-2" data-cn="Nothing 软件 Reddit 用户反馈周报" data-en="Nothing Software Reddit User Feedback Weekly">Nothing 软件 Reddit 用户反馈周报</h1>
             <div class="flex items-center justify-center gap-4 mt-4">
                 <label class="text-gray-400" data-cn="选择周次：" data-en="Select Week:">选择周次：</label>
-                <select id="weekSelector" class="bg-white/10 border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-500" onchange="changeWeek(this.value)">
+                <select id="weekSelector" class="theme-select rounded-lg px-4 py-2 focus:outline-none" onchange="changeWeek(this.value)">
                     <option value="week_2026_04.html" selected>2026 年第 4 周</option>
                 </select>
             </div>
@@ -104,7 +276,7 @@
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6" data-cn="界面与体验" data-en="ui_ux">
+                                        <span class="px-2 py-1 rounded text-xs category-ui_ux" data-cn="界面与体验" data-en="ui_ux">
                                             界面与体验
                                         </span>
                                     </td>
@@ -131,7 +303,7 @@
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #6B728020; color: #6B7280" data-cn="其他软件问题" data-en="other">
+                                        <span class="px-2 py-1 rounded text-xs category-other" data-cn="其他软件问题" data-en="other">
                                             其他软件问题
                                         </span>
                                     </td>
@@ -158,7 +330,7 @@
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6" data-cn="界面与体验" data-en="ui_ux">
+                                        <span class="px-2 py-1 rounded text-xs category-ui_ux" data-cn="界面与体验" data-en="ui_ux">
                                             界面与体验
                                         </span>
                                     </td>
@@ -185,7 +357,7 @@
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #EF444420; color: #EF4444" data-cn="系统性能" data-en="performance">
+                                        <span class="px-2 py-1 rounded text-xs category-performance" data-cn="系统性能" data-en="performance">
                                             系统性能
                                         </span>
                                     </td>
@@ -212,7 +384,7 @@
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6" data-cn="界面与体验" data-en="ui_ux">
+                                        <span class="px-2 py-1 rounded text-xs category-ui_ux" data-cn="界面与体验" data-en="ui_ux">
                                             界面与体验
                                         </span>
                                     </td>
@@ -239,7 +411,7 @@
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #EF444420; color: #EF4444" data-cn="系统性能" data-en="performance">
+                                        <span class="px-2 py-1 rounded text-xs category-performance" data-cn="系统性能" data-en="performance">
                                             系统性能
                                         </span>
                                     </td>
@@ -266,7 +438,7 @@
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #6B728020; color: #6B7280" data-cn="其他软件问题" data-en="other">
+                                        <span class="px-2 py-1 rounded text-xs category-other" data-cn="其他软件问题" data-en="other">
                                             其他软件问题
                                         </span>
                                     </td>
@@ -293,7 +465,7 @@
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6" data-cn="界面与体验" data-en="ui_ux">
+                                        <span class="px-2 py-1 rounded text-xs category-ui_ux" data-cn="界面与体验" data-en="ui_ux">
                                             界面与体验
                                         </span>
                                     </td>
@@ -320,7 +492,7 @@
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #3B82F620; color: #3B82F6" data-cn="界面与体验" data-en="ui_ux">
+                                        <span class="px-2 py-1 rounded text-xs category-ui_ux" data-cn="界面与体验" data-en="ui_ux">
                                             界面与体验
                                         </span>
                                     </td>
@@ -347,7 +519,7 @@
                                         </div>
                                     </td>
                                     <td class="py-4">
-                                        <span class="px-2 py-1 rounded text-xs" style="background-color: #EF444420; color: #EF4444" data-cn="系统性能" data-en="performance">
+                                        <span class="px-2 py-1 rounded text-xs category-performance" data-cn="系统性能" data-en="performance">
                                             系统性能
                                         </span>
                                     </td>
@@ -500,7 +672,7 @@ I'm curious, what's your opinion on it ?">我今晚收到了新的更新，电�
 
 我很好奇，你对此有何看法？</p>
                             </div>
-                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #3B82F620;" data-cn="界面与体验" data-en="ui_ux">
+                            <span class="px-2 py-1 rounded text-xs ml-2 category-ui_ux" data-cn="界面与体验" data-en="ui_ux">
                                 界面与体验
                             </span>
                         </div>
@@ -521,7 +693,7 @@ I'm curious, what's your opinion on it ?">我今晚收到了新的更新，电�
                                 </span>
                                 <p class="text-sm text-gray-400 mt-2" data-cn="我应该更新吗？没什么电话 2." data-en="should I update ? nothing phone 2.">我应该更新吗？没什么电话 2.</p>
                             </div>
-                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #6B728020;" data-cn="其他软件问题" data-en="other">
+                            <span class="px-2 py-1 rounded text-xs ml-2 category-other" data-cn="其他软件问题" data-en="other">
                                 其他软件问题
                             </span>
                         </div>
@@ -542,7 +714,7 @@ I'm curious, what's your opinion on it ?">我今晚收到了新的更新，电�
                                 </span>
                                 <p class="text-sm text-gray-400 mt-2" data-cn="NothingOS 4 有一个很好的电池图标，我不知道他们为什么要改变它。新的看起来像苹果垃圾，而且与其他状态栏图标的主题完全不匹配" data-en="NothingOS 4 had a good battery icon, I don't know why they had to change it. The new one looks like Apple trash and doesn't match the theme of the other status bar icons at all ">NothingOS 4 有一个很好的电池图标，我不知道他们为什么要改变它。新的看起来像苹果垃圾，而且与其他状态栏图标的主题完全不匹配</p>
                             </div>
-                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #3B82F620;" data-cn="界面与体验" data-en="ui_ux">
+                            <span class="px-2 py-1 rounded text-xs ml-2 category-ui_ux" data-cn="界面与体验" data-en="ui_ux">
                                 界面与体验
                             </span>
                         </div>
@@ -563,7 +735,7 @@ I'm curious, what's your opinion on it ?">我今晚收到了新的更新，电�
                                 </span>
                                 <p class="text-sm text-gray-400 mt-2" data-cn="有谁已经使用phone 3a pro一段时间了，请分享一下您的经验，有什么问题吗？有任何速度减慢或性能问题吗？" data-en="Anyone who has been using nothing phone 3a pro for some time now, please share your experience, any issues? any slowdowns or performance hiccups?">有谁已经使用phone 3a pro一段时间了，请分享一下您的经验，有什么问题吗？有任何速度减慢或性能问题吗？</p>
                             </div>
-                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #EF444420;" data-cn="系统性能" data-en="performance">
+                            <span class="px-2 py-1 rounded text-xs ml-2 category-performance" data-cn="系统性能" data-en="performance">
                                 系统性能
                             </span>
                         </div>
@@ -584,7 +756,7 @@ I'm curious, what's your opinion on it ?">我今晚收到了新的更新，电�
                                 </span>
                                 <p class="text-sm text-gray-400 mt-2" data-cn="" data-en=""></p>
                             </div>
-                            <span class="px-2 py-1 rounded text-xs ml-2" style="background-color: #3B82F620;" data-cn="界面与体验" data-en="ui_ux">
+                            <span class="px-2 py-1 rounded text-xs ml-2 category-ui_ux" data-cn="界面与体验" data-en="ui_ux">
                                 界面与体验
                             </span>
                         </div>
@@ -655,13 +827,14 @@ Hidden icons are if you long-press an app icon in app drawer there's an eye">只
 
         <!-- 页脚 -->
         <footer class="mt-12 text-center text-gray-500 text-sm">
-            <p><span data-cn="生成时间" data-en="Generated at">生成时间</span>: 2026-01-23T19:07:23</p>
+            <p><span data-cn="生成时间" data-en="Generated at">生成时间</span>: 2026-01-24T21:12:56</p>
             <p class="mt-1" data-cn="数据仅供参考，基于 Reddit 公开数据分析" data-en="Data for reference only, based on Reddit public data analysis">数据仅供参考，基于 Reddit 公开数据分析</p>
         </footer>
     </div>
 
     <script>
         let currentLang = 'cn';
+        let currentTheme = 'dark';
 
         function toggleLanguage() {
             currentLang = currentLang === 'cn' ? 'en' : 'cn';
@@ -690,12 +863,66 @@ Hidden icons are if you long-press an app icon in app drawer there's an eye">只
             localStorage.setItem('preferredLang', currentLang);
         }
 
-        // 页面加载时恢复语言偏好
+        function toggleTheme() {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            // 设置data-theme属性
+            document.documentElement.setAttribute('data-theme', currentTheme);
+
+            // 更新按钮文字和图标
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+
+            if (currentTheme === 'dark') {
+                themeIcon.textContent = '🌙';
+                themeText.textContent = '深色';
+            } else {
+                themeIcon.textContent = '☀️';
+                themeText.textContent = '浅色';
+            }
+
+            // 保存主题偏好
+            localStorage.setItem('preferredTheme', currentTheme);
+
+            // 更新按钮的中英文文本
+            updateThemeButtonText();
+        }
+
+        function updateThemeButtonText() {
+            const themeText = document.getElementById('themeText');
+            if (currentLang === 'en') {
+                themeText.textContent = currentTheme === 'dark' ? 'Dark' : 'Light';
+            } else {
+                themeText.textContent = currentTheme === 'dark' ? '深色' : '浅色';
+            }
+        }
+
+        // 页面加载时恢复语言和主题偏好
         document.addEventListener('DOMContentLoaded', function() {
+            // 恢复主题偏好
+            const savedTheme = localStorage.getItem('preferredTheme');
+            if (savedTheme && savedTheme !== currentTheme) {
+                currentTheme = savedTheme;
+                document.documentElement.setAttribute('data-theme', currentTheme);
+
+                // 更新按钮图标
+                const themeIcon = document.getElementById('themeIcon');
+                const themeText = document.getElementById('themeText');
+                if (currentTheme === 'dark') {
+                    themeIcon.textContent = '🌙';
+                } else {
+                    themeIcon.textContent = '☀️';
+                }
+            }
+
+            // 恢复语言偏好
             const savedLang = localStorage.getItem('preferredLang');
             if (savedLang && savedLang !== currentLang) {
                 toggleLanguage();
             }
+
+            // 更新主题按钮文字
+            updateThemeButtonText();
         });
     </script>
 </body>
