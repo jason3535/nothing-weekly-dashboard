@@ -73,6 +73,7 @@ class DataProcessor:
                         'text': match.group()
                     })
 
+
             # 如果没有匹配，直接翻译
             if not matches:
                 translated = self.translator.translate(text_to_translate)
@@ -107,8 +108,8 @@ class DataProcessor:
                 # 添加前一段文本
                 protected_text_parts.append(text_to_translate[last_end:match['start']])
 
-                # 生成占位符并添加
-                placeholder = f"__PROTECTED_{i}__"
+                # 生成占位符并添加 - 使用 [[和]] 包裹，避免被翻译
+                placeholder = f"[[PROTECTED_{i}]]"
                 placeholder_map[placeholder] = match['text']
                 protected_text_parts.append(placeholder)
 
