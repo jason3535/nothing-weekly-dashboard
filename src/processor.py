@@ -26,6 +26,28 @@ class DataProcessor:
         self.translator = GoogleTranslator(source='en', target='zh-CN')
         self._translation_cache = {}
 
+        # 需要保护的专有名词（不翻译）
+        self.protected_terms = [
+            # 品牌和产品名称（按优先级排序，更具体的模式在前）
+            r'Nothing\s+Phone\s*\d*[a-z]*',  # Nothing Phone, Nothing Phone 3, Nothing Phone 3a, etc.
+            r'Nothing\s+OS\s*\d*',          # Nothing OS, Nothing OS 4
+            r'NothingOS\s*\d*',             # NothingOS, NothingOS4
+            r'Glyph\s+Matrix',              # Glyph Matrix
+            r'Essential\s+Space',           # Essential Space
+            r'\bNothing\b',                 # Nothing (品牌名)
+            r'\bCMF\b',                     # CMF
+            r'\bGlyph\b',                   # Glyph
+            r'\bEssential\b',               # Essential
+            r'Phone\s+\d+[a-z]*',           # Phone 3, Phone 3a, Phone 3a pro
+            r'nothing\s+phone',             # 小写形式
+            r'nothing\s+os',                # 小写形式
+            r'glyph\s+matrix',              # 小写形式
+            r'essential\s+space',           # 小写形式
+            # 型号相关
+            r'\d[a-z]+\s+pro',              # 3a pro, 2 pro
+            r'\d[a-z]+',                    # 3a, 2a
+        ]
+
     def _translate(self, text: str) -> str:
         """翻译文本（带缓存和错误处理）"""
         if not text or not text.strip():
@@ -38,7 +60,45 @@ class DataProcessor:
         try:
             # 限制文本长度
             text_to_translate = text[:500] if len(text) > 500 else text
-            translated = self.translator.translate(text_to_translate)
+
+            # 保护专有名词：用占位符替换，翻译后再恢复
+            protected_matches = []
+            placeholder_map = {}
+
+            # 使用re.IGNORECASE标志进行不区分大小写的匹配
+            for i, pattern in enumerate(self.protected_terms):
+                # 查找所有匹配
+                for match in re.finditer(pattern, text_to_translate, re.IGNORECASE):
+                    original_term = match.group()
+                    # 生成唯一占位符
+                    placeholder = f"__PROTECTED_TERM_{len(placeholder_map)}__"
+                    placeholder_map[placeholder] = original_term
+                    protected_matches.append({
+                        'placeholder': placeholder,
+                        'original': original_term,
+                        'start': match.start(),
+                        'end': match.end()
+                    })
+
+            # 按起始位置降序排序，这样从后往前替换不会影响前面的位置
+            protected_matches.sort(key=lambda x: x['start'], reverse=True)
+
+            # 替换为占位符
+            protected_text = text_to_translate
+            for match in protected_matches:
+                protected_text = (
+                    protected_text[:match['start']] +
+                    match['placeholder'] +
+                    protected_text[match['end']:]
+                )
+
+            # 翻译保护后的文本
+            translated = self.translator.translate(protected_text)
+
+            # 恢复专有名词
+            for placeholder, original_term in placeholder_map.items():
+                translated = translated.replace(placeholder, original_term)
+
             self._translation_cache[text] = translated
             time.sleep(0.3)  # 避免请求过快
             return translated
