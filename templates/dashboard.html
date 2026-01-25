@@ -357,29 +357,61 @@
                     <span class="w-2 h-6 bg-red-500 rounded mr-3"></span>
                     <span data-cn="TOP 问题排行" data-en="TOP Issues">TOP 问题排行</span>
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {% for discussion in hot_discussions %}
-                    <a href="{{ discussion.permalink }}" target="_blank" class="block bg-white/5 rounded-lg p-4 hover:bg-white/10 transition cursor-pointer">
-                        <div class="flex items-start justify-between">
-                            <div class="flex-1">
-                                <span class="font-medium hover:text-blue-400 transition" data-cn="{{ discussion.title }}" data-en="{{ discussion.title_en }}">
-                                    {{ discussion.title[:60] }}{% if discussion.title|length > 60 %}...{% endif %}
-                                </span>
-                                <p class="text-sm text-gray-400 mt-2" data-cn="{{ discussion.selftext }}" data-en="{{ discussion.selftext_en }}">{{ discussion.selftext[:100] }}{% if discussion.selftext|length > 100 %}...{% endif %}</p>
-                            </div>
-                            <span class="px-2 py-1 rounded text-xs ml-2 category-{{ discussion.category }}" data-cn="{{ discussion.category_name }}" data-en="{{ discussion.category }}">
-                                {{ discussion.category_name }}
+                <!-- UI/UX 问题标签气泡 -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-4" data-cn="高热度问题标签" data-en="High Heat Issue Tags">高热度问题标签</h3>
+                    <div class="flex flex-wrap gap-3">
+                        {% for issue in top_issues if issue.category == 'ui_ux' %}
+                        {% if loop.index <= 20 %}
+                        <a href="{{ issue.permalink }}" target="_blank"
+                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           style="
+                               background-color: rgba(59, 130, 246, 0.15);
+                               border-color: rgba(59, 130, 246, 0.4);
+                               font-size: {{ 0.9 + (issue.heat / 300) * 0.6 }}rem;
+                               padding-left: {{ 0.8 + (issue.heat / 300) * 0.8 }}rem;
+                               padding-right: {{ 0.8 + (issue.heat / 300) * 0.8 }}rem;
+                               padding-top: {{ 0.4 + (issue.heat / 300) * 0.4 }}rem;
+                               padding-bottom: {{ 0.4 + (issue.heat / 300) * 0.4 }}rem;
+                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+                           ">
+                            <span class="font-medium" data-cn="{{ issue.title }}" data-en="{{ issue.title_en }}">
+                                {{ issue.title[:25] }}{% if issue.title|length > 25 %}...{% endif %}
                             </span>
+                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">{{ issue.heat }}</span>
+                        </a>
+                        {% endif %}
+                        {% else %}
+                        <div class="text-gray-500 italic" data-cn="本周暂无高热度界面与体验问题" data-en="No high heat UI/UX issues this week">本周暂无高热度界面与体验问题</div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- 统计数据 -->
+                <div class="mt-6 pt-6 border-t border-gray-700">
+                    <h3 class="text-lg font-semibold mb-3" data-cn="界面与体验问题统计" data-en="UI/UX Issues Statistics">界面与体验问题统计</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {% set ui_ux_issues = top_issues|selectattr('category', 'equalto', 'ui_ux')|list %}
+                        <div class="bg-white/5 rounded-lg p-4">
+                            <div class="text-2xl font-bold text-blue-400">{{ ui_ux_issues|length }}</div>
+                            <div class="text-sm text-gray-400 mt-1" data-cn="TOP UI/UX问题数" data-en="TOP UI/UX Issues">TOP UI/UX问题数</div>
                         </div>
-                        <div class="flex items-center mt-3 text-xs text-gray-500">
-                            <span>u/{{ discussion.author }}</span>
-                            <span class="mx-2">·</span>
-                            <span>{{ discussion.score }} <span data-cn="赞" data-en="upvotes">赞</span></span>
-                            <span class="mx-2">·</span>
-                            <span>{{ discussion.num_comments }} <span data-cn="评论" data-en="comments">评论</span></span>
+                        <div class="bg-white/5 rounded-lg p-4">
+                            {% set total_heat = ui_ux_issues|sum(attribute='heat') %}
+                            <div class="text-2xl font-bold text-orange-400">{{ total_heat }}</div>
+                            <div class="text-sm text-gray-400 mt-1" data-cn="总热度" data-en="Total Heat">总热度</div>
                         </div>
-                    </a>
-                    {% endfor %}
+                        <div class="bg-white/5 rounded-lg p-4">
+                            {% set negative_count = ui_ux_issues|selectattr('sentiment', 'equalto', 'negative')|list|length %}
+                            <div class="text-2xl font-bold text-red-400">{{ negative_count }}</div>
+                            <div class="text-sm text-gray-400 mt-1" data-cn="负面反馈" data-en="Negative Feedback">负面反馈</div>
+                        </div>
+                        <div class="bg-white/5 rounded-lg p-4">
+                            {% set avg_heat = (total_heat / ui_ux_issues|length)|round(1) if ui_ux_issues|length > 0 else 0 %}
+                            <div class="text-2xl font-bold text-green-400">{{ avg_heat }}</div>
+                            <div class="text-sm text-gray-400 mt-1" data-cn="平均热度" data-en="Avg Heat">平均热度</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
