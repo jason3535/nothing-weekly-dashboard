@@ -33,6 +33,11 @@
             --sentiment-positive-text: #4ade80;
             --sentiment-neutral-text: #9ca3af;
             --hover-bg: rgba(255, 255, 255, 0.05);
+            --tag-bubble-bg: rgba(59, 130, 246, 0.15);
+            --tag-bubble-border: rgba(59, 130, 246, 0.4);
+            --tag-bubble-shadow: rgba(59, 130, 246, 0.2);
+            --tag-bubble-text: #ffffff;
+            --tag-bubble-heat-bg: rgba(59, 130, 246, 0.3);
         }
 
         :root[data-theme="light"] {
@@ -54,6 +59,11 @@
             --sentiment-positive-text: #16a34a;
             --sentiment-neutral-text: #6b7280;
             --hover-bg: rgba(0, 0, 0, 0.05);
+            --tag-bubble-bg: rgba(59, 130, 246, 0.08);
+            --tag-bubble-border: rgba(59, 130, 246, 0.3);
+            --tag-bubble-shadow: rgba(59, 130, 246, 0.1);
+            --tag-bubble-text: #1e40af;
+            --tag-bubble-heat-bg: rgba(59, 130, 246, 0.2);
         }
 
         /* 基础样式 */
@@ -129,6 +139,22 @@
         .category-glyph { background-color: rgba(245, 158, 11, 0.15); color: var(--accent-yellow); }
         .category-connectivity { background-color: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
         .category-other { background-color: rgba(107, 114, 128, 0.15); color: var(--text-secondary); }
+
+        /* 标签气泡样式 */
+        .tag-bubble {
+            background-color: var(--tag-bubble-bg);
+            border-color: var(--tag-bubble-border);
+            color: var(--tag-bubble-text);
+            box-shadow: 0 2px 8px var(--tag-bubble-shadow);
+            transition: all 0.2s ease;
+        }
+        .tag-bubble:hover {
+            transform: scale(1.05);
+            background-color: var(--tag-bubble-border);
+        }
+        .tag-bubble .heat-badge {
+            background-color: var(--tag-bubble-heat-bg);
+        }
 
         /* 边框颜色 */
         .border-gray-600,
@@ -663,281 +689,239 @@
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qjmhh6/the_battery_icon_is_better_like_this/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 1.69rem;
                                padding-left: 1.8533333333333335rem;
                                padding-right: 1.8533333333333335rem;
                                padding-top: 0.9266666666666667rem;
                                padding-bottom: 0.9266666666666667rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="电池图标这样更好" data-en="The battery icon is better like this">
                                 电池图标这样更好
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">395</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">395</span>
                         </a>
                         
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qj09h0/the_glyph_is_honestly_such_a_nice_feature_why_do/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 0.984rem;
                                padding-left: 0.912rem;
                                padding-right: 0.912rem;
                                padding-top: 0.456rem;
                                padding-bottom: 0.456rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="老实说，glyph 是一个非常好的功能。为什么你们都不喜欢呢？" data-en="The glyph is honestly such a nice feature. Why do y'all not like it?">
                                 老实说，glyph 是一个非常好的功能。为什么你们...
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">42</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">42</span>
                         </a>
                         
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qivkux/glyph_toybox_hits_2500_installs/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 0.974rem;
                                padding-left: 0.8986666666666667rem;
                                padding-right: 0.8986666666666667rem;
                                padding-top: 0.44933333333333336rem;
                                padding-bottom: 0.44933333333333336rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="Glyph Toybox 安装量达到 2500 次！" data-en="Glyph Toybox hits 2500 installs!">
                                 Glyph Toybox 安装量达到 2500 次...
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">37</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">37</span>
                         </a>
                         
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qio7xi/absolutely_loving_the_customization_and_ui_on_my/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 0.972rem;
                                padding-left: 0.896rem;
                                padding-right: 0.896rem;
                                padding-top: 0.448rem;
                                padding-bottom: 0.448rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="非常喜欢我的全新 Nothing Phone 3 上的自定义和 UI" data-en="Absolutely Loving the customization and UI on my brand new Nothing Phone 3">
                                 非常喜欢我的全新 Nothing Phone 3 ...
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">36</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">36</span>
                         </a>
                         
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qhtdpa/nothing_os_4/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 0.958rem;
                                padding-left: 0.8773333333333334rem;
                                padding-right: 0.8773333333333334rem;
                                padding-top: 0.4386666666666667rem;
                                padding-bottom: 0.4386666666666667rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="Nothing os 4" data-en="Nothing os 4">
                                 Nothing os 4
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">29</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">29</span>
                         </a>
                         
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qisq89/new_battery_icon_sucks/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 0.9440000000000001rem;
                                padding-left: 0.8586666666666667rem;
                                padding-right: 0.8586666666666667rem;
                                padding-top: 0.42933333333333334rem;
                                padding-bottom: 0.42933333333333334rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="新的电池图标很糟糕" data-en="New battery icon sucks">
                                 新的电池图标很糟糕
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">22</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">22</span>
                         </a>
                         
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qi38jf/why_is_this_happening/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 0.9440000000000001rem;
                                padding-left: 0.8586666666666667rem;
                                padding-right: 0.8586666666666667rem;
                                padding-top: 0.42933333333333334rem;
                                padding-bottom: 0.42933333333333334rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="为什么会发生这种情况" data-en="Why is this happening">
                                 为什么会发生这种情况
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">22</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">22</span>
                         </a>
                         
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qfb725/nothing_sucks/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 0.936rem;
                                padding-left: 0.8480000000000001rem;
                                padding-right: 0.8480000000000001rem;
                                padding-top: 0.42400000000000004rem;
                                padding-bottom: 0.42400000000000004rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="Nothing 很糟糕" data-en="Nothing sucks">
                                 Nothing 很糟糕
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">18</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">18</span>
                         </a>
                         
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qgzlei/music_not_right/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 0.926rem;
                                padding-left: 0.8346666666666667rem;
                                padding-right: 0.8346666666666667rem;
                                padding-top: 0.41733333333333333rem;
                                padding-bottom: 0.41733333333333333rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="音乐不对劲" data-en="Music not right">
                                 音乐不对劲
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">13</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">13</span>
                         </a>
                         
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qkkl6r/experimenting_with_the_ui/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 0.924rem;
                                padding-left: 0.8320000000000001rem;
                                padding-right: 0.8320000000000001rem;
                                padding-top: 0.41600000000000004rem;
                                padding-bottom: 0.41600000000000004rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="尝试用户界面" data-en="Experimenting with the UI">
                                 尝试用户界面
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">12</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">12</span>
                         </a>
                         
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qfxeph/yesterday_i_got_the_notification_for_nothing_os/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 0.92rem;
                                padding-left: 0.8266666666666667rem;
                                padding-right: 0.8266666666666667rem;
                                padding-top: 0.41333333333333333rem;
                                padding-bottom: 0.41333333333333333rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="昨天，我在 2a 上收到了 Nothing OS 4.0 的通知，我是否应该更新它" data-en="Yesterday I got the notification for Nothing OS 4.0 on my 2a should I update it or not">
                                 昨天，我在 2a 上收到了 Nothing OS ...
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">10</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">10</span>
                         </a>
                         
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qfzmld/issue_with_installing_netflix_on_cmf_phone_1/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 0.918rem;
                                padding-left: 0.8240000000000001rem;
                                padding-right: 0.8240000000000001rem;
                                padding-top: 0.41200000000000003rem;
                                padding-bottom: 0.41200000000000003rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="在 cmf phone 1 上安装 Netflix 时出现问题" data-en="Issue with installing Netflix on cmf phone 1">
                                 在 cmf phone 1 上安装 Netflix...
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">9</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">9</span>
                         </a>
                         
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qfxtrw/after_updating_my_phone_to_android_16/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 0.916rem;
                                padding-left: 0.8213333333333334rem;
                                padding-right: 0.8213333333333334rem;
                                padding-top: 0.4106666666666667rem;
                                padding-bottom: 0.4106666666666667rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="将我的手机更新至 Android 16 后" data-en="After updating my phone to Android 16">
                                 将我的手机更新至 Android 16 后
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">8</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">8</span>
                         </a>
                         
                         
                         
                         <a href="https://www.reddit.com/r/NOTHING/comments/1qgyd2r/nothing_3a_pro_gaming_experience/" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: 0.912rem;
                                padding-left: 0.8160000000000001rem;
                                padding-right: 0.8160000000000001rem;
                                padding-top: 0.40800000000000003rem;
                                padding-bottom: 0.40800000000000003rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="Nothing 3a pro 游戏体验如何？" data-en="Nothing 3a pro gaming experience?">
                                 Nothing 3a pro 游戏体验如何？
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">6</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">6</span>
                         </a>
                         
                         
@@ -1021,7 +1005,7 @@ NGL我觉得两个都不错。从上下文来看，这就是旧人的样子。�
 
         <!-- 页脚 -->
         <footer class="mt-12 text-center text-gray-500 text-sm">
-            <p><span data-cn="生成时间" data-en="Generated at">生成时间</span>: 2026-01-25T10:26:11</p>
+            <p><span data-cn="生成时间" data-en="Generated at">生成时间</span>: 2026-01-25T10:54:14</p>
             <p class="mt-1" data-cn="数据仅供参考，基于 Reddit 公开数据分析" data-en="Data for reference only, based on Reddit public data analysis">数据仅供参考，基于 Reddit 公开数据分析</p>
         </footer>
     </div>

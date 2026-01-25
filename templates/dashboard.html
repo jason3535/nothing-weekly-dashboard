@@ -33,6 +33,11 @@
             --sentiment-positive-text: #4ade80;
             --sentiment-neutral-text: #9ca3af;
             --hover-bg: rgba(255, 255, 255, 0.05);
+            --tag-bubble-bg: rgba(59, 130, 246, 0.15);
+            --tag-bubble-border: rgba(59, 130, 246, 0.4);
+            --tag-bubble-shadow: rgba(59, 130, 246, 0.2);
+            --tag-bubble-text: #ffffff;
+            --tag-bubble-heat-bg: rgba(59, 130, 246, 0.3);
         }
 
         :root[data-theme="light"] {
@@ -54,6 +59,11 @@
             --sentiment-positive-text: #16a34a;
             --sentiment-neutral-text: #6b7280;
             --hover-bg: rgba(0, 0, 0, 0.05);
+            --tag-bubble-bg: rgba(59, 130, 246, 0.08);
+            --tag-bubble-border: rgba(59, 130, 246, 0.3);
+            --tag-bubble-shadow: rgba(59, 130, 246, 0.1);
+            --tag-bubble-text: #1e40af;
+            --tag-bubble-heat-bg: rgba(59, 130, 246, 0.2);
         }
 
         /* 基础样式 */
@@ -129,6 +139,22 @@
         .category-glyph { background-color: rgba(245, 158, 11, 0.15); color: var(--accent-yellow); }
         .category-connectivity { background-color: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
         .category-other { background-color: rgba(107, 114, 128, 0.15); color: var(--text-secondary); }
+
+        /* 标签气泡样式 */
+        .tag-bubble {
+            background-color: var(--tag-bubble-bg);
+            border-color: var(--tag-bubble-border);
+            color: var(--tag-bubble-text);
+            box-shadow: 0 2px 8px var(--tag-bubble-shadow);
+            transition: all 0.2s ease;
+        }
+        .tag-bubble:hover {
+            transform: scale(1.05);
+            background-color: var(--tag-bubble-border);
+        }
+        .tag-bubble .heat-badge {
+            background-color: var(--tag-bubble-heat-bg);
+        }
 
         /* 边框颜色 */
         .border-gray-600,
@@ -364,21 +390,18 @@
                         {% for issue in ui_ux_top_issues %}
                         {% if loop.index <= 20 %}
                         <a href="{{ issue.permalink }}" target="_blank"
-                           class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
                            style="
-                               background-color: rgba(59, 130, 246, 0.15);
-                               border-color: rgba(59, 130, 246, 0.4);
                                font-size: {{ 0.9 + (issue.heat / 300) * 0.6 }}rem;
                                padding-left: {{ 0.8 + (issue.heat / 300) * 0.8 }}rem;
                                padding-right: {{ 0.8 + (issue.heat / 300) * 0.8 }}rem;
                                padding-top: {{ 0.4 + (issue.heat / 300) * 0.4 }}rem;
                                padding-bottom: {{ 0.4 + (issue.heat / 300) * 0.4 }}rem;
-                               box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
                            ">
                             <span class="font-medium" data-cn="{{ issue.title }}" data-en="{{ issue.title_en }}">
                                 {{ issue.title[:25] }}{% if issue.title|length > 25 %}...{% endif %}
                             </span>
-                            <span class="ml-2 text-xs font-bold bg-blue-500/30 px-2 py-0.5 rounded-full">{{ issue.heat }}</span>
+                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">{{ issue.heat }}</span>
                         </a>
                         {% endif %}
                         {% else %}
