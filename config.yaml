@@ -26,8 +26,12 @@ exclude_keywords:
   - "vs"
   - "or the"
   - "recommend"
+  - "pull the trigger"
+  - "pulled the trigger"
   # 硬件问题
   - "screen protector"
+  - "tempered glass"
+  - "glass"
   - "case"
   - "charger"
   - "cracked"

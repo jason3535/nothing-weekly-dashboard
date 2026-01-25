@@ -1,0 +1,41 @@
+name: Weekly Report Update
+
+on:
+  schedule:
+    # 每周五17:00 UTC（北京时间周六01:00）
+    - cron: '0 17 * * 5'
+  workflow_dispatch: # 允许手动触发
+  push:
+    branches: [main]
+
+jobs:
+  generate-weekly-report:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Generate weekly report
+      env:
+        REDDIT_RATE_LIMIT: ${{ secrets.REDDIT_RATE_LIMIT }}
+      run: |
+        python run.py
+
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Auto-update weekly report $(date +%Y-%m-%d)" || echo "No changes to commit"
+        git push
