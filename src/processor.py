@@ -161,6 +161,9 @@ class DataProcessor:
         # 生成 TOP 问题
         top_issues = self._extract_top_issues(analyzed_posts)
 
+        # 生成 UI/UX TOP 问题
+        ui_ux_top_issues = self._extract_ui_ux_top_issues(analyzed_posts)
+
         # 趋势分析
         trends = self._analyze_trends(analyzed_posts)
 
@@ -176,6 +179,7 @@ class DataProcessor:
             "week_info": self._get_week_info(),
             "stats": stats,
             "top_issues": top_issues,
+            "ui_ux_top_issues": ui_ux_top_issues,
             "trends": trends,
             "hot_discussions": hot_discussions,
             "hot_comments": hot_comments,
@@ -395,6 +399,44 @@ class DataProcessor:
             })
 
         return top_issues
+
+    def _extract_ui_ux_top_issues(self, posts: list, top_n: int = 20) -> list:
+        """提取 UI/UX 分类的高热度问题"""
+        # 过滤 UI/UX 分类的帖子
+        ui_ux_posts = [p for p in posts if p.get("category") == "ui_ux"]
+
+        # 按热度排序（得分 + 评论数 * 2）
+        def calc_heat(post):
+            return post.get("score", 0) + post.get("num_comments", 0) * 2
+
+        # 按热度降序排序
+        sorted_posts = sorted(ui_ux_posts, key=calc_heat, reverse=True)[:top_n]
+
+        print("  翻译 UI/UX TOP 问题标题...")
+        ui_ux_top_issues = []
+        for i, post in enumerate(sorted_posts, 1):
+            category_name = self._get_category_name(post.get("category", "other"))
+            category_color = self._get_category_color(post.get("category", "other"))
+
+            # 翻译标题
+            title_cn = self._translate(post.get("title", ""))
+
+            ui_ux_top_issues.append({
+                "rank": i,
+                "title": title_cn,
+                "title_en": post.get("title", ""),
+                "category": post.get("category"),
+                "category_name": category_name,
+                "category_color": category_color,
+                "score": post.get("score", 0),
+                "num_comments": post.get("num_comments", 0),
+                "heat": calc_heat(post),
+                "sentiment": post.get("sentiment"),
+                "permalink": post.get("permalink"),
+                "created_time": post.get("created_time"),
+            })
+
+        return ui_ux_top_issues
 
     def _analyze_trends(self, posts: list) -> dict:
         """趋势分析"""

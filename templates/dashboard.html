@@ -361,7 +361,7 @@
                 <div class="mb-6">
                     <h3 class="text-lg font-semibold mb-4" data-cn="高热度问题标签" data-en="High Heat Issue Tags">高热度问题标签</h3>
                     <div class="flex flex-wrap gap-3">
-                        {% for issue in top_issues if issue.category == 'ui_ux' %}
+                        {% for issue in ui_ux_top_issues %}
                         {% if loop.index <= 20 %}
                         <a href="{{ issue.permalink }}" target="_blank"
                            class="inline-flex items-center px-4 py-2 rounded-full border-2 transition-all hover:scale-105 cursor-pointer tag-bubble"
@@ -391,7 +391,7 @@
                 <div class="mt-6 pt-6 border-t border-gray-700">
                     <h3 class="text-lg font-semibold mb-3" data-cn="界面与体验问题统计" data-en="UI/UX Issues Statistics">界面与体验问题统计</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {% set ui_ux_issues = top_issues|selectattr('category', 'equalto', 'ui_ux')|list %}
+                        {% set ui_ux_issues = ui_ux_top_issues %}
                         <div class="bg-white/5 rounded-lg p-4">
                             <div class="text-2xl font-bold text-blue-400">{{ ui_ux_issues|length }}</div>
                             <div class="text-sm text-gray-400 mt-1" data-cn="TOP UI/UX问题数" data-en="TOP UI/UX Issues">TOP UI/UX问题数</div>
