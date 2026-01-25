@@ -17,6 +17,8 @@ exclude_keywords:
   - "ear"
   - "buds"
   - "earbuds"
+  - "headphone"
+  - "headphones"
   # 购买/推荐相关
   - "should i get"
   - "should i buy"
@@ -28,6 +30,10 @@ exclude_keywords:
   - "recommend"
   - "pull the trigger"
   - "pulled the trigger"
+  - "help me choose"
+  - "choose a phone"
+  - "users feedback"
+  - "i need users feedback"
   # 硬件问题
   - "screen protector"
   - "tempered glass"
@@ -45,6 +51,8 @@ exclude_keywords:
   - "unboxing"
   - "delivery"
   - "shipping"
+  - "i'm here"
+  - "i'm late"
 
 # 软件相关关键词过滤
 keywords:
