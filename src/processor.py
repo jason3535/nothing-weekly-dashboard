@@ -401,16 +401,28 @@ class DataProcessor:
         return top_issues
 
     def _extract_ui_ux_top_issues(self, posts: list, top_n: int = 20) -> list:
-        """提取 UI/UX 分类的高热度问题"""
+        """提取 UI/UX 分类的高热度问题（热度 >= 6）"""
         # 过滤 UI/UX 分类的帖子
         ui_ux_posts = [p for p in posts if p.get("category") == "ui_ux"]
 
-        # 按热度排序（得分 + 评论数 * 2）
+        # 计算热度（得分 + 评论数 * 2）
         def calc_heat(post):
             return post.get("score", 0) + post.get("num_comments", 0) * 2
 
+        # 过滤热度 >= 6 的帖子
+        filtered_posts = []
+        for post in ui_ux_posts:
+            heat = calc_heat(post)
+            if heat >= 6:
+                filtered_posts.append((post, heat))
+
+        print(f"  UI/UX 分类帖子: {len(ui_ux_posts)} 篇, 热度>=6: {len(filtered_posts)} 篇")
+
         # 按热度降序排序
-        sorted_posts = sorted(ui_ux_posts, key=calc_heat, reverse=True)[:top_n]
+        filtered_posts.sort(key=lambda x: x[1], reverse=True)
+
+        # 取前 top_n 个
+        sorted_posts = [p[0] for p in filtered_posts[:top_n]]
 
         print("  翻译 UI/UX TOP 问题标题...")
         ui_ux_top_issues = []
@@ -420,6 +432,7 @@ class DataProcessor:
 
             # 翻译标题
             title_cn = self._translate(post.get("title", ""))
+            heat = calc_heat(post)
 
             ui_ux_top_issues.append({
                 "rank": i,
@@ -430,7 +443,7 @@ class DataProcessor:
                 "category_color": category_color,
                 "score": post.get("score", 0),
                 "num_comments": post.get("num_comments", 0),
-                "heat": calc_heat(post),
+                "heat": heat,
                 "sentiment": post.get("sentiment"),
                 "permalink": post.get("permalink"),
                 "created_time": post.get("created_time"),
