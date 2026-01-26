@@ -6,6 +6,12 @@
     <title>Nothing 软件 Reddit 用户反馈周报 - {{ week_info.display }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="https://plausible.io/js/pa-cZEe7j6AZABvDvIqXRGoQ.js"></script>
+    <script>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init()
+    </script>
     <style>
         /* 主题变量定义 */
         :root {
@@ -298,7 +304,7 @@
                                 <tr class="border-b border-gray-800 hover:bg-white/5">
                                     <td class="py-4 font-bold text-gray-500">{{ issue.rank }}</td>
                                     <td class="py-4">
-                                        <a href="{{ issue.permalink }}" target="_blank" class="hover:text-blue-400 transition issue-title" data-cn="{{ issue.title }}" data-en="{{ issue.title_en }}">
+                                        <a href="{{ issue.permalink }}" target="_blank" class="hover:text-blue-400 transition issue-title" data-cn="{{ issue.title }}" data-en="{{ issue.title_en }}" data-category="{{ issue.category }}" data-heat="{{ issue.heat }}" data-sentiment="{{ issue.sentiment }}">
                                             {{ issue.title[:80] }}{% if issue.title|length > 80 %}...{% endif %}
                                         </a>
                                         <div class="text-xs text-gray-500 mt-1">
@@ -390,7 +396,7 @@
                         {% for issue in ui_ux_top_issues %}
                         {% if loop.index <= 20 %}
                         <a href="{{ issue.permalink }}" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="{{ issue.category }}" data-heat="{{ issue.heat }}" data-sentiment="{{ issue.sentiment }}"
                            style="
                                font-size: {{ 0.9 + (issue.heat / 300) * 0.6 }}rem;
                                padding-left: {{ 0.8 + (issue.heat / 300) * 0.8 }}rem;
@@ -559,6 +565,22 @@
 
             // 更新主题按钮文字
             updateThemeButtonText();
+
+            // 统计跟踪：周报问题点击事件
+            document.querySelectorAll('a.issue-title, a.tag-bubble').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (typeof plausible !== 'undefined') {
+                        plausible('Issue Click', {
+                            props: {
+                                category: this.dataset.category || 'unknown',
+                                heat: parseInt(this.dataset.heat) || 0,
+                                sentiment: this.dataset.sentiment || 'neutral',
+                                type: this.classList.contains('tag-bubble') ? 'ui_ux' : 'general'
+                            }
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
