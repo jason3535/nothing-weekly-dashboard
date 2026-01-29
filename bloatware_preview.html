@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloatware 模块预览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2a2a2a 100%);
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, monospace;
+            min-height: 100vh;
+            padding: 32px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .card-header .indicator {
+            width: 8px;
+            height: 24px;
+            background-color: #ec4899;
+            border-radius: 4px;
+            margin-right: 12px;
+        }
+
+        .card-header h2 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* 统计网格 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .stat-value.pink { color: #ec4899; }
+        .stat-value.red { color: #ef4444; }
+        .stat-value.orange { color: #f59e0b; }
+
+        .stat-label {
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        /* 问题列表 */
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .issue-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s;
+        }
+
+        .issue-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .issue-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .issue-rank {
+            color: #ec4899;
+            font-weight: bold;
+        }
+
+        .issue-title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .issue-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 16px;
+        }
+
+        .sentiment-badge {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .sentiment-negative {
+            background-color: rgba(255, 0, 0, 0.15);
+            color: #ff6b6b;
+        }
+
+        .sentiment-neutral {
+            background-color: rgba(156, 163, 175, 0.15);
+            color: #9ca3af;
+        }
+
+        .heat-value {
+            font-weight: bold;
+            min-width: 40px;
+            text-align: right;
+        }
+
+        .heat-high { color: #ef4444; }
+        .heat-medium { color: #f59e0b; }
+        .heat-low { color: #22c55e; }
+
+        /* 标签区域 */
+        .tags-section {
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            border-radius: 9999px;
+            font-size: 14px;
+            border: 1px solid rgba(236, 72, 153, 0.5);
+            color: #ec4899;
+            background: rgba(236, 72, 153, 0.1);
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: 32px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .footer p {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bloatware 模块预览</h1>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="indicator"></span>
+                <h2>冗余软件问题 / Bloatware Issues</h2>
+            </div>
+
+            <!-- 统计概览 -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value pink">5</div>
+                    <div class="stat-label">相关讨论</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value red">4</div>
+                    <div class="stat-label">负面反馈</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value orange">186</div>
+                    <div class="stat-label">总热度</div>
+                </div>
+            </div>
+
+            <!-- 热门问题列表 -->
+            <div>
+                <h3 class="section-title">热门问题</h3>
+                <div class="issue-list">
+                    <a href="#" class="issue-item">
+                        <div class="issue-left">
+                            <span class="issue-rank">#1</span>
+                            <span class="issue-title">Indus App Store 无法卸载，占用大量存储空间</span>
+                        </div>
+                        <div class="issue-right">
+                            <span class="sentiment-badge sentiment-negative">负面</span>
+                            <span class="heat-value heat-high">89</span>
+                        </div>
+                    </a>
+                    <a href="#" class="issue-item">
+                        <div class="issue-left">
+                            <span class="issue-rank">#2</span>
+                            <span class="issue-title">Lock Glimpse 功能太耗电，希望能禁用</span>
+                        </div>
+                        <div class="issue-right">
+                            <span class="sentiment-badge sentiment-negative">负面</span>
+                            <span class="heat-value heat-medium">45</span>
+                        </div>
+                    </a>
+                    <a href="#" class="issue-item">
+                        <div class="issue-left">
+                            <span class="issue-rank">#3</span>
+                            <span class="issue-title">Aura 壁纸服务后台耗电严重</span>
+                        </div>
+                        <div class="issue-right">
+                            <span class="sentiment-badge sentiment-negative">负面</span>
+                            <span class="heat-value heat-medium">32</span>
+                        </div>
+                    </a>
+                    <a href="#" class="issue-item">
+                        <div class="issue-left">
+                            <span class="issue-rank">#4</span>
+                            <span class="issue-title">Meta 服务预装，隐私担忧</span>
+                        </div>
+                        <div class="issue-right">
+                            <span class="sentiment-badge sentiment-negative">负面</span>
+                            <span class="heat-value heat-low">12</span>
+                        </div>
+                    </a>
+                    <a href="#" class="issue-item">
+                        <div class="issue-left">
+                            <span class="issue-rank">#5</span>
+                            <span class="issue-title">如何卸载预装的 Jio 应用？</span>
+                        </div>
+                        <div class="issue-right">
+                            <span class="sentiment-badge sentiment-neutral">中性</span>
+                            <span class="heat-value heat-low">8</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 常见标签 -->
+            <div class="tags-section">
+                <h3 class="section-title">常见问题标签</h3>
+                <div class="tags-container">
+                    <span class="tag">Indus App Store</span>
+                    <span class="tag">Lock Glimpse</span>
+                    <span class="tag">Aura</span>
+                    <span class="tag">Meta Services</span>
+                    <span class="tag">Jio Apps</span>
+                    <span class="tag">无法卸载</span>
+                    <span class="tag">预装应用</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>这是 Bloatware 模块的独立预览</p>
+            <p>模块位置：TOP 问题排行 下方</p>
+        </div>
+    </div>
+</body>
+</html>

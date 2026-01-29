@@ -34,15 +34,24 @@ class DataProcessor:
             r'NothingOS\s*\d*',             # NothingOS, NothingOS4
             r'Glyph\s+Matrix',              # Glyph Matrix
             r'Essential\s+Space',           # Essential Space
+            r'Lock\s+Glimpse',              # Lock Glimpse
+            r'lock\s+glimpse',               # lock glimpse (小写)
+            r'Lock\s+screen\s+glimpse',      # Lock screen glimpse
+            r'lock\s+screen\s+glimpse',      # lock screen glimpse (小写)
             r'\bNothing\b',                 # Nothing (品牌名)
             r'\bCMF\b',                     # CMF
             r'\bGlyph\b',                   # Glyph
             r'\bEssential\b',               # Essential
+            r'\bAura\b',                    # Aura
+            r'\bMeta\b',                    # Meta
+            r'Meta\s+Services',             # Meta Services
             r'Phone\s+\d+[a-z]*',           # Phone 3, Phone 3a, Phone 3a pro
             r'nothing\s+phone',             # 小写形式
             r'nothing\s+os',                # 小写形式
             r'glyph\s+matrix',              # 小写形式
             r'essential\s+space',           # 小写形式
+            r'lock\s+glimpse',              # 小写形式
+            r'meta\s+services',             # 小写形式
             # 型号相关
             r'\d[a-z]+\s+pro',              # 3a pro, 2 pro
             r'\d[a-z]+',                    # 3a, 2a
@@ -164,6 +173,36 @@ class DataProcessor:
         # 生成 UI/UX TOP 问题
         ui_ux_top_issues = self._extract_ui_ux_top_issues(analyzed_posts)
 
+        # 生成 Bloatware TOP 问题
+        bloatware_top_issues = self._extract_bloatware_top_issues(analyzed_posts)
+
+        # 计算 Bloatware 统计数据（基于严格关键词匹配）
+        core_bloatware_keywords = [
+            'lock glimpse', 'glimpse', 'aura', 'meta services', 'meta',
+            'indus', 'jio', 'preinstalled', 'pre-installed',
+            '无法卸载', '预装', '预装应用', 'bloatware', '冗余软件'
+        ]
+        context_keywords = ['remove', 'disable', 'uninstall', 'cannot uninstall', "can't uninstall"]
+
+        bloatware_posts = []
+        for post in analyzed_posts:
+            text = f"{post.get('title', '')} {post.get('selftext', '')}".lower()
+
+            # 检查是否包含核心 bloatware 关键词
+            has_core_keyword = any(keyword.lower() in text for keyword in core_bloatware_keywords)
+
+            # 检查是否包含上下文关键词且上下文合理
+            has_context_keyword = any(keyword.lower() in text for keyword in context_keywords)
+            has_bloatware_context = any(ctx in text for ctx in ['system app', 'preloaded', 'crapware', 'unwanted app', 'junk app'])
+
+            if has_core_keyword or (has_context_keyword and has_bloatware_context):
+                bloatware_posts.append(post)
+        bloatware_stats = {
+            "total_posts": len(bloatware_posts),
+            "negative_posts": len([p for p in bloatware_posts if p.get("sentiment") == "negative"]),
+            "total_heat": sum(p.get("score", 0) + p.get("num_comments", 0) * 2 for p in bloatware_posts),
+        }
+
         # 趋势分析
         trends = self._analyze_trends(analyzed_posts)
 
@@ -180,6 +219,8 @@ class DataProcessor:
             "stats": stats,
             "top_issues": top_issues,
             "ui_ux_top_issues": ui_ux_top_issues,
+            "bloatware_top_issues": bloatware_top_issues,
+            "bloatware_stats": bloatware_stats,
             "trends": trends,
             "hot_discussions": hot_discussions,
             "hot_comments": hot_comments,
@@ -254,6 +295,23 @@ class DataProcessor:
     def _determine_category(self, text: str) -> str:
         """确定帖子分类"""
         category_scores = defaultdict(int)
+
+        # 核心 bloatware 关键词（优先级最高）
+        core_bloatware_keywords = [
+            'lock glimpse', 'glimpse', 'aura', 'meta services', 'meta',
+            'indus', 'jio', 'crapware', '无法卸载', '预装', '冗余软件',
+            'bloatware', 'preinstalled', 'pre-installed'
+        ]
+
+        # 先检查核心 bloatware 关键词
+        for keyword in core_bloatware_keywords:
+            if keyword.lower() in text:
+                category_scores["bloatware"] += 3  # 更高权重
+
+        # Bloatware（其他关键词）
+        for keyword in self.keywords.get("bloatware", []):
+            if keyword.lower() in text and keyword.lower() not in [k.lower() for k in core_bloatware_keywords]:
+                category_scores["bloatware"] += 1
 
         # UI/UX
         for keyword in self.keywords.get("ui_ux", []):
@@ -450,6 +508,72 @@ class DataProcessor:
             })
 
         return ui_ux_top_issues
+
+    def _extract_bloatware_top_issues(self, posts: list, top_n: int = 10) -> list:
+        """严格提取 bloatware 相关帖子（预装软件/系统应用问题）"""
+        # 核心 bloatware 关键词（必须包含）
+        core_bloatware_keywords = [
+            'lock glimpse', 'glimpse', 'aura', 'meta services', 'meta',
+            'indus', 'jio', 'preinstalled', 'pre-installed',
+            '无法卸载', '预装', '预装应用', 'bloatware', '冗余软件'
+        ]
+
+        # 上下文关键词（需要与核心关键词一起出现）
+        context_keywords = ['remove', 'disable', 'uninstall', 'cannot uninstall', "can't uninstall"]
+
+        # 严格筛选 bloatware 相关帖子
+        bloatware_posts = []
+        for post in posts:
+            text = f"{post.get('title', '')} {post.get('selftext', '')}".lower()
+
+            # 检查是否包含核心 bloatware 关键词
+            has_core_keyword = any(keyword.lower() in text for keyword in core_bloatware_keywords)
+
+            # 检查是否包含上下文关键词且上下文合理
+            has_context_keyword = any(keyword.lower() in text for keyword in context_keywords)
+
+            # 严格条件：必须包含核心关键词，或者上下文关键词+明显的bloatware上下文
+            # 明显的bloatware上下文：包含'system app', 'preloaded', 'crapware', 'unwanted app'等
+            has_bloatware_context = any(ctx in text for ctx in ['system app', 'preloaded', 'crapware', 'unwanted app', 'junk app'])
+
+            if has_core_keyword or (has_context_keyword and has_bloatware_context):
+                bloatware_posts.append(post)
+
+        # 计算热度（得分 + 评论数 * 2）
+        def calc_heat(post):
+            return post.get("score", 0) + post.get("num_comments", 0) * 2
+
+        # 按热度降序排序
+        sorted_posts = sorted(bloatware_posts, key=calc_heat, reverse=True)[:top_n]
+
+        print(f"  包含bloatware关键词的帖子: {len(bloatware_posts)} 篇, 展示前 {len(sorted_posts)} 篇")
+
+        bloatware_top_issues = []
+        for i, post in enumerate(sorted_posts, 1):
+            category_name = self._get_category_name(post.get("category", "other"))
+            category_color = self._get_category_color(post.get("category", "other"))
+
+            # 翻译标题
+            title_cn = self._translate(post.get("title", ""))
+            heat = calc_heat(post)
+
+            bloatware_top_issues.append({
+                "rank": i,
+                "title": title_cn,
+                "title_en": post.get("title", ""),
+                "category": post.get("category"),
+                "category_name": category_name,
+                "category_color": category_color,
+                "score": post.get("score", 0),
+                "num_comments": post.get("num_comments", 0),
+                "heat": heat,
+                "sentiment": post.get("sentiment"),
+                "permalink": post.get("permalink"),
+                "created_time": post.get("created_time"),
+            })
+
+        return bloatware_top_issues
+
 
     def _analyze_trends(self, posts: list) -> dict:
         """趋势分析"""

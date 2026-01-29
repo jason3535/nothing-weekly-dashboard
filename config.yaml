@@ -123,6 +123,30 @@ keywords:
     - "connection"
     - "NFC"
 
+  bloatware:
+    - "bloatware"
+    - "bloat"
+    - "preinstalled"
+    - "pre-installed"
+    - "uninstall"
+    - "remove"
+    - "disable"
+    - "crapware"
+    - "indus"
+    - "jio"
+    - "lock glimpse"
+    - "glimpse"
+    - "aura"
+    - "meta"
+    - "meta services"
+    - "unnecessary"
+    - "useless app"
+    - "cannot uninstall"
+    - "can't uninstall"
+    - "无法卸载"
+    - "预装"
+    - "冗余软件"
+
 # 问题分类配置
 categories:
   - id: "ui_ux"
@@ -149,6 +173,11 @@ categories:
     name: "连接问题"
     name_en: "Connectivity"
     color: "#8B5CF6"
+
+  - id: "bloatware"
+    name: "冗余软件问题"
+    name_en: "Bloatware Issues"
+    color: "#EC4899"
 
   - id: "other"
     name: "其他软件问题"
