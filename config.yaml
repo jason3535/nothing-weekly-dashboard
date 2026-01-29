@@ -231,6 +231,14 @@ sentiment:
     - "inconsistent"
     - "unreliable"
     - "unstable"
+    - "remove"
+    - "uninstall"
+    - "delete"
+    - "get rid of"
+    - "want to remove"
+    - "wish to remove"
+    - "希望移除"
+    - "想去掉"
 
   positive:
     - "love"

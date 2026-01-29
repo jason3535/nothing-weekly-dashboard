@@ -352,9 +352,11 @@ class DataProcessor:
         for post in posts:
             text = f"{post.get('title', '')} {post.get('selftext', '')}".lower()
 
+
             negative_count = sum(1 for kw in negative_keywords if kw.lower() in text)
             positive_count = sum(1 for kw in positive_keywords if kw.lower() in text)
             original_positive = positive_count  # 保存原始值用于调试
+
 
             # 检查是否包含讽刺模式
             has_sarcasm = any(pattern in text for pattern in sarcasm_patterns)
@@ -382,6 +384,7 @@ class DataProcessor:
 
             post["sentiment"] = sentiment
             post["sentiment_score"] = positive_count - negative_count
+
 
         return posts
 
