@@ -60,6 +60,15 @@ class DataProcessor:
             r'\d[a-z]+',                    # 3a, 2a
         ]
 
+        # 自定义翻译映射（修正错误翻译）
+        self.custom_translations = {
+            "disable bloatware": "禁用冗余软件",
+            "Disable bloatware": "禁用冗余软件",
+            "Disable Bloatware": "禁用冗余软件",
+            "bloatware": "冗余软件",
+            "Bloatware": "冗余软件",
+        }
+
     def _translate(self, text: str) -> str:
         """翻译文本（带缓存和错误处理）"""
         if not text or not text.strip():
@@ -88,6 +97,16 @@ class DataProcessor:
 
             # 如果没有匹配，直接翻译
             if not matches:
+                # 应用自定义翻译映射（修正错误翻译）
+                for original, custom_translation in self.custom_translations.items():
+                    # 不区分大小写替换
+                    text_to_translate = re.sub(
+                        re.escape(original),
+                        custom_translation,
+                        text_to_translate,
+                        flags=re.IGNORECASE
+                    )
+
                 translated = self.translator.translate(text_to_translate)
                 self._translation_cache[text] = translated
                 time.sleep(0.3)
@@ -130,6 +149,25 @@ class DataProcessor:
             # 添加最后一段文本
             protected_text_parts.append(text_to_translate[last_end:])
             protected_text = ''.join(protected_text_parts)
+
+            # 调试：检查是否包含bloatware
+            if "bloatware" in text.lower():
+                print(f"DEBUG 翻译前文本: {text}")
+                print(f"DEBUG protected_text 替换前: {protected_text}")
+
+            # 应用自定义翻译映射（修正错误翻译）
+            for original, custom_translation in self.custom_translations.items():
+                # 不区分大小写替换
+                protected_text = re.sub(
+                    re.escape(original),
+                    custom_translation,
+                    protected_text,
+                    flags=re.IGNORECASE
+                )
+
+            # 调试：检查是否包含bloatware
+            if "bloatware" in text.lower():
+                print(f"DEBUG protected_text 替换后: {protected_text}")
 
             # 翻译保护后的文本
             translated = self.translator.translate(protected_text)
