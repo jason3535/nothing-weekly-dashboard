@@ -45,6 +45,9 @@ class DataProcessor:
             r'\bAura\b',                    # Aura
             r'\bMeta\b',                    # Meta
             r'Meta\s+Services',             # Meta Services
+            r'\bGemini\b',                  # Gemini
+            r'\bPlayground\b',              # Playground
+            r'\bPreset\b',                  # Preset
             r'Phone\s+\d+[a-z]*',           # Phone 3, Phone 3a, Phone 3a pro
             r'nothing\s+phone',             # 小写形式
             r'nothing\s+os',                # 小写形式
