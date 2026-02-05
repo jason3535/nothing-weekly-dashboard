@@ -218,10 +218,17 @@ class DataProcessor:
         bloatware_top_issues = self._extract_bloatware_top_issues(analyzed_posts)
 
         # 计算 Bloatware 统计数据（基于严格关键词匹配）
+        # 使用元组 (关键词, 是否需要单词边界匹配)
         core_bloatware_keywords = [
-            'lock glimpse', 'glimpse', 'aura', 'meta services', 'meta',
-            'indus', 'jio', 'preinstalled', 'pre-installed',
-            '无法卸载', '预装', '预装应用', 'bloatware', '冗余软件'
+            ('lock glimpse', False), ('glimpse', False), ('aura', True),
+            ('meta services', False), ('meta', True),
+            ('indus', True), ('jio', True), ('preinstalled', False), ('pre-installed', False),
+            ('无法卸载', False), ('预装', False), ('预装应用', False), ('bloatware', False), ('冗余软件', False)
+        ]
+        # 非 bloatware 上下文（当这些模式出现时，不将 jio 视为 bloatware）
+        non_bloatware_contexts = [
+            'jio sim', 'jio network', 'jio number', 'jio 5g', 'jio 4g',
+            'jio true 5g', 'jio call', 'jio volte', 'bsnl'
         ]
         context_keywords = ['remove', 'disable', 'uninstall', 'cannot uninstall', "can't uninstall"]
 
@@ -229,8 +236,26 @@ class DataProcessor:
         for post in analyzed_posts:
             text = f"{post.get('title', '')} {post.get('selftext', '')}".lower()
 
-            # 检查是否包含核心 bloatware 关键词
-            has_core_keyword = any(keyword.lower() in text for keyword in core_bloatware_keywords)
+            # 检查是否存在非 bloatware 上下文
+            has_non_bloatware_context = any(ctx in text for ctx in non_bloatware_contexts)
+
+            # 检查是否包含核心 bloatware 关键词（排除非 bloatware 上下文中的 jio）
+            has_core_keyword = False
+            for keyword, need_word_boundary in core_bloatware_keywords:
+                # 检查关键词是否匹配
+                if need_word_boundary:
+                    pattern = r'\b' + re.escape(keyword.lower()) + r'\b'
+                    if not re.search(pattern, text):
+                        continue
+                else:
+                    if keyword.lower() not in text:
+                        continue
+
+                # 如果是 "jio" 且存在非 bloatware 上下文，跳过
+                if keyword.lower() == 'jio' and has_non_bloatware_context:
+                    continue
+                has_core_keyword = True
+                break
 
             # 检查是否包含上下文关键词且上下文合理
             has_context_keyword = any(keyword.lower() in text for keyword in context_keywords)
@@ -338,20 +363,45 @@ class DataProcessor:
         category_scores = defaultdict(int)
 
         # 核心 bloatware 关键词（优先级最高）
+        # 使用元组 (关键词, 是否需要单词边界匹配)
         core_bloatware_keywords = [
-            'lock glimpse', 'glimpse', 'aura', 'meta services', 'meta',
-            'indus', 'jio', 'crapware', '无法卸载', '预装', '冗余软件',
-            'bloatware', 'preinstalled', 'pre-installed'
+            ('lock glimpse', False), ('glimpse', False), ('aura', True),
+            ('meta services', False), ('meta', True),
+            ('indus', True), ('jio', True), ('crapware', False),
+            ('无法卸载', False), ('预装', False), ('冗余软件', False),
+            ('bloatware', False), ('preinstalled', False), ('pre-installed', False)
         ]
 
+        # 非 bloatware 上下文（当这些模式出现时，不将相关词视为 bloatware）
+        non_bloatware_contexts = [
+            'jio sim', 'jio network', 'jio number', 'jio 5g', 'jio 4g',
+            'jio true 5g', 'jio call', 'jio volte', 'bsnl'
+        ]
+
+        # 检查是否存在非 bloatware 上下文
+        has_non_bloatware_context = any(ctx in text for ctx in non_bloatware_contexts)
+
         # 先检查核心 bloatware 关键词
-        for keyword in core_bloatware_keywords:
-            if keyword.lower() in text:
-                category_scores["bloatware"] += 3  # 更高权重
+        for keyword, need_word_boundary in core_bloatware_keywords:
+            # 检查关键词是否匹配
+            if need_word_boundary:
+                # 使用单词边界匹配，避免 "industry" 匹配 "indus"
+                pattern = r'\b' + re.escape(keyword.lower()) + r'\b'
+                if not re.search(pattern, text):
+                    continue
+            else:
+                if keyword.lower() not in text:
+                    continue
+
+            # 如果是 "jio" 且存在非 bloatware 上下文，跳过
+            if keyword.lower() == 'jio' and has_non_bloatware_context:
+                continue
+            category_scores["bloatware"] += 3  # 更高权重
 
         # Bloatware（其他关键词）
+        core_keywords_set = {k[0].lower() for k in core_bloatware_keywords}
         for keyword in self.keywords.get("bloatware", []):
-            if keyword.lower() in text and keyword.lower() not in [k.lower() for k in core_bloatware_keywords]:
+            if keyword.lower() in text and keyword.lower() not in core_keywords_set:
                 category_scores["bloatware"] += 1
 
         # UI/UX
@@ -556,10 +606,18 @@ class DataProcessor:
     def _extract_bloatware_top_issues(self, posts: list, top_n: int = 10) -> list:
         """严格提取 bloatware 相关帖子（预装软件/系统应用问题）"""
         # 核心 bloatware 关键词（必须包含）
+        # 使用元组 (关键词, 是否需要单词边界匹配)
         core_bloatware_keywords = [
-            'lock glimpse', 'glimpse', 'aura', 'meta services', 'meta',
-            'indus', 'jio', 'preinstalled', 'pre-installed',
-            '无法卸载', '预装', '预装应用', 'bloatware', '冗余软件'
+            ('lock glimpse', False), ('glimpse', False), ('aura', True),
+            ('meta services', False), ('meta', True),
+            ('indus', True), ('jio', True), ('preinstalled', False), ('pre-installed', False),
+            ('无法卸载', False), ('预装', False), ('预装应用', False), ('bloatware', False), ('冗余软件', False)
+        ]
+
+        # 非 bloatware 上下文（当这些模式出现时，不将 jio 视为 bloatware）
+        non_bloatware_contexts = [
+            'jio sim', 'jio network', 'jio number', 'jio 5g', 'jio 4g',
+            'jio true 5g', 'jio call', 'jio volte', 'bsnl'
         ]
 
         # 上下文关键词（需要与核心关键词一起出现）
@@ -570,8 +628,26 @@ class DataProcessor:
         for post in posts:
             text = f"{post.get('title', '')} {post.get('selftext', '')}".lower()
 
-            # 检查是否包含核心 bloatware 关键词
-            has_core_keyword = any(keyword.lower() in text for keyword in core_bloatware_keywords)
+            # 检查是否存在非 bloatware 上下文
+            has_non_bloatware_context = any(ctx in text for ctx in non_bloatware_contexts)
+
+            # 检查是否包含核心 bloatware 关键词（排除非 bloatware 上下文中的 jio）
+            has_core_keyword = False
+            for keyword, need_word_boundary in core_bloatware_keywords:
+                # 检查关键词是否匹配
+                if need_word_boundary:
+                    pattern = r'\b' + re.escape(keyword.lower()) + r'\b'
+                    if not re.search(pattern, text):
+                        continue
+                else:
+                    if keyword.lower() not in text:
+                        continue
+
+                # 如果是 "jio" 且存在非 bloatware 上下文，跳过
+                if keyword.lower() == 'jio' and has_non_bloatware_context:
+                    continue
+                has_core_keyword = True
+                break
 
             # 检查是否包含上下文关键词且上下文合理
             has_context_keyword = any(keyword.lower() in text for keyword in context_keywords)
