@@ -53,6 +53,11 @@ exclude_keywords:
   - "shipping"
   - "i'm here"
   - "i'm late"
+  # 产品概念/泄露
+  - "concept"
+  - "leak"
+  - "render"
+  - "renders"
 
 # 软件相关关键词过滤
 keywords:
