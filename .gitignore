@@ -3,11 +3,11 @@
 
 # 数据文件
 data/*.json
-!data/raw_data_*.json  # 保留原始数据文件，但排除处理后的文件
+!data/raw_data_*.json
 
 # 输出目录中的中间文件
 output/*.html
-!output/week_*.html    # 保留生成的周报HTML
+!output/week_*.html
 
 # Python缓存
 __pycache__/
