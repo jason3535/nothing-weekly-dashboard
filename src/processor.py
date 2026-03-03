@@ -547,7 +547,7 @@ class DataProcessor:
                 "category_color": category_color,
                 "score": post.get("score", 0),
                 "num_comments": post.get("num_comments", 0),
-                "heat": calc_heat(post),
+                "heat": round(calc_heat(post), 1),
                 "sentiment": post.get("sentiment"),
                 "permalink": post.get("permalink"),
                 "created_time": post.get("created_time"),
