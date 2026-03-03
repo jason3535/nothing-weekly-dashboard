@@ -41,17 +41,6 @@ def get_available_weeks(output_dir: Path, current_year: int, current_week: int) 
                 "current": is_current,
             })
 
-    # 如果当前周不在列表中，添加它
-    current_file = f"week_{current_year}_{current_week:02d}.html"
-    if not any(w["file"] == current_file for w in weeks):
-        weeks.insert(0, {
-            "year": current_year,
-            "week": current_week,
-            "file": current_file,
-            "display": f"{current_year} 年第 {current_week} 周",
-            "current": True,
-        })
-
     return weeks
 
 
