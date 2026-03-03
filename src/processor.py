@@ -272,8 +272,9 @@ class DataProcessor:
         # 趋势分析
         trends = self._analyze_trends(analyzed_posts)
 
-        # 热门讨论
-        hot_discussions = self._get_hot_discussions(analyzed_posts)
+        # 热门讨论（排除已在 top_issues 里的帖子）
+        top_issue_ids = {p["permalink"] for p in top_issues}
+        hot_discussions = self._get_hot_discussions(analyzed_posts, exclude_ids=top_issue_ids)
 
         # 热门评论（只从软件相关帖子中获取）
         software_post_ids = {p["id"] for p in analyzed_posts}
@@ -518,12 +519,14 @@ class DataProcessor:
         }
 
     def _extract_top_issues(self, posts: list, top_n: int = 10) -> list:
-        """提取 TOP 问题"""
-        # 按热度排序（得分 + 评论数 * 2）
-        def calc_heat(post):
-            return post.get("score", 0) + post.get("num_comments", 0) * 2
+        """提取 TOP 问题（负面情感加权，优先展示真实用户问题）"""
+        sentiment_weight = {"negative": 1.8, "neutral": 1.0, "positive": 0.4}
 
-        # 展示所有高热度帖子，让产品经理自行判断
+        def calc_heat(post):
+            base = post.get("score", 0) + post.get("num_comments", 0) * 2
+            weight = sentiment_weight.get(post.get("sentiment"), 1.0)
+            return base * weight
+
         sorted_posts = sorted(posts, key=calc_heat, reverse=True)[:top_n]
 
         print("  翻译 TOP 问题标题...")
@@ -719,9 +722,10 @@ class DataProcessor:
             "category_trends": dict(category_trends),
         }
 
-    def _get_hot_discussions(self, posts: list, top_n: int = 5) -> list:
-        """获取热门讨论"""
-        sorted_posts = sorted(posts, key=lambda x: x.get("num_comments", 0), reverse=True)[:top_n]
+    def _get_hot_discussions(self, posts: list, top_n: int = 5, exclude_ids: set = None) -> list:
+        """获取热门讨论（排除已在 top_issues 中的帖子）"""
+        candidates = [p for p in posts if p.get("permalink") not in (exclude_ids or set())]
+        sorted_posts = sorted(candidates, key=lambda x: x.get("num_comments", 0), reverse=True)[:top_n]
 
         print("  翻译热门讨论...")
         hot_discussions = []
