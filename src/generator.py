@@ -68,9 +68,8 @@ def generate_dashboard(processed_data_path: Path, template_dir: Path, output_dir
     output_dir.mkdir(parents=True, exist_ok=True)
     output_file = output_dir / f"week_{year}_{week_num:02d}.html"
 
-    # 获取可用周次列表
-    available_weeks = get_available_weeks(output_dir, year, week_num)
-    data["available_weeks"] = available_weeks
+    # 先用空的周次列表渲染模板，写入文件后再统一更新选择器
+    data["available_weeks"] = []
 
     # 设置 Jinja2 环境
     env = Environment(loader=FileSystemLoader(str(template_dir)))
@@ -82,6 +81,9 @@ def generate_dashboard(processed_data_path: Path, template_dir: Path, output_dir
     # 写入文件
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(html_content)
+
+    # 文件写入后再扫描可用周次，确保包含当前周
+    available_weeks = get_available_weeks(output_dir, year, week_num)
 
     # 更新所有已存在的周报文件，刷新周次选择器
     update_all_week_selectors(output_dir, template_dir, available_weeks)
