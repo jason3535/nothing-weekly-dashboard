@@ -266,6 +266,7 @@ sentiment:
     - "brilliant"
     - "enjoy"
     - "enjoying"
+    - "finally"
 
   # 讽刺/嘲讽模式（当与正面词一起出现时，可能表示负面情感）
   sarcasm_patterns:
