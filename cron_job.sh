@@ -21,7 +21,7 @@ echo "----------------------------------------" >> "$LOG_FILE"
 
 # 复制最新周报到根目录
 cp output/week_*.html .
-cp output/week_*.html index.html 2>/dev/null || cp $(ls -t output/week_*.html | head -1) index.html
+cp "$(ls output/week_*.html | sort -V | tail -1)" index.html
 
 # 提交并推送到 GitHub
 git add . >> "$LOG_FILE" 2>&1
