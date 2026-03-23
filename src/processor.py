@@ -553,55 +553,174 @@ class DataProcessor:
         return top_issues
 
     def _extract_ui_ux_top_issues(self, posts: list, top_n: int = 20) -> list:
-        """提取 UI/UX 分类的高热度问题（热度 >= 6）"""
-        # 过滤 UI/UX 分类的帖子
-        ui_ux_posts = [p for p in posts if p.get("category") == "ui_ux"]
+        """从帖子标题中提取具体问题短语并聚合，用于产品定位"""
 
-        # 计算热度（得分 + 评论数 * 2）
+        # 具体问题短语定义：(短语ID, 中文名, 英文名, 匹配模式列表)
+        # 颗粒度要细到产品团队可以直接定位问题
+        specific_issues = [
+            # 相机 - 细分
+            ("camera_white_balance", "相机白平衡偏色", "Camera White Balance",
+             ["white balance", "color accuracy", "color shift", "yellowish", "warm tone"]),
+            ("camera_night_mode", "夜景模式问题", "Night Mode Issues",
+             ["night mode", "night photo", "low light", "dark photo"]),
+            ("camera_blur", "拍照模糊/对焦问题", "Camera Blur / Focus",
+             ["blurry", "blur", "focus", "out of focus", "autofocus", "af"]),
+            ("camera_overexpose", "相机过曝/HDR问题", "Camera Overexposure / HDR",
+             ["overexposed", "overexposure", "hdr", "blown out", "too bright"]),
+            ("camera_crash", "相机应用崩溃", "Camera App Crash",
+             ["camera crash", "camera close", "camera freeze", "camera not working"]),
+            ("camera_video_glitch", "视频录制异常", "Video Recording Glitch",
+             ["video glitch", "video bug", "recording", "video quality", "stabilization"]),
+            ("camera_gallery", "相册/照片丢失", "Gallery / Photos Lost",
+             ["gallery", "photos disappeared", "photos missing", "hidden photos", "photo lost"]),
+            ("camera_general", "相机质量差", "Camera Quality Poor",
+             ["camera issue", "camera problem", "camera crap", "camera suck", "camera bad",
+              "camera quality", "what is wrong with my camera"]),
+            # 电池 - 细分
+            ("battery_drain_idle", "待机耗电异常", "Battery Drain on Idle",
+             ["battery drain", "idle drain", "standby drain", "overnight drain"]),
+            ("battery_health", "电池健康度下降", "Battery Health Degradation",
+             ["battery health", "charging cycle", "battery degradation"]),
+            ("battery_charging", "充电问题", "Charging Issues",
+             ["charging problem", "slow charging", "not charging", "charging issue"]),
+            ("battery_after_update", "更新后耗电加剧", "Battery Drain After Update",
+             ["battery life after updat", "battery after update", "drain after update", "battery update"]),
+            # 系统稳定性 - 细分
+            ("random_restart", "随机重启/关机", "Random Restart / Shutdown",
+             ["random restart", "random reboot", "random shutdown", "turns off", "shut down randomly",
+              "weird shutdown"]),
+            ("app_crash", "应用闪退", "App Crash / Force Close",
+             ["app crash", "force close", "keeps closing", "keeps crashing", "stopped working"]),
+            ("system_freeze", "系统冻结无响应", "System Freeze",
+             ["freeze", "frozen", "unresponsive", "hang", "not responding"]),
+            ("boot_issue", "无法开机/卡启动", "Boot / Power Issue",
+             ["not turning on", "won't turn on", "boot loop", "stuck on logo", "won't boot"]),
+            # 性能 - 细分
+            ("lag_general", "日常使用卡顿", "General Lag",
+             ["lag", "laggy", "lagging", "slow", "stuttering", "stutter", "choppy"]),
+            ("heating", "使用时发热严重", "Overheating During Use",
+             ["heating issue", "overheat", "overheating", "gets hot", "too hot", "thermal"]),
+            ("screen_recording_audio", "录屏无声音", "Screen Recording No Audio",
+             ["screen recording", "recording audio", "screen record"]),
+            # UI/UX - 细分
+            ("circle_to_search", "Circle to Search 消失", "Circle to Search Missing",
+             ["circle to search"]),
+            ("font_customization", "字体自定义缺失", "Font Customization Lacking",
+             ["font customization", "font", "lack of font"]),
+            ("chrome_bookmarks_color", "Chrome 书签颜色问题", "Chrome Bookmarks Color",
+             ["chrome bookmarks", "bookmarks colour", "bookmarks color", "bookmarks still coloured"]),
+            ("widget_issues", "小组件异常", "Widget Issues",
+             ["widget"]),
+            ("quick_reply", "快捷回复不可用", "Quick Reply Not Working",
+             ["quick reply"]),
+            ("icon_theme", "图标/主题问题", "Icon / Theme Issues",
+             ["icon theme", "icon pack", "bauhaus", "theme"]),
+            ("alarm_clock", "闹钟/时钟问题", "Alarm / Clock Issues",
+             ["alarm", "clock"]),
+            ("aod", "息屏显示问题", "Always On Display Issues",
+             ["always on display", "aod"]),
+            ("depth_effect", "Depth Effect 锁屏特效", "Depth Effect",
+             ["depth effect"]),
+            # 连接 - 细分
+            ("wifi_disconnect", "WiFi 断连/不稳定", "WiFi Disconnect",
+             ["wifi issue", "wifi problem", "wifi drop", "wifi disconnect", "wifi not working"]),
+            ("bluetooth_disconnect", "蓝牙断连", "Bluetooth Disconnect",
+             ["bluetooth issue", "bluetooth problem", "bluetooth disconnect", "bt disconnect"]),
+            ("android_auto", "Android Auto 不兼容", "Android Auto Issues",
+             ["android auto"]),
+            ("nfc_payment", "NFC/支付问题", "NFC / Payment Issues",
+             ["nfc", "google pay", "gpay", "contactless"]),
+            ("signal_drop", "信号弱/断网", "Signal Drop / No Network",
+             ["signal", "no network", "no signal", "mobile data", "network issue"]),
+            # Glyph - 细分
+            ("glyph_ringtone", "Glyph 铃声/音效问题", "Glyph Ringtone Issues",
+             ["glyphtone", "glyph ringtone", "glyph sound"]),
+            ("glyph_composer", "Glyph Composer 问题", "Glyph Composer Issues",
+             ["glyph composer", "glyph music"]),
+            ("glyph_notification", "Glyph 通知灯效异常", "Glyph Notification Light",
+             ["glyph notification", "glyph light", "glyph led", "caller id"]),
+            # Bloatware - 细分
+            ("bloatware_update", "更新后新增预装应用", "Bloatware Added After Update",
+             ["update bloatware", "new update.*bloatware", "update.*bloat"]),
+            ("bloatware_remove", "预装应用无法卸载", "Can't Remove Bloatware",
+             ["remove bloatware", "uninstall bloatware", "disable bloatware", "can't uninstall",
+              "cannot uninstall"]),
+            ("ai_features_disable", "AI功能无法关闭", "Can't Disable AI Features",
+             ["turn off ai", "disable ai", "ai feature"]),
+            ("essential_dot", "Essential 悬浮球问题", "Essential Dot Issues",
+             ["essential dot", "essential space"]),
+            # 更新相关
+            ("update_bugs", "系统更新后出现Bug", "Bugs After Update",
+             ["after update", "new update.*bug", "update.*bug", "loads of bugs",
+              "update broke", "since update"]),
+            ("cant_update", "无法更新系统", "Can't Update",
+             ["can't update", "cannot update", "update fail", "update stuck"]),
+            # 通知
+            ("notification_miss", "通知延迟/丢失", "Missed / Delayed Notification",
+             ["missed notification", "delayed notification", "notification not",
+              "notification issue", "notification problem"]),
+            ("notification_sound", "通知声音/震动问题", "Notification Sound Issues",
+             ["notification sound", "notification vibr", "ringtone"]),
+            # 指纹
+            ("fingerprint_slow", "指纹解锁慢/失灵", "Fingerprint Slow / Failing",
+             ["fingerprint", "finger print", "unlock slow", "fingerprint not working"]),
+        ]
+
         def calc_heat(post):
             return post.get("score", 0) + post.get("num_comments", 0) * 2
 
-        # 过滤热度 >= 6 的帖子
-        filtered_posts = []
-        for post in ui_ux_posts:
-            heat = calc_heat(post)
-            if heat >= 6:
-                filtered_posts.append((post, heat))
+        # 将帖子匹配到具体问题
+        topic_posts = defaultdict(list)
+        matched_post_ids = set()
+        for post in posts:
+            text = f"{post.get('title', '')} {post.get('selftext', '')}".lower()
+            for issue_id, _, _, patterns in specific_issues:
+                for pat in patterns:
+                    if pat.lower() in text:
+                        topic_posts[issue_id].append(post)
+                        matched_post_ids.add(id(post))
+                        break
 
-        print(f"  UI/UX 分类帖子: {len(ui_ux_posts)} 篇, 热度>=6: {len(filtered_posts)} 篇")
+        # 聚合统计
+        print("  聚合具体问题标签...")
+        aggregated = []
+        for issue_id, name_cn, name_en, _ in specific_issues:
+            matched = topic_posts.get(issue_id, [])
+            if not matched:
+                continue
+            total_heat = sum(calc_heat(p) for p in matched)
+            negative_count = sum(1 for p in matched if p.get("sentiment") == "negative")
+            # 按热度排序取代表帖子（最多3篇）
+            sorted_matched = sorted(matched, key=calc_heat, reverse=True)[:3]
+            rep_posts = []
+            for p in sorted_matched:
+                rep_posts.append({
+                    "title_en": p.get("title", ""),
+                    "permalink": p.get("permalink"),
+                    "heat": round(calc_heat(p), 1),
+                    "sentiment": p.get("sentiment"),
+                })
 
-        # 按热度降序排序
-        filtered_posts.sort(key=lambda x: x[1], reverse=True)
-
-        # 取前 top_n 个
-        sorted_posts = [p[0] for p in filtered_posts[:top_n]]
-
-        print("  翻译 UI/UX TOP 问题标题...")
-        ui_ux_top_issues = []
-        for i, post in enumerate(sorted_posts, 1):
-            category_name = self._get_category_name(post.get("category", "other"))
-            category_color = self._get_category_color(post.get("category", "other"))
-
-            # 翻译标题
-            title_cn = self._translate(post.get("title", ""))
-            heat = calc_heat(post)
-
-            ui_ux_top_issues.append({
-                "rank": i,
-                "title": title_cn,
-                "title_en": post.get("title", ""),
-                "category": post.get("category"),
-                "category_name": category_name,
-                "category_color": category_color,
-                "score": post.get("score", 0),
-                "num_comments": post.get("num_comments", 0),
-                "heat": heat,
-                "sentiment": post.get("sentiment"),
-                "permalink": post.get("permalink"),
-                "created_time": post.get("created_time"),
+            aggregated.append({
+                "topic_id": issue_id,
+                "name": name_cn,
+                "name_en": name_en,
+                "count": len(matched),
+                "total_heat": round(total_heat, 1),
+                "negative_count": negative_count,
+                "heat": round(total_heat, 1),
+                "sentiment": "negative" if negative_count > len(matched) / 2 else "neutral",
+                "representative_posts": rep_posts,
             })
 
-        return ui_ux_top_issues
+        # 按总热度排序
+        aggregated.sort(key=lambda x: x["total_heat"], reverse=True)
+        result = aggregated[:top_n]
+        print(f"  具体问题标签: {len(result)} 个")
+        for t in result:
+            print(f"    {t['name']} ({t['name_en']}): {t['count']}篇, 热度{t['total_heat']}")
+
+        return result
 
     def _extract_bloatware_top_issues(self, posts: list, top_n: int = 10) -> list:
         """严格提取 bloatware 相关帖子（预装软件/系统应用问题）"""

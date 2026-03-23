@@ -389,56 +389,66 @@
                     <span class="w-2 h-6 bg-red-500 rounded mr-3"></span>
                     <span data-cn="TOP 问题排行" data-en="TOP Issues">TOP 问题排行</span>
                 </h2>
-                <!-- UI/UX 问题标签气泡 -->
+                <!-- 高热度问题标签（聚合主题） -->
                 <div class="mb-6">
                     <h3 class="text-lg font-semibold mb-4" data-cn="高热度问题标签" data-en="High Heat Issue Tags">高热度问题标签</h3>
                     <div class="flex flex-wrap gap-3">
-                        {% for issue in ui_ux_top_issues %}
-                        {% if loop.index <= 20 %}
-                        <a href="{{ issue.permalink }}" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="{{ issue.category }}" data-heat="{{ issue.heat }}" data-sentiment="{{ issue.sentiment }}"
-                           style="
-                               font-size: {{ 0.9 + (issue.heat / 300) * 0.6 }}rem;
-                               padding-left: {{ 0.8 + (issue.heat / 300) * 0.8 }}rem;
-                               padding-right: {{ 0.8 + (issue.heat / 300) * 0.8 }}rem;
-                               padding-top: {{ 0.4 + (issue.heat / 300) * 0.4 }}rem;
-                               padding-bottom: {{ 0.4 + (issue.heat / 300) * 0.4 }}rem;
-                           ">
-                            <span class="font-medium" data-cn="{{ issue.title }}" data-en="{{ issue.title_en }}">
-                                {{ issue.title[:25] }}{% if issue.title|length > 25 %}...{% endif %}
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">{{ issue.heat }}</span>
-                        </a>
-                        {% endif %}
+                        {% for topic in ui_ux_top_issues %}
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-{{ topic.topic_id }}')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="{{ topic.total_heat }}" data-sentiment="{{ topic.sentiment }}"
+                               style="
+                                   font-size: {{ [0.85 + (topic.total_heat / 500) * 0.5, 1.6]|min | round(2) }}rem;
+                                   padding: {{ [0.35 + (topic.total_heat / 500) * 0.3, 0.8]|min | round(2) }}rem {{ [0.7 + (topic.total_heat / 500) * 0.6, 1.5]|min | round(2) }}rem;
+                               ">
+                                <span class="font-medium" data-cn="{{ topic.name }}" data-en="{{ topic.name_en }}">
+                                    {{ topic.name }}
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">{{ topic.count }}</span>
+                            </button>
+                            <div id="topic-{{ topic.topic_id }}" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                {% for post in topic.representative_posts %}
+                                <a href="{{ post.permalink }}" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="{{ post.title_en }}">
+                                    <span class="sentiment-{{ post.sentiment }}">&#9679;</span>
+                                    {{ post.title_en[:55] }}{% if post.title_en|length > 55 %}...{% endif %}
+                                    <span class="text-xs text-gray-500 ml-1">{{ post.heat }}</span>
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
                         {% else %}
-                        <div class="text-gray-500 italic" data-cn="本周暂无高热度界面与体验问题" data-en="No high heat UI/UX issues this week">本周暂无高热度界面与体验问题</div>
+                        <div class="text-gray-500 italic" data-cn="本周暂无高热度问题" data-en="No high heat issues this week">本周暂无高热度问题</div>
                         {% endfor %}
                     </div>
                 </div>
 
                 <!-- 统计数据 -->
                 <div class="mt-6 pt-6 border-t border-gray-700">
-                    <h3 class="text-lg font-semibold mb-3" data-cn="界面与体验问题统计" data-en="UI/UX Issues Statistics">界面与体验问题统计</h3>
+                    <h3 class="text-lg font-semibold mb-3" data-cn="问题主题统计" data-en="Issue Topic Statistics">问题主题统计</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {% set ui_ux_issues = ui_ux_top_issues %}
+                        {% set topics = ui_ux_top_issues %}
                         <div class="bg-white/5 rounded-lg p-4">
-                            <div class="text-2xl font-bold text-blue-400">{{ ui_ux_issues|length }}</div>
-                            <div class="text-sm text-gray-400 mt-1" data-cn="TOP UI/UX问题数" data-en="TOP UI/UX Issues">TOP UI/UX问题数</div>
+                            <div class="text-2xl font-bold text-blue-400">{{ topics|length }}</div>
+                            <div class="text-sm text-gray-400 mt-1" data-cn="问题主题数" data-en="Issue Topics">问题主题数</div>
                         </div>
                         <div class="bg-white/5 rounded-lg p-4">
-                            {% set total_heat = ui_ux_issues|sum(attribute='heat') %}
-                            <div class="text-2xl font-bold text-orange-400">{{ total_heat }}</div>
+                            {% set total_count = topics|sum(attribute='count') %}
+                            <div class="text-2xl font-bold text-orange-400">{{ total_count }}</div>
+                            <div class="text-sm text-gray-400 mt-1" data-cn="相关帖子总数" data-en="Total Posts">相关帖子总数</div>
+                        </div>
+                        <div class="bg-white/5 rounded-lg p-4">
+                            {% set total_heat = topics|sum(attribute='total_heat') %}
+                            <div class="text-2xl font-bold text-red-400">{{ total_heat }}</div>
                             <div class="text-sm text-gray-400 mt-1" data-cn="总热度" data-en="Total Heat">总热度</div>
                         </div>
                         <div class="bg-white/5 rounded-lg p-4">
-                            {% set negative_count = ui_ux_issues|selectattr('sentiment', 'equalto', 'negative')|list|length %}
-                            <div class="text-2xl font-bold text-red-400">{{ negative_count }}</div>
+                            {% set total_negative = topics|sum(attribute='negative_count') %}
+                            <div class="text-2xl font-bold text-green-400">{{ total_negative }}</div>
                             <div class="text-sm text-gray-400 mt-1" data-cn="负面反馈" data-en="Negative Feedback">负面反馈</div>
-                        </div>
-                        <div class="bg-white/5 rounded-lg p-4">
-                            {% set avg_heat = (total_heat / ui_ux_issues|length)|round(1) if ui_ux_issues|length > 0 else 0 %}
-                            <div class="text-2xl font-bold text-green-400">{{ avg_heat }}</div>
-                            <div class="text-sm text-gray-400 mt-1" data-cn="平均热度" data-en="Avg Heat">平均热度</div>
                         </div>
                     </div>
                 </div>
@@ -538,6 +548,11 @@
     <script>
         let currentLang = 'cn';
         let currentTheme = 'dark';
+
+        function toggleTopicPosts(id) {
+            var el = document.getElementById(id);
+            if (el) el.classList.toggle('hidden');
+        }
 
         function toggleLanguage() {
             currentLang = currentLang === 'cn' ? 'en' : 'cn';
