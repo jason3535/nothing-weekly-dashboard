@@ -55,6 +55,8 @@ class DataProcessor:
             r'essential\s+space',           # 小写形式
             r'lock\s+glimpse',              # 小写形式
             r'meta\s+services',             # 小写形式
+            # 术语保留
+            r'\b[Bb]loatware\b',            # bloatware 不翻译
             # 型号相关
             r'\d[a-z]+\s+pro',              # 3a pro, 2 pro
             r'\d[a-z]+',                    # 3a, 2a
@@ -62,11 +64,6 @@ class DataProcessor:
 
         # 自定义翻译映射（修正错误翻译）
         self.custom_translations = {
-            "disable bloatware": "禁用冗余软件",
-            "Disable bloatware": "禁用冗余软件",
-            "Disable Bloatware": "禁用冗余软件",
-            "bloatware": "冗余软件",
-            "Bloatware": "冗余软件",
         }
 
     def _translate(self, text: str) -> str:
