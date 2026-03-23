@@ -709,377 +709,487 @@
                     <span class="w-2 h-6 bg-red-500 rounded mr-3"></span>
                     <span data-cn="TOP 问题排行" data-en="TOP Issues">TOP 问题排行</span>
                 </h2>
-                <!-- UI/UX 问题标签气泡 -->
+                <!-- 高热度问题标签（聚合主题） -->
                 <div class="mb-6">
                     <h3 class="text-lg font-semibold mb-4" data-cn="高热度问题标签" data-en="High Heat Issue Tags">高热度问题标签</h3>
                     <div class="flex flex-wrap gap-3">
                         
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-camera_blur')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="781" data-sentiment="negative"
+                               style="
+                                   font-size: 1.6rem;
+                                   padding: 0.8rem 1.5rem;
+                               ">
+                                <span class="font-medium" data-cn="拍照模糊/对焦问题" data-en="Camera Blur / Focus">
+                                    拍照模糊/对焦问题
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">19</span>
+                            </button>
+                            <div id="topic-camera_blur" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rjgka6/move_from_poco_to_nothing_3a_lite/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Move from POCO to Nothing (3a) Lite">
+                                    <span class="sentiment-positive">&#9679;</span>
+                                    Move from POCO to Nothing (3a) Lite
+                                    <span class="text-xs text-gray-500 ml-1">293</span>
+                                </a>
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rll2dv/finally_a_design_that_makes_me_go_back_to_android/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Finally a design that makes me go back to android">
+                                    <span class="sentiment-neutral">&#9679;</span>
+                                    Finally a design that makes me go back to android
+                                    <span class="text-xs text-gray-500 ml-1">187</span>
+                                </a>
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rj5a0l/oled_burn_in_after_1_monthphone_3/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Oled Burn in after 1 month..(Phone 3)">
+                                    <span class="sentiment-positive">&#9679;</span>
+                                    Oled Burn in after 1 month..(Phone 3)
+                                    <span class="text-xs text-gray-500 ml-1">48</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rlesie/nothing_cooked_with_the_4a_pro_design/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="1772" data-sentiment="negative"
-                           style="
-                               font-size: 4.444rem;
-                               padding-left: 5.525333333333333rem;
-                               padding-right: 5.525333333333333rem;
-                               padding-top: 2.7626666666666666rem;
-                               padding-bottom: 2.7626666666666666rem;
-                           ">
-                            <span class="font-medium" data-cn="Nothing 采用 4a PRO 设计烹制" data-en="Nothing cooked with the 4a PRO design">
-                                Nothing 采用 4a PRO 设计烹制
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">1772</span>
-                        </a>
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-glyph_notification')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="391" data-sentiment="negative"
+                               style="
+                                   font-size: 1.24rem;
+                                   padding: 0.58rem 1.17rem;
+                               ">
+                                <span class="font-medium" data-cn="Glyph 通知灯效异常" data-en="Glyph Notification Light">
+                                    Glyph 通知灯效异常
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">3</span>
+                            </button>
+                            <div id="topic-glyph_notification" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rkmefn/nothing_confirmed_the_glyph_matrix_is_coming_to/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Nothing Confirmed The Glyph Matrix Is Coming To The 4A PRO (but with a catch)">
+                                    <span class="sentiment-neutral">&#9679;</span>
+                                    Nothing Confirmed The Glyph Matrix Is Coming To The 4A ...
+                                    <span class="text-xs text-gray-500 ml-1">354</span>
+                                </a>
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rlkgmn/i_feel_like_this_time_the_pro_might_actually_be/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="I feel like this time the Pro might actually be the popular one.">
+                                    <span class="sentiment-negative">&#9679;</span>
+                                    I feel like this time the Pro might actually be the pop...
+                                    <span class="text-xs text-gray-500 ml-1">33</span>
+                                </a>
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rlyvj2/glyph_lights_not_glowing_at_full_brightness/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Glyph lights not glowing at full brightness.">
+                                    <span class="sentiment-negative">&#9679;</span>
+                                    Glyph lights not glowing at full brightness.
+                                    <span class="text-xs text-gray-500 ml-1">4</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-lag_general')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="318" data-sentiment="neutral"
+                               style="
+                                   font-size: 1.17rem;
+                                   padding: 0.54rem 1.08rem;
+                               ">
+                                <span class="font-medium" data-cn="日常使用卡顿" data-en="General Lag">
+                                    日常使用卡顿
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">4</span>
+                            </button>
+                            <div id="topic-lag_general" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rjgka6/move_from_poco_to_nothing_3a_lite/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Move from POCO to Nothing (3a) Lite">
+                                    <span class="sentiment-positive">&#9679;</span>
+                                    Move from POCO to Nothing (3a) Lite
+                                    <span class="text-xs text-gray-500 ml-1">293</span>
+                                </a>
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1riox59/switching_from_pixel_to_nothing/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Switching from pixel to nothing?">
+                                    <span class="sentiment-positive">&#9679;</span>
+                                    Switching from pixel to nothing?
+                                    <span class="text-xs text-gray-500 ml-1">13</span>
+                                </a>
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rkr6cg/problems_after_the_new_update/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Problems after the new update.">
+                                    <span class="sentiment-negative">&#9679;</span>
+                                    Problems after the new update.
+                                    <span class="text-xs text-gray-500 ml-1">8</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-system_freeze')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="178" data-sentiment="negative"
+                               style="
+                                   font-size: 1.03rem;
+                                   padding: 0.46rem 0.91rem;
+                               ">
+                                <span class="font-medium" data-cn="系统冻结无响应" data-en="System Freeze">
+                                    系统冻结无响应
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">6</span>
+                            </button>
+                            <div id="topic-system_freeze" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rltuas/hot_take_not_every_nothing_phone_needs_to_be_for/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Hot take: Not every Nothing phone needs to be for you.">
+                                    <span class="sentiment-negative">&#9679;</span>
+                                    Hot take: Not every Nothing phone needs to be for you.
+                                    <span class="text-xs text-gray-500 ml-1">76</span>
+                                </a>
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rlgdp0/phone_4a_series_lets_discuss/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Phone 4(a) series, let’s discuss!">
+                                    <span class="sentiment-positive">&#9679;</span>
+                                    Phone 4(a) series, let’s discuss!
+                                    <span class="text-xs text-gray-500 ml-1">60</span>
+                                </a>
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rijv2i/nothing_os_40_downgrade_possible/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Nothing OS 4.0 downgrade possible?">
+                                    <span class="sentiment-negative">&#9679;</span>
+                                    Nothing OS 4.0 downgrade possible?
+                                    <span class="text-xs text-gray-500 ml-1">21</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rjmg8q/do_you_think_for_just_one_more_time_they_can/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="432" data-sentiment="positive"
-                           style="
-                               font-size: 1.764rem;
-                               padding-left: 1.952rem;
-                               padding-right: 1.952rem;
-                               padding-top: 0.976rem;
-                               padding-bottom: 0.976rem;
-                           ">
-                            <span class="font-medium" data-cn="你认为他们能再一次把这些字形带回来吗？" data-en="Do you think for just one more time they can bring back the glyphs?">
-                                你认为他们能再一次把这些字形带回来吗？
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">432</span>
-                        </a>
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-camera_video_glitch')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="15" data-sentiment="negative"
+                               style="
+                                   font-size: 0.86rem;
+                                   padding: 0.36rem 0.72rem;
+                               ">
+                                <span class="font-medium" data-cn="视频录制异常" data-en="Video Recording Glitch">
+                                    视频录制异常
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">1</span>
+                            </button>
+                            <div id="topic-camera_video_glitch" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rlsyu0/why_dont_i_have_the_recording_light_option/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Why don't I have the recording light option">
+                                    <span class="sentiment-negative">&#9679;</span>
+                                    Why don't I have the recording light option
+                                    <span class="text-xs text-gray-500 ml-1">15</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-battery_drain_idle')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="10" data-sentiment="neutral"
+                               style="
+                                   font-size: 0.86rem;
+                                   padding: 0.36rem 0.71rem;
+                               ">
+                                <span class="font-medium" data-cn="待机耗电异常" data-en="Battery Drain on Idle">
+                                    待机耗电异常
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">1</span>
+                            </button>
+                            <div id="topic-battery_drain_idle" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rjexnk/android_auto_causing_significant_battery_drain_on/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Android Auto causing significant battery drain on Nothing Phone (3)">
+                                    <span class="sentiment-positive">&#9679;</span>
+                                    Android Auto causing significant battery drain on Nothi...
+                                    <span class="text-xs text-gray-500 ml-1">10</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-android_auto')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="10" data-sentiment="neutral"
+                               style="
+                                   font-size: 0.86rem;
+                                   padding: 0.36rem 0.71rem;
+                               ">
+                                <span class="font-medium" data-cn="Android Auto 不兼容" data-en="Android Auto Issues">
+                                    Android Auto 不兼容
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">1</span>
+                            </button>
+                            <div id="topic-android_auto" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rjexnk/android_auto_causing_significant_battery_drain_on/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Android Auto causing significant battery drain on Nothing Phone (3)">
+                                    <span class="sentiment-positive">&#9679;</span>
+                                    Android Auto causing significant battery drain on Nothi...
+                                    <span class="text-xs text-gray-500 ml-1">10</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rjr4s0/even_as_the_4a_is_launched_this_design_still_has/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="223" data-sentiment="neutral"
-                           style="
-                               font-size: 1.346rem;
-                               padding-left: 1.3946666666666667rem;
-                               padding-right: 1.3946666666666667rem;
-                               padding-top: 0.6973333333333334rem;
-                               padding-bottom: 0.6973333333333334rem;
-                           ">
-                            <span class="font-medium" data-cn="即使4a已经推出，这个设计仍然让我着迷！" data-en="Even as the 4a is launched, this design still has me mesmerized!">
-                                即使4a已经推出，这个设计仍然让我着迷！
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">223</span>
-                        </a>
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-nfc_payment')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="10" data-sentiment="neutral"
+                               style="
+                                   font-size: 0.86rem;
+                                   padding: 0.36rem 0.71rem;
+                               ">
+                                <span class="font-medium" data-cn="NFC/支付问题" data-en="NFC / Payment Issues">
+                                    NFC/支付问题
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">1</span>
+                            </button>
+                            <div id="topic-nfc_payment" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rkjy0q/issue_with_google_wallet/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="issue with Google Wallet">
+                                    <span class="sentiment-neutral">&#9679;</span>
+                                    issue with Google Wallet
+                                    <span class="text-xs text-gray-500 ml-1">10</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-camera_overexpose')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="4" data-sentiment="negative"
+                               style="
+                                   font-size: 0.85rem;
+                                   padding: 0.35rem 0.7rem;
+                               ">
+                                <span class="font-medium" data-cn="相机过曝/HDR问题" data-en="Camera Overexposure / HDR">
+                                    相机过曝/HDR问题
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">1</span>
+                            </button>
+                            <div id="topic-camera_overexpose" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1riywvm/camera_software_got_worse_with_time/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Camera software got worse with time">
+                                    <span class="sentiment-negative">&#9679;</span>
+                                    Camera software got worse with time
+                                    <span class="text-xs text-gray-500 ml-1">4</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-camera_crash')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="4" data-sentiment="negative"
+                               style="
+                                   font-size: 0.85rem;
+                                   padding: 0.35rem 0.7rem;
+                               ">
+                                <span class="font-medium" data-cn="相机应用崩溃" data-en="Camera App Crash">
+                                    相机应用崩溃
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">1</span>
+                            </button>
+                            <div id="topic-camera_crash" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rj1fsb/nothing_phone_2a_automatically_pauses_and_stops/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Nothing Phone 2a automatically pauses and stops any music app while playing via Bluetooth.">
+                                    <span class="sentiment-negative">&#9679;</span>
+                                    Nothing Phone 2a automatically pauses and stops any mus...
+                                    <span class="text-xs text-gray-500 ml-1">4</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rll2dv/finally_a_design_that_makes_me_go_back_to_android/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="187" data-sentiment="neutral"
-                           style="
-                               font-size: 1.274rem;
-                               padding-left: 1.2986666666666666rem;
-                               padding-right: 1.2986666666666666rem;
-                               padding-top: 0.6493333333333333rem;
-                               padding-bottom: 0.6493333333333333rem;
-                           ">
-                            <span class="font-medium" data-cn="终于有一个设计让我又回到android了" data-en="Finally a design that makes me go back to android">
-                                终于有一个设计让我又回到android了
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">187</span>
-                        </a>
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-depth_effect')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="3" data-sentiment="neutral"
+                               style="
+                                   font-size: 0.85rem;
+                                   padding: 0.35rem 0.7rem;
+                               ">
+                                <span class="font-medium" data-cn="Depth Effect 锁屏特效" data-en="Depth Effect">
+                                    Depth Effect 锁屏特效
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">1</span>
+                            </button>
+                            <div id="topic-depth_effect" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rlgyv3/i_mean_the_4a_pro_is_almost_perfect/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="I mean the 4a pro is almost perfect.">
+                                    <span class="sentiment-positive">&#9679;</span>
+                                    I mean the 4a pro is almost perfect.
+                                    <span class="text-xs text-gray-500 ml-1">3</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-update_bugs')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="2" data-sentiment="negative"
+                               style="
+                                   font-size: 0.85rem;
+                                   padding: 0.35rem 0.7rem;
+                               ">
+                                <span class="font-medium" data-cn="系统更新后出现Bug" data-en="Bugs After Update">
+                                    系统更新后出现Bug
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">1</span>
+                            </button>
+                            <div id="topic-update_bugs" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rkq6rr/cant_open_a_calender_app_after_update/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Can't open a calender app after update">
+                                    <span class="sentiment-negative">&#9679;</span>
+                                    Can't open a calender app after update
+                                    <span class="text-xs text-gray-500 ml-1">2</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-random_restart')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="1" data-sentiment="negative"
+                               style="
+                                   font-size: 0.85rem;
+                                   padding: 0.35rem 0.7rem;
+                               ">
+                                <span class="font-medium" data-cn="随机重启/关机" data-en="Random Restart / Shutdown">
+                                    随机重启/关机
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">1</span>
+                            </button>
+                            <div id="topic-random_restart" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rm8k43/bluetooth_probleme_on_phone_1/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Bluetooth probleme on phone 1">
+                                    <span class="sentiment-negative">&#9679;</span>
+                                    Bluetooth probleme on phone 1
+                                    <span class="text-xs text-gray-500 ml-1">1</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rhwh7m/nothing_phone_4a_fun_design_marin_kitagawa/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="139" data-sentiment="neutral"
-                           style="
-                               font-size: 1.178rem;
-                               padding-left: 1.1706666666666667rem;
-                               padding-right: 1.1706666666666667rem;
-                               padding-top: 0.5853333333333334rem;
-                               padding-bottom: 0.5853333333333334rem;
-                           ">
-                            <span class="font-medium" data-cn="Nothing phone 4a 有趣的设计 Marin Kitakawa" data-en="Nothing phone 4a fun design Marin Kitagawa">
-                                Nothing phone 4a 有趣的设计 Ma...
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">139</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rlg4x1/my_views_on_the_4a_series/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="58" data-sentiment="positive"
-                           style="
-                               font-size: 1.016rem;
-                               padding-left: 0.9546666666666668rem;
-                               padding-right: 0.9546666666666668rem;
-                               padding-top: 0.4773333333333334rem;
-                               padding-bottom: 0.4773333333333334rem;
-                           ">
-                            <span class="font-medium" data-cn="我对 4a 系列的看法" data-en="My views on the 4a series">
-                                我对 4a 系列的看法
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">58</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rm3hmn/nothing_qwerty/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="54" data-sentiment="positive"
-                           style="
-                               font-size: 1.008rem;
-                               padding-left: 0.9440000000000001rem;
-                               padding-right: 0.9440000000000001rem;
-                               padding-top: 0.47200000000000003rem;
-                               padding-bottom: 0.47200000000000003rem;
-                           ">
-                            <span class="font-medium" data-cn="Nothing QWERTY" data-en="Nothing QWERTY">
-                                Nothing QWERTY
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">54</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rj5a0l/oled_burn_in_after_1_monthphone_3/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="48" data-sentiment="positive"
-                           style="
-                               font-size: 0.996rem;
-                               padding-left: 0.928rem;
-                               padding-right: 0.928rem;
-                               padding-top: 0.464rem;
-                               padding-bottom: 0.464rem;
-                           ">
-                            <span class="font-medium" data-cn="1 个月后 Oled 烧毁..(Phone 3)" data-en="Oled Burn in after 1 month..(Phone 3)">
-                                1 个月后 Oled 烧毁..(Phone 3)
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">48</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rjpqxp/nothing_3a_pro_battery_life/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="46" data-sentiment="negative"
-                           style="
-                               font-size: 0.992rem;
-                               padding-left: 0.9226666666666667rem;
-                               padding-right: 0.9226666666666667rem;
-                               padding-top: 0.4613333333333334rem;
-                               padding-bottom: 0.4613333333333334rem;
-                           ">
-                            <span class="font-medium" data-cn="Nothing 3a pro 电池寿命" data-en="Nothing 3a pro battery life">
-                                Nothing 3a pro 电池寿命
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">46</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rkuf8u/cmf_phone_2_pro_in_2026_128gb_or_256gb_update/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="42" data-sentiment="negative"
-                           style="
-                               font-size: 0.984rem;
-                               padding-left: 0.912rem;
-                               padding-right: 0.912rem;
-                               padding-top: 0.456rem;
-                               padding-bottom: 0.456rem;
-                           ">
-                            <span class="font-medium" data-cn="CMF Phone 2 2026 年 Pro – 128GB 或 256GB？更新&amp;存储混乱" data-en="CMF Phone 2 Pro in 2026 – 128GB or 256GB? Update &amp; Storage Confusion">
-                                CMF Phone 2 2026 年 Pro – ...
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">42</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rkmclb/after_clicking_this_hide_app_icon_my_app/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="42" data-sentiment="neutral"
-                           style="
-                               font-size: 0.984rem;
-                               padding-left: 0.912rem;
-                               padding-right: 0.912rem;
-                               padding-top: 0.456rem;
-                               padding-bottom: 0.456rem;
-                           ">
-                            <span class="font-medium" data-cn="单击此隐藏应用程序图标后，我的应用程序消失了。如何将其恢复" data-en="After clicking this Hide app icon my app vanished..How to bring it back">
-                                单击此隐藏应用程序图标后，我的应用程序消失了。如何...
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">42</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rlkgmn/i_feel_like_this_time_the_pro_might_actually_be/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="33" data-sentiment="negative"
-                           style="
-                               font-size: 0.966rem;
-                               padding-left: 0.888rem;
-                               padding-right: 0.888rem;
-                               padding-top: 0.444rem;
-                               padding-bottom: 0.444rem;
-                           ">
-                            <span class="font-medium" data-cn="我觉得这次Pro可能会是最热门的一款。" data-en="I feel like this time the Pro might actually be the popular one.">
-                                我觉得这次Pro可能会是最热门的一款。
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">33</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rijv2i/nothing_os_40_downgrade_possible/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="21" data-sentiment="negative"
-                           style="
-                               font-size: 0.9420000000000001rem;
-                               padding-left: 0.8560000000000001rem;
-                               padding-right: 0.8560000000000001rem;
-                               padding-top: 0.42800000000000005rem;
-                               padding-bottom: 0.42800000000000005rem;
-                           ">
-                            <span class="font-medium" data-cn="Nothing OS 4.0 可以降级吗？" data-en="Nothing OS 4.0 downgrade possible?">
-                                Nothing OS 4.0 可以降级吗？
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">21</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rley32/im_really_concerned_about_how_they_managed_the/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="17" data-sentiment="neutral"
-                           style="
-                               font-size: 0.934rem;
-                               padding-left: 0.8453333333333334rem;
-                               padding-right: 0.8453333333333334rem;
-                               padding-top: 0.4226666666666667rem;
-                               padding-bottom: 0.4226666666666667rem;
-                           ">
-                            <span class="font-medium" data-cn="我真的很关心他们如何管理这里的拐角半径。" data-en="I’m really concerned about how they managed the corner radius here.">
-                                我真的很关心他们如何管理这里的拐角半径。
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">17</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rjmy9t/new_nothing_launcher_animations/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="16" data-sentiment="neutral"
-                           style="
-                               font-size: 0.932rem;
-                               padding-left: 0.8426666666666667rem;
-                               padding-right: 0.8426666666666667rem;
-                               padding-top: 0.42133333333333334rem;
-                               padding-bottom: 0.42133333333333334rem;
-                           ">
-                            <span class="font-medium" data-cn="新的 Nothing 启动器动画" data-en="New Nothing Launcher animations">
-                                新的 Nothing 启动器动画
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">16</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rjrsa2/what_is_this_icon_design_nothing/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="13" data-sentiment="neutral"
-                           style="
-                               font-size: 0.926rem;
-                               padding-left: 0.8346666666666667rem;
-                               padding-right: 0.8346666666666667rem;
-                               padding-top: 0.41733333333333333rem;
-                               padding-bottom: 0.41733333333333333rem;
-                           ">
-                            <span class="font-medium" data-cn="这个图标设计是什么 nothing" data-en="What is this icon design nothing">
-                                这个图标设计是什么 nothing
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">13</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1riox59/switching_from_pixel_to_nothing/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="13" data-sentiment="positive"
-                           style="
-                               font-size: 0.926rem;
-                               padding-left: 0.8346666666666667rem;
-                               padding-right: 0.8346666666666667rem;
-                               padding-top: 0.41733333333333333rem;
-                               padding-bottom: 0.41733333333333333rem;
-                           ">
-                            <span class="font-medium" data-cn="是否从像素切换到 nothing？" data-en="Switching from pixel to nothing?">
-                                是否从像素切换到 nothing？
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">13</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rlespx/design_4a_pro/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="12" data-sentiment="negative"
-                           style="
-                               font-size: 0.924rem;
-                               padding-left: 0.8320000000000001rem;
-                               padding-right: 0.8320000000000001rem;
-                               padding-top: 0.41600000000000004rem;
-                               padding-bottom: 0.41600000000000004rem;
-                           ">
-                            <span class="font-medium" data-cn="设计 4a pro" data-en="Design 4a pro">
-                                设计 4a pro
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">12</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rkui14/is_the_nothing_phone_3a_worth_it/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="11" data-sentiment="neutral"
-                           style="
-                               font-size: 0.922rem;
-                               padding-left: 0.8293333333333334rem;
-                               padding-right: 0.8293333333333334rem;
-                               padding-top: 0.4146666666666667rem;
-                               padding-bottom: 0.4146666666666667rem;
-                           ">
-                            <span class="font-medium" data-cn="Nothing Phone 3A 值得吗？" data-en="Is the Nothing Phone 3A worth it?">
-                                Nothing Phone 3A 值得吗？
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">11</span>
-                        </a>
-                        
-                        
-                        
-                        <a href="https://www.reddit.com/r/NOTHING/comments/1rkjy0q/issue_with_google_wallet/" target="_blank"
-                           class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble" data-category="ui_ux" data-heat="10" data-sentiment="neutral"
-                           style="
-                               font-size: 0.92rem;
-                               padding-left: 0.8266666666666667rem;
-                               padding-right: 0.8266666666666667rem;
-                               padding-top: 0.41333333333333333rem;
-                               padding-bottom: 0.41333333333333333rem;
-                           ">
-                            <span class="font-medium" data-cn="Google 钱包问题" data-en="issue with Google Wallet">
-                                Google 钱包问题
-                            </span>
-                            <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">10</span>
-                        </a>
-                        
+                        <div class="inline-flex flex-col">
+                            <button onclick="toggleTopicPosts('topic-bluetooth_disconnect')"
+                               class="inline-flex items-center rounded-full border-2 cursor-pointer tag-bubble"
+                               data-heat="1" data-sentiment="negative"
+                               style="
+                                   font-size: 0.85rem;
+                                   padding: 0.35rem 0.7rem;
+                               ">
+                                <span class="font-medium" data-cn="蓝牙断连" data-en="Bluetooth Disconnect">
+                                    蓝牙断连
+                                </span>
+                                <span class="ml-2 text-xs font-bold heat-badge px-2 py-0.5 rounded-full">1</span>
+                            </button>
+                            <div id="topic-bluetooth_disconnect" class="hidden mt-2 ml-2 mb-2 pl-3 border-l-2 border-gray-700 space-y-1">
+                                
+                                <a href="https://www.reddit.com/r/NOTHING/comments/1rm8k43/bluetooth_probleme_on_phone_1/" target="_blank"
+                                   class="block text-sm hover:text-blue-400 transition truncate"
+                                   style="max-width: 350px;"
+                                   title="Bluetooth probleme on phone 1">
+                                    <span class="sentiment-negative">&#9679;</span>
+                                    Bluetooth probleme on phone 1
+                                    <span class="text-xs text-gray-500 ml-1">1</span>
+                                </a>
+                                
+                            </div>
+                        </div>
                         
                     </div>
                 </div>
 
                 <!-- 统计数据 -->
                 <div class="mt-6 pt-6 border-t border-gray-700">
-                    <h3 class="text-lg font-semibold mb-3" data-cn="界面与体验问题统计" data-en="UI/UX Issues Statistics">界面与体验问题统计</h3>
+                    <h3 class="text-lg font-semibold mb-3" data-cn="问题主题统计" data-en="Issue Topic Statistics">问题主题统计</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         
                         <div class="bg-white/5 rounded-lg p-4">
-                            <div class="text-2xl font-bold text-blue-400">20</div>
-                            <div class="text-sm text-gray-400 mt-1" data-cn="TOP UI/UX问题数" data-en="TOP UI/UX Issues">TOP UI/UX问题数</div>
+                            <div class="text-2xl font-bold text-blue-400">14</div>
+                            <div class="text-sm text-gray-400 mt-1" data-cn="问题主题数" data-en="Issue Topics">问题主题数</div>
                         </div>
                         <div class="bg-white/5 rounded-lg p-4">
                             
-                            <div class="text-2xl font-bold text-orange-400">3189</div>
+                            <div class="text-2xl font-bold text-orange-400">42</div>
+                            <div class="text-sm text-gray-400 mt-1" data-cn="相关帖子总数" data-en="Total Posts">相关帖子总数</div>
+                        </div>
+                        <div class="bg-white/5 rounded-lg p-4">
+                            
+                            <div class="text-2xl font-bold text-red-400">1728</div>
                             <div class="text-sm text-gray-400 mt-1" data-cn="总热度" data-en="Total Heat">总热度</div>
                         </div>
                         <div class="bg-white/5 rounded-lg p-4">
                             
-                            <div class="text-2xl font-bold text-red-400">6</div>
+                            <div class="text-2xl font-bold text-green-400">26</div>
                             <div class="text-sm text-gray-400 mt-1" data-cn="负面反馈" data-en="Negative Feedback">负面反馈</div>
-                        </div>
-                        <div class="bg-white/5 rounded-lg p-4">
-                            
-                            <div class="text-2xl font-bold text-green-400">159.4</div>
-                            <div class="text-sm text-gray-400 mt-1" data-cn="平均热度" data-en="Avg Heat">平均热度</div>
                         </div>
                     </div>
                 </div>
@@ -1228,6 +1338,11 @@ eventually all these "be different" phones become as boring as every other iphon
     <script>
         let currentLang = 'cn';
         let currentTheme = 'dark';
+
+        function toggleTopicPosts(id) {
+            var el = document.getElementById(id);
+            if (el) el.classList.toggle('hidden');
+        }
 
         function toggleLanguage() {
             currentLang = currentLang === 'cn' ? 'en' : 'cn';
