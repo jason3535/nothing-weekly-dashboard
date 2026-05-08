@@ -15,7 +15,7 @@ class RedditScraper:
     """Reddit 数据爬虫"""
 
     BASE_URL = "https://www.reddit.com"
-    USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+    USER_AGENT = "weeklyreport-bot/0.2 (+https://github.com/jason3535/nothing-weekly-dashboard)"
 
     def __init__(self, subreddit: str, request_delay: float = 2.0):
         self.subreddit = subreddit
@@ -37,14 +37,14 @@ class RedditScraper:
             print(f"请求失败: {url}, 错误: {e}")
             return None
 
-    def get_posts(self, sort: str = "new", limit: int = 100, time_filter: str = "week") -> list:
+    def get_posts(self, sort: str = "new", limit: int = 100, time_filter: Optional[str] = None) -> list:
         """
         获取帖子列表
 
         Args:
             sort: 排序方式 (new, hot, top, rising)
-            limit: 获取数量（最大100/次）
-            time_filter: 时间范围 (hour, day, week, month, year, all)
+            limit: 获取数量（最大100/次）；超过100会自动分页
+            time_filter: 时间范围 (hour, day, week, month, year, all)，仅 sort=top/controversial 有效。
 
         Returns:
             帖子列表
@@ -56,10 +56,10 @@ class RedditScraper:
         while fetched < limit:
             batch_limit = min(100, limit - fetched)
             url = f"{self.BASE_URL}/r/{self.subreddit}/{sort}.json"
-            params = {
-                "limit": batch_limit,
-                "t": time_filter,
-            }
+            params = {"limit": batch_limit}
+            # t 仅在 sort=top/controversial 时有效，其他排序传了会被忽略，但仍传 None 以避免误导
+            if time_filter and sort in ("top", "controversial"):
+                params["t"] = time_filter
             if after:
                 params["after"] = after
 
@@ -189,13 +189,19 @@ class RedditScraper:
         return posts
 
 
-def scrape_weekly_data(config: dict, output_dir: Path) -> dict:
+def scrape_weekly_data(
+    config: dict,
+    output_dir: Path,
+    date_range: Optional[tuple] = None,
+) -> dict:
     """
-    抓取本周数据
+    抓取数据
 
     Args:
         config: 配置字典
         output_dir: 输出目录
+        date_range: (start_datetime, end_datetime) 可选，仅保留 created_utc 在该区间内的帖子；
+                    评论也只针对这些帖子拉取。不传则按抓取时点保留所有结果。
 
     Returns:
         抓取结果统计
@@ -209,29 +215,43 @@ def scrape_weekly_data(config: dict, output_dir: Path) -> dict:
 
     print(f"开始抓取 r/{subreddit} 数据...")
 
-    # 获取本周新帖
-    print("\n获取最新帖子...")
-    new_posts = scraper.get_posts(sort="new", limit=posts_limit, time_filter="week")
-    print(f"获取到 {len(new_posts)} 篇新帖子")
+    # 1) 最新帖（分页，覆盖最近若干周）
+    print("\n获取最新帖子（sort=new，分页）...")
+    new_posts = scraper.get_posts(sort="new", limit=posts_limit)
+    print(f"  累计 {len(new_posts)} 篇")
 
-    # 获取本周热门帖
-    print("\n获取热门帖子...")
-    hot_posts = scraper.get_posts(sort="hot", limit=100, time_filter="week")
-    print(f"获取到 {len(hot_posts)} 篇热门帖子")
+    # 2) 本周 top 帖（real time-filter，只在 sort=top 上有效）
+    print("\n获取本周 top 帖子（sort=top, t=week）...")
+    top_week_posts = scraper.get_posts(sort="top", limit=100, time_filter="week")
+    print(f"  累计 {len(top_week_posts)} 篇")
+
+    # 3) 本月 top 帖（覆盖到 4-5 周历史）
+    print("\n获取本月 top 帖子（sort=top, t=month）...")
+    top_month_posts = scraper.get_posts(sort="top", limit=100, time_filter="month")
+    print(f"  累计 {len(top_month_posts)} 篇")
 
     # 合并去重
     all_posts = {p["id"]: p for p in new_posts}
-    for p in hot_posts:
+    for p in top_week_posts + top_month_posts:
         if p["id"] not in all_posts:
             all_posts[p["id"]] = p
 
     posts_list = list(all_posts.values())
+    print(f"\n合并去重后共 {len(posts_list)} 篇")
+
+    # 可选：按 created_utc 过滤到目标周
+    if date_range is not None:
+        start_dt, end_dt = date_range
+        start_ts = start_dt.timestamp()
+        end_ts = end_dt.timestamp()
+        before = len(posts_list)
+        posts_list = [p for p in posts_list if start_ts <= p.get("created_utc", 0) <= end_ts]
+        print(f"按日期过滤 [{start_dt.date()} ~ {end_dt.date()}]: {before} -> {len(posts_list)} 篇")
 
     # 获取热门帖子的评论
     print("\n获取热门帖子评论...")
-    top_posts = sorted(posts_list, key=lambda x: x["score"], reverse=True)[:10]
+    top_posts = sorted(posts_list, key=lambda x: x.get("score", 0), reverse=True)[:10]
     comments_data = {}
-
     for post in top_posts:
         print(f"  获取评论: {post['title'][:50]}...")
         comments = scraper.get_post_comments(post["id"], limit=30)

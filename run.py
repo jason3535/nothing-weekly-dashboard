@@ -6,6 +6,7 @@ Nothing 用户反馈看板 - 主入口
 
 import sys
 import argparse
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import yaml
@@ -13,6 +14,23 @@ import yaml
 from src.scraper import scrape_weekly_data
 from src.processor import process_data
 from src.generator import generate_dashboard
+
+
+def parse_week(week_str: str) -> dict:
+    """解析 YYYY-WW 格式为 week_info（按 ISO week，周一起始）"""
+    year_str, week_str_num = week_str.split("-")
+    year = int(year_str)
+    week = int(week_str_num)
+    # ISO week 的周一
+    start = datetime.fromisocalendar(year, week, 1)
+    end = start + timedelta(days=6)
+    return {
+        "year": year,
+        "week_number": week,
+        "start_date": start.strftime("%Y-%m-%d"),
+        "end_date": end.strftime("%Y-%m-%d"),
+        "display": f"{year} 年第 {week} 周（{start.strftime('%m月%d日')} - {end.strftime('%m月%d日')}）",
+    }
 
 
 def main():
@@ -26,6 +44,18 @@ def main():
         "--open",
         action="store_true",
         help="生成后自动打开看板"
+    )
+    parser.add_argument(
+        "--week",
+        type=str,
+        default=None,
+        help="目标周 YYYY-WW，如 2026-18。指定后按 created_utc 过滤并锁定 week_info；不指定则按当前周。",
+    )
+    parser.add_argument(
+        "--raw-data",
+        type=str,
+        default=None,
+        help="指定 raw_data 文件路径；不指定则使用 data/ 下最新的。",
     )
     args = parser.parse_args()
 
@@ -43,10 +73,23 @@ def main():
     with open(config_path, "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
 
+    target_week = parse_week(args.week) if args.week else None
+    if target_week:
+        print(f"\n目标周: {target_week['display']}")
+
     # 步骤 1: 抓取数据
-    if not args.skip_scrape:
+    if args.raw_data:
+        raw_data_path = Path(args.raw_data)
+        print(f"\n[1/3] 使用指定 raw_data: {raw_data_path}")
+    elif not args.skip_scrape:
         print("\n[1/3] 抓取 Reddit 数据...")
-        scrape_result = scrape_weekly_data(config, data_dir)
+        # 若指定了目标周，则向 scraper 传入日期窗口
+        date_range = None
+        if target_week:
+            start_dt = datetime.fromisoformat(target_week["start_date"])
+            end_dt = datetime.fromisoformat(target_week["end_date"]).replace(hour=23, minute=59, second=59)
+            date_range = (start_dt, end_dt)
+        scrape_result = scrape_weekly_data(config, data_dir, date_range=date_range)
         raw_data_path = Path(scrape_result["output_file"])
         print(f"抓取完成: {scrape_result['total_posts']} 篇帖子")
     else:
@@ -60,7 +103,7 @@ def main():
 
     # 步骤 2: 处理数据
     print("\n[2/3] 处理数据...")
-    process_result = process_data(config, raw_data_path, data_dir)
+    process_result = process_data(config, raw_data_path, data_dir, target_week=target_week)
     processed_data_path = Path(process_result["output_file"])
     stats = process_result["stats"]
     print(f"处理完成: {stats['total_posts']} 篇软件相关帖子")

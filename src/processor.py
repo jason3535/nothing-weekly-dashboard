@@ -17,12 +17,19 @@ from deep_translator import GoogleTranslator
 class DataProcessor:
     """数据处理器"""
 
-    def __init__(self, config: dict):
+    def __init__(self, config: dict, target_week: Optional[dict] = None):
+        """
+        Args:
+            config: 配置
+            target_week: 可选目标周信息 {"year", "week_number", "start_date", "end_date"}。
+                        传入时会按 created_utc 过滤帖子，并把这个 week_info 写入产物（不再依赖 datetime.now()）。
+        """
         self.config = config
         self.keywords = config.get("keywords", {})
         self.categories = config.get("categories", [])
         self.sentiment_keywords = config.get("sentiment", {})
         self.exclude_keywords = config.get("exclude_keywords", [])
+        self.target_week = target_week
         self.translator = GoogleTranslator(source='en', target='zh-CN')
         self._translation_cache = {}
 
@@ -192,6 +199,10 @@ class DataProcessor:
         """
         posts = raw_data.get("posts", [])
         comments = raw_data.get("comments", {})
+
+        # 按目标周过滤（若指定）
+        if self.target_week:
+            posts, comments = self._filter_by_week(posts, comments, self.target_week)
 
         # 过滤软件相关帖子
         software_posts = self._filter_software_posts(posts)
@@ -934,7 +945,19 @@ class DataProcessor:
         return hot_comments
 
     def _get_week_info(self) -> dict:
-        """获取当前周信息"""
+        """获取周信息：优先返回外部指定的 target_week，否则按当前时间计算"""
+        if self.target_week:
+            tw = self.target_week
+            # 自动补 display
+            if "display" not in tw:
+                start = datetime.fromisoformat(tw["start_date"])
+                end = datetime.fromisoformat(tw["end_date"])
+                tw = {
+                    **tw,
+                    "display": f"{tw['year']} 年第 {tw['week_number']} 周（{start.strftime('%m月%d日')} - {end.strftime('%m月%d日')}）",
+                }
+            return tw
+
         now = datetime.now()
         week_number = now.isocalendar()[1]
         year = now.year
@@ -951,6 +974,21 @@ class DataProcessor:
             "display": f"{year} 年第 {week_number} 周（{start_of_week.strftime('%m月%d日')} - {end_of_week.strftime('%m月%d日')}）",
         }
 
+    def _filter_by_week(self, posts: list, comments: dict, week_info: dict) -> tuple:
+        """按目标周的 [start_date, end_date] 过滤帖子（基于 created_utc）"""
+        start_dt = datetime.fromisoformat(week_info["start_date"])
+        end_dt = datetime.fromisoformat(week_info["end_date"]).replace(hour=23, minute=59, second=59)
+        start_ts = start_dt.timestamp()
+        end_ts = end_dt.timestamp()
+
+        before = len(posts)
+        kept_posts = [p for p in posts if start_ts <= p.get("created_utc", 0) <= end_ts]
+        kept_ids = {p["id"] for p in kept_posts}
+        kept_comments = {k: v for k, v in comments.items() if k in kept_ids}
+
+        print(f"  按周过滤 [{week_info['start_date']} ~ {week_info['end_date']}]: {before} -> {len(kept_posts)} 篇")
+        return kept_posts, kept_comments
+
     def _get_category_name(self, category_id: str) -> str:
         """获取分类名称"""
         for cat in self.categories:
@@ -966,7 +1004,12 @@ class DataProcessor:
         return "#6B7280"
 
 
-def process_data(config: dict, raw_data_path: Path, output_dir: Path) -> dict:
+def process_data(
+    config: dict,
+    raw_data_path: Path,
+    output_dir: Path,
+    target_week: Optional[dict] = None,
+) -> dict:
     """
     处理数据主函数
 
@@ -974,6 +1017,7 @@ def process_data(config: dict, raw_data_path: Path, output_dir: Path) -> dict:
         config: 配置字典
         raw_data_path: 原始数据文件路径
         output_dir: 输出目录
+        target_week: 可选目标周信息，传入会按 created_utc 过滤并锁定 week_info
 
     Returns:
         处理结果
@@ -983,7 +1027,7 @@ def process_data(config: dict, raw_data_path: Path, output_dir: Path) -> dict:
         raw_data = json.load(f)
 
     # 处理数据
-    processor = DataProcessor(config)
+    processor = DataProcessor(config, target_week=target_week)
     processed_data = processor.process(raw_data)
 
     # 添加配置信息
