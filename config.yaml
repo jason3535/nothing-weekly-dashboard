@@ -1,8 +1,9 @@
 # Nothing 用户反馈看板配置
 
 reddit:
-  subreddit: "Nothing"
-  # 每个分类抓取的帖子数量
+  # 社区于 2026-05 迁移：r/Nothing -> r/NothingTech
+  subreddit: "NothingTech"
+  # 每个分类抓取的帖子数量（RSS 抓取下单次最多 25 条/feed，此值仅作上限参考）
   posts_limit: 200
   # 请求间隔（秒），避免被限流
   request_delay: 2
