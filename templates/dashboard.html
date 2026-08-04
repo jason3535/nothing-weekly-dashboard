@@ -308,7 +308,7 @@
                                             {{ issue.title[:80] }}{% if issue.title|length > 80 %}...{% endif %}
                                         </a>
                                         <div class="text-xs text-gray-500 mt-1">
-                                            {{ issue.score }} <span data-cn="赞" data-en="upvotes">赞</span> · {{ issue.num_comments }} <span data-cn="评论" data-en="comments">评论</span>
+                                            {% if issue.score %}{{ issue.score }} <span data-cn="赞" data-en="upvotes">赞</span> · {% endif %}{{ issue.num_comments }} <span data-cn="评论" data-en="comments">评论</span>
                                         </div>
                                     </td>
                                     <td class="py-4">
@@ -529,8 +529,8 @@
                         <p class="text-gray-300 leading-relaxed" data-cn="{{ comment.body }}" data-en="{{ comment.body_en }}">{{ comment.body }}</p>
                         <div class="flex items-center mt-3 text-xs text-gray-500">
                             <span>u/{{ comment.author }}</span>
-                            <span class="mx-2">·</span>
-                            <span class="text-cyan-400 font-medium">{{ comment.score }} <span data-cn="赞" data-en="upvotes">赞</span></span>
+                            {% if comment.score %}<span class="mx-2">·</span>
+                            <span class="text-cyan-400 font-medium">{{ comment.score }} <span data-cn="赞" data-en="upvotes">赞</span></span>{% endif %}
                         </div>
                     </a>
                     {% endfor %}

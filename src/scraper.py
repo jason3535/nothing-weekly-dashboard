@@ -49,6 +49,7 @@ class RedditRSSScraper:
             "Accept": "application/atom+xml, application/xml, text/xml, */*",
             "Accept-Language": "en-US,en;q=0.9",
         })
+        self._retry_wait = 30  # 429 退避秒数(动态跟随 Retry-After)
         # 依次尝试的路由：直连 → 本地 Clash 代理
         self.proxy_routes = [
             None,
@@ -56,20 +57,28 @@ class RedditRSSScraper:
         ]
 
     def _fetch_feed(self, path: str, params: Optional[dict] = None) -> list:
-        """抓取单个 .rss feed 并解析为帖子列表（直连失败自动切代理，各含一次退避重试）"""
+        """抓取单个 .rss feed 并解析为帖子列表（直连失败自动切代理，429 尊重 Retry-After）"""
         url = f"{self.BASE_URL}/r/{self.subreddit}/{path}"
         resp = None
         for proxies in self.proxy_routes:
             route = "direct" if proxies is None else "proxy"
             for attempt in (1, 2):
                 try:
-                    time.sleep(self.request_delay if attempt == 1 else 20)
+                    time.sleep(self.request_delay if attempt == 1 else self._retry_wait)
                     r = self.session.get(url, params=params, timeout=30, proxies=proxies)
                     r.raise_for_status()
                     resp = r
                     break
                 except requests.RequestException as e:
                     print(f"请求失败({route} #{attempt}): {url}, 错误: {e}")
+                    # 429 时按服务端 Retry-After 等待(缺省 30s)，避免持续触发限流
+                    retry_after = 30
+                    if getattr(e, "response", None) is not None and e.response.status_code == 429:
+                        try:
+                            retry_after = min(int(e.response.headers.get("retry-after", 30)), 120)
+                        except (TypeError, ValueError):
+                            pass
+                    self._retry_wait = retry_after
             if resp is not None:
                 break
         if resp is None:
@@ -165,19 +174,42 @@ class RedditRSSScraper:
         return text, True
 
     def get_posts(self) -> list:
-        """聚合多个 feed（new / hot / top-week）并按 id 去重"""
+        """聚合多个 feed（new / hot / top-week）并按 id 去重。
+        记录帖子在 hot / top-week 榜的名次（1 起），作为热度信号（RSS 无 score 的替代）。"""
         all_posts = {}
         feeds = [
-            ("new/.rss", None),
-            (".rss", None),                      # hot
-            ("top/.rss", {"t": "week"}),
+            ("new/.rss", None, None),
+            (".rss", None, "hot_rank"),
+            ("top/.rss", {"t": "week"}, "top_rank"),
         ]
-        for path, params in feeds:
+        for path, params, rank_field in feeds:
             posts = self._fetch_feed(path, params)
             print(f"  {path} -> {len(posts)} 条")
-            for p in posts:
-                all_posts.setdefault(p["id"], p)
+            for i, p in enumerate(posts, 1):
+                existing = all_posts.setdefault(p["id"], p)
+                if rank_field:
+                    existing[rank_field] = i
         return list(all_posts.values())
+
+    def get_comments(self, post_id: str, limit: int = 50) -> list:
+        """抓取单帖 comments/.rss。首条 entry 是帖子本体(t3_)，其余为评论(t1_)。
+        返回与旧 .json 抓取兼容的评论结构；score 不可得(置 0)，
+        feed 顺序即 Reddit 默认 best 排序 → 下游稳定排序后靠前的就是热评。"""
+        entries = self._fetch_feed(f"comments/{post_id}/.rss")
+        comments = []
+        for c in entries:
+            if not c or c.get("id") == post_id:
+                continue  # 跳过帖子本体
+            comments.append({
+                "id": c["id"],
+                "author": c.get("author"),
+                "body": c.get("selftext", ""),
+                "score": 0,  # RSS 不提供
+                "created_utc": c.get("created_utc", 0),
+            })
+            if len(comments) >= limit:
+                break
+        return comments
 
 
 def scrape_weekly_data(
@@ -215,8 +247,27 @@ def scrape_weekly_data(
         posts_list = [p for p in posts_list if start_ts <= p.get("created_utc", 0) <= end_ts]
         print(f"按日期过滤 [{start_dt.date()} ~ {end_dt.date()}]: {before} -> {len(posts_list)} 篇")
 
-    # RSS 无法获取评论，评论数据留空（下游已对空评论做兜底）
+    # 逐帖抓 comments/.rss：恢复真实评论数(num_comments)与评论内容(热门评论用)。
+    # 每帖一次请求(内置限速)，上限 80 帖防失控。
     comments_data = {}
+    # 榜单在榜的优先(它们最可能进 TOP/热门讨论)，最多 40 帖；
+    # 匿名配额 ~10 req/min，评论请求用 8s 间隔防 429。
+    ranked = sorted(posts_list, key=lambda p: (
+        p.get("top_rank", 99), p.get("hot_rank", 99), -p.get("created_utc", 0)))
+    fetch_targets = ranked[:40]
+    saved_delay = scraper.request_delay
+    scraper.request_delay = 8
+    print(f"抓取各帖评论({len(fetch_targets)} 帖, 8s 间隔)...")
+    for idx, p in enumerate(fetch_targets, 1):
+        comments = scraper.get_comments(p["id"])
+        p["num_comments"] = len(comments)
+        if comments:
+            comments_data[p["id"]] = comments
+        if idx % 10 == 0:
+            print(f"  评论进度 {idx}/{len(fetch_targets)}")
+    scraper.request_delay = saved_delay
+    total_comments = sum(len(v) for v in comments_data.values())
+    print(f"评论抓取完成: {total_comments} 条 / {len(comments_data)} 帖有评论")
 
     # 保存原始数据
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -238,7 +289,7 @@ def scrape_weekly_data(
 
     return {
         "total_posts": len(posts_list),
-        "total_comments": 0,
+        "total_comments": total_comments,
         "output_file": str(output_file),
     }
 

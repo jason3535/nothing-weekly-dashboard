@@ -31,6 +31,10 @@ class DataProcessor:
         self.exclude_keywords = config.get("exclude_keywords", [])
         self.target_week = target_week
         self.translator = GoogleTranslator(source='en', target='zh-CN')
+        # 直连失败时的代理备份(translate.google.com 直连时通时断)
+        self._translator_proxy = GoogleTranslator(
+            source='en', target='zh-CN',
+            proxies={"https": "http://127.0.0.1:7890", "http": "http://127.0.0.1:7890"})
         self._translation_cache = {}
 
         # 需要保护的专有名词（不翻译）
@@ -73,6 +77,13 @@ class DataProcessor:
         self.custom_translations = {
         }
 
+    def _do_translate(self, text: str) -> str:
+        """底层翻译：直连失败自动切代理"""
+        try:
+            return self.translator.translate(text)
+        except Exception:
+            return self._translator_proxy.translate(text)
+
     def _translate(self, text: str) -> str:
         """翻译文本（带缓存和错误处理）"""
         if not text or not text.strip():
@@ -111,7 +122,7 @@ class DataProcessor:
                         flags=re.IGNORECASE
                     )
 
-                translated = self.translator.translate(text_to_translate)
+                translated = self._do_translate(text_to_translate)
                 self._translation_cache[text] = translated
                 time.sleep(0.3)
                 return translated
@@ -174,7 +185,7 @@ class DataProcessor:
                 print(f"DEBUG protected_text 替换后: {protected_text}")
 
             # 翻译保护后的文本
-            translated = self.translator.translate(protected_text)
+            translated = self._do_translate(protected_text)
 
             # 恢复专有名词
             for placeholder, original_term in placeholder_map.items():
@@ -508,8 +519,10 @@ class DataProcessor:
         total_engagement = sum(p.get("num_comments", 0) for p in posts)
 
         # 热门问题数（热度 > 20 的帖子）
+        # RSS 无 score → 热度 = 评论数*2 + 榜单名次加成(hot/top-week 榜越靠前越热)
         def calc_heat(post):
-            return post.get("score", 0) + post.get("num_comments", 0) * 2
+            rank_bonus = max(0, 26 - post.get("top_rank", 99)) * 1.5                        + max(0, 26 - post.get("hot_rank", 99))
+            return post.get("score", 0) + post.get("num_comments", 0) * 2 + rank_bonus
         hot_issues_count = sum(1 for p in posts if calc_heat(p) > 20)
 
         negative_ratio = sentiment_dist["negative"] / total_posts * 100 if total_posts > 0 else 0
@@ -531,7 +544,8 @@ class DataProcessor:
         sentiment_weight = {"negative": 1.8, "neutral": 1.0, "positive": 0.4}
 
         def calc_heat(post):
-            base = post.get("score", 0) + post.get("num_comments", 0) * 2
+            rank_bonus = max(0, 26 - post.get("top_rank", 99)) * 1.5                        + max(0, 26 - post.get("hot_rank", 99))
+            base = post.get("score", 0) + post.get("num_comments", 0) * 2 + rank_bonus
             weight = sentiment_weight.get(post.get("sentiment"), 1.0)
             return base * weight
 
@@ -931,7 +945,7 @@ class DataProcessor:
             # 构建评论链接
             post_id = comment.get("post_id", "")
             comment_id = comment.get("id", "")
-            permalink = f"https://www.reddit.com/r/Nothing/comments/{post_id}/comment/{comment_id}/"
+            permalink = f"https://www.reddit.com/r/NothingTech/comments/{post_id}/comment/{comment_id}/"
 
             hot_comments.append({
                 "body": body_cn + ("..." if len(body) > 300 else ""),
