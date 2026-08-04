@@ -92,6 +92,10 @@ def main():
         scrape_result = scrape_weekly_data(config, data_dir, date_range=date_range)
         raw_data_path = Path(scrape_result["output_file"])
         print(f"抓取完成: {scrape_result['total_posts']} 篇帖子")
+        if scrape_result["total_posts"] == 0:
+            # 抓到 0 帖 = 网络/代理/封锁问题，宁可不更新也不要生成空周报覆盖旧版
+            print("错误: 抓取到 0 篇帖子，判定为抓取失败，中止生成（保留现有周报）")
+            sys.exit(1)
     else:
         print("\n[1/3] 跳过抓取，使用现有数据...")
         raw_files = sorted(data_dir.glob("raw_data_*.json"))

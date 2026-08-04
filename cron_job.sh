@@ -12,8 +12,9 @@ echo "========================================" >> "$LOG_FILE"
 echo "开始执行: $(date)" >> "$LOG_FILE"
 echo "========================================" >> "$LOG_FILE"
 
-# 运行爬虫和生成器
-/usr/bin/python3 run.py >> "$LOG_FILE" 2>&1
+# 运行爬虫和生成器；失败(如抓到 0 帖)则中止，不覆盖/不推送旧周报
+/usr/bin/python3 run.py >> "$LOG_FILE" 2>&1 || {
+  echo "run.py 失败，跳过发布" >> "$LOG_FILE"; exit 1; }
 
 echo "----------------------------------------" >> "$LOG_FILE"
 echo "同步到 GitHub Pages..." >> "$LOG_FILE"

@@ -40,21 +40,39 @@ class RedditRSSScraper:
         self.subreddit = subreddit
         self.request_delay = request_delay
         self.session = requests.Session()
+        # 不读环境变量代理：直连/代理两条路由下面显式控制。
+        # Reddit 对 IP 的封锁两边摇摆(2026-05~07 封办公网直连、2026-08 封 Clash 出口)，
+        # 单押一条路都会重现"整月空周报"事故，必须双路 fallback。
+        self.session.trust_env = False
         self.session.headers.update({
             "User-Agent": self.USER_AGENT,
             "Accept": "application/atom+xml, application/xml, text/xml, */*",
             "Accept-Language": "en-US,en;q=0.9",
         })
+        # 依次尝试的路由：直连 → 本地 Clash 代理
+        self.proxy_routes = [
+            None,
+            {"https": "http://127.0.0.1:7890", "http": "http://127.0.0.1:7890"},
+        ]
 
     def _fetch_feed(self, path: str, params: Optional[dict] = None) -> list:
-        """抓取单个 .rss feed 并解析为帖子列表"""
+        """抓取单个 .rss feed 并解析为帖子列表（直连失败自动切代理，各含一次退避重试）"""
         url = f"{self.BASE_URL}/r/{self.subreddit}/{path}"
-        try:
-            time.sleep(self.request_delay)
-            resp = self.session.get(url, params=params, timeout=30)
-            resp.raise_for_status()
-        except requests.RequestException as e:
-            print(f"请求失败: {url}, 错误: {e}")
+        resp = None
+        for proxies in self.proxy_routes:
+            route = "direct" if proxies is None else "proxy"
+            for attempt in (1, 2):
+                try:
+                    time.sleep(self.request_delay if attempt == 1 else 20)
+                    r = self.session.get(url, params=params, timeout=30, proxies=proxies)
+                    r.raise_for_status()
+                    resp = r
+                    break
+                except requests.RequestException as e:
+                    print(f"请求失败({route} #{attempt}): {url}, 错误: {e}")
+            if resp is not None:
+                break
+        if resp is None:
             return []
 
         try:
