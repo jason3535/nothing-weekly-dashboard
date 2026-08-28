@@ -1,0 +1,2117 @@
+{
+  "scraped_at": "2026-08-28T17:19:37.293941",
+  "subreddit": "NothingTech",
+  "source": "rss",
+  "posts": [
+    {
+      "id": "1vxw01a",
+      "title": "Here's the Nothing OS 5.0 open beta timeline",
+      "selftext": "",
+      "author": "adaaamb",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 50,
+      "created_utc": 1787653856.0,
+      "created_time": "2026-08-25T10:30:56",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1vxw01a/heres_the_nothing_os_50_open_beta_timeline/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1vxw01a/heres_the_nothing_os_50_open_beta_timeline/",
+      "link_flair_text": null,
+      "is_self": false,
+      "hot_rank": 1
+    },
+    {
+      "id": "1vxvg2v",
+      "title": "Nothing OS 5.0 (Based on Android 17) Changelogs",
+      "selftext": "- Dedicated Glyph app for the Glyph Interface on the home screen and app drawer. - Split layout option for Quick Settings and notification panel (Settings > Notifications > General > Notification and quick settings). - Bulk home screen icon arrangement via long-press > \"Arrange\". - Three-color status bar indicator for location, sensitive access, and AI processing. - Lucent launcher theme featuring translucent styling and wallpaper-inspired accent colors (Customisation > Theme & Style > Lucent). - Custom color selection for lock screen clock faces. - New lock screen clock face design. - New wallpaper style in the wallpaper gallery. - Clearer, more consistent status bar icon styling. - Geist system typeface and refreshed Settings UI. - Smoother transitions for widgets and Recent Tasks. - Collector widgets to display photos as home screen decorations. - Away Time widgets to track screen-free time and daily habits. - Glyph Timer widget in the widget drawer. - Expanded Dark theme for apps lacking native dark mode support (Settings > Display > Dark theme > Expanded). - Pinch-to-shrink gesture support for Depth effect (Beta) wallpapers. - Refined Live Updates status bar experience for ongoing activities. - Album reordering in Nothing Gallery (Gallery > Albums > Reorder albums). - Optimized Camera UI with fluid animations. - Smoother lock screen shortcut interactions. - Instant connection and disconnection with a single tap of the Bluetooth Quick Settings device icon. - Improved Essential Voice for enhanced voice interactions. - Smart Collections in Essential Space. - MCP support for Essential Space. - Essential Apps Builder on your phone. - Faster everyday system performance. - Enhanced HDR brightness support. - Independent volume control for Assistant. - Enhanced Quick Share file sharing experience. - Improved screen recording features. - Updated location permission settings. - Noto 3D Emoji support. - Translucent Search bar styling. NOS 5.0 Open Beta Rollout Timeline Official Launch Video Link: https://www.youtube.com/watch?v=42BR1TMtz9c Community Website Post Link: https://nothing.community/d/61730-nothing-os-50-new-features-explained",
+      "author": "Griezzy007",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 50,
+      "created_utc": 1787652004.0,
+      "created_time": "2026-08-25T10:00:04",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1vxvg2v/nothing_os_50_based_on_android_17_changelogs/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1vxvg2v/nothing_os_50_based_on_android_17_changelogs/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 2
+    },
+    {
+      "id": "1w0jqqc",
+      "title": "Name a better duo, I’ll wait",
+      "selftext": "",
+      "author": "IGetHugee",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 0,
+      "created_utc": 1787902118.0,
+      "created_time": "2026-08-28T07:28:38",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0jqqc/name_a_better_duo_ill_wait/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0jqqc/name_a_better_duo_ill_wait/",
+      "link_flair_text": null,
+      "is_self": false,
+      "hot_rank": 3
+    },
+    {
+      "id": "1w0ehxg",
+      "title": "Guys my charger ate the battery Percentage",
+      "selftext": "",
+      "author": "Lumpy-Warthog7272",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 8,
+      "created_utc": 1787885157.0,
+      "created_time": "2026-08-28T02:45:57",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0ehxg/guys_my_charger_ate_the_battery_percentage/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0ehxg/guys_my_charger_ate_the_battery_percentage/",
+      "link_flair_text": null,
+      "is_self": false,
+      "hot_rank": 4
+    },
+    {
+      "id": "1w0d28h",
+      "title": "Lock screen showing two times?",
+      "selftext": "Why is my lock screen showing 2 times? Top one is always 10 minutes ahead of the current time. It's not an alarm as far as I can tell, unless there's an alarm setting I'm missing. Any help would be great! I'm on OS 4.1 so not on the beta yet. Edit: it's not an alarm. I use the Google clock app and there are no other clock apps on my phone. Is there an essential space app I'm missing or something? I'm not trolling here. It's also not that noticeable or annoying. Just curiosity.",
+      "author": "wookietiddy",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 20,
+      "created_utc": 1787881198.0,
+      "created_time": "2026-08-28T01:39:58",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0d28h/lock_screen_showing_two_times/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0d28h/lock_screen_showing_two_times/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 5
+    },
+    {
+      "id": "1w02xtf",
+      "title": "Animation so smooth!!!",
+      "selftext": "That expanding animation is so satisfying and smooth",
+      "author": "Ok-Garbage703",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 0,
+      "created_utc": 1787856991.0,
+      "created_time": "2026-08-27T18:56:31",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w02xtf/animation_so_smooth/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w02xtf/animation_so_smooth/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 6
+    },
+    {
+      "id": "1vzuguv",
+      "title": "Best update yet",
+      "selftext": "",
+      "author": "Finbear2",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 31,
+      "created_utc": 1787838451.0,
+      "created_time": "2026-08-27T13:47:31",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1vzuguv/best_update_yet/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1vzuguv/best_update_yet/",
+      "link_flair_text": null,
+      "is_self": false,
+      "hot_rank": 7
+    },
+    {
+      "id": "1w0b6ap",
+      "title": "Is it time for a new phone?",
+      "selftext": "",
+      "author": "mikitakamura",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 11,
+      "created_utc": 1787876087.0,
+      "created_time": "2026-08-28T00:14:47",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0b6ap/is_it_time_for_a_new_phone/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0b6ap/is_it_time_for_a_new_phone/",
+      "link_flair_text": null,
+      "is_self": false,
+      "hot_rank": 8
+    },
+    {
+      "id": "1w0hm4x",
+      "title": "How useful is Essential Space?",
+      "selftext": "I'm planning to move from 2a to 4a this September, can you guys give me an example of where Essential Space is particularly useful? Thank you :D",
+      "author": "tidelust",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 0,
+      "created_utc": 1787894735.0,
+      "created_time": "2026-08-28T05:25:35",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0hm4x/how_useful_is_essential_space/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0hm4x/how_useful_is_essential_space/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 9
+    },
+    {
+      "id": "1w0ggn5",
+      "title": "Sky looking majestic today.",
+      "selftext": "",
+      "author": "Sponx95",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 0,
+      "created_utc": 1787891046.0,
+      "created_time": "2026-08-28T04:24:06",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0ggn5/sky_looking_majestic_today/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0ggn5/sky_looking_majestic_today/",
+      "link_flair_text": null,
+      "is_self": false,
+      "hot_rank": 10
+    },
+    {
+      "id": "1w0izvu",
+      "title": "Please align this properly nothing i have OCD",
+      "selftext": "I think an essential space app update would do the fix",
+      "author": "Notyour-Preda",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 1,
+      "created_utc": 1787899475.0,
+      "created_time": "2026-08-28T06:44:35",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0izvu/please_align_this_properly_nothing_i_have_ocd/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0izvu/please_align_this_properly_nothing_i_have_ocd/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 11
+    },
+    {
+      "id": "1w0jtc2",
+      "title": "Nothing Phone 4a clean dirty lens warning comes up when there is no dust or dirt on the camera lens.",
+      "selftext": "I just bought the Nothing Phone 4a, I've been using it for 5-6 days. I've noticed this issue, the \" clean dirty lens \" warning pops-up when I open the camera app even if there is no dust on the lens. It doesn't happen all the time, just once or twice a day . I check all the lenses using a flash light, there is no visible dust inside. Is this a major issue? Should I send this for a warranty claim?",
+      "author": "LoppyDuck",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 0,
+      "created_utc": 1787902374.0,
+      "created_time": "2026-08-28T07:32:54",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0jtc2/nothing_phone_4a_clean_dirty_lens_warning_comes/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0jtc2/nothing_phone_4a_clean_dirty_lens_warning_comes/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 12
+    },
+    {
+      "id": "1w0js3x",
+      "title": "Glass screen shattered, need assistance",
+      "selftext": "I was traveling via bus and my phone fell off and had a double back flip before landing on its face resulting this It is the main glass screen which is shattered (i didn't have guard on when it fell) Display works completely fine and no dead pixels and no input delay I was wondering if only glass can be replaced and how much will it cost cause there are no examples online and idk if I can trust street peeps. I don't wanna replace the whole display cause this is a deadass 16000 ₹ smartphone and i don't wanna pay 1/3 of its price on screen replacement, if it cannot be changed I'll use it as it is. Also idk which charger to buy online TwT why they don't give chargers with smartphone anymore It's a CMF phone 1 btw bought it a year ago and everything is pretty satisfactory for its price!! And yea i don't have warranty tho i don't think it'll work on this problem",
+      "author": "Apart_Enthusiasm1446",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 7,
+      "created_utc": 1787902253.0,
+      "created_time": "2026-08-28T07:30:53",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0js3x/glass_screen_shattered_need_assistance/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0js3x/glass_screen_shattered_need_assistance/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 13
+    },
+    {
+      "id": "1vzwajv",
+      "title": "Nothing OS 5.0 BETA",
+      "selftext": "Today I have been facing issues with the nothing OS 5.0 beta. I installed beta yesterday and everything was buttery smooth. Whereas since past few hours, the apps are not opening and are being stuck on the opening page. Im not even able to access settings. Restarting my device seems the only solution. Has anyone faced a similar issue?",
+      "author": "sallauddin26",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 15,
+      "created_utc": 1787842582.0,
+      "created_time": "2026-08-27T14:56:22",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1vzwajv/nothing_os_50_beta/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1vzwajv/nothing_os_50_beta/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 14
+    },
+    {
+      "id": "1vzvr85",
+      "title": "What sweatshirt is this",
+      "selftext": "I need to find this , any idea guys?",
+      "author": "devdattaburke",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 11,
+      "created_utc": 1787841384.0,
+      "created_time": "2026-08-27T14:36:24",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1vzvr85/what_sweatshirt_is_this/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1vzvr85/what_sweatshirt_is_this/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 15
+    },
+    {
+      "id": "1vznhwv",
+      "title": "Choosing colour for Nothing Phone 3",
+      "selftext": "Hello guys, I was wondering if you could provide some photos of both colours of the phone 3 because I’m getting one in a week but am thorn between the two colours. Haven’t seen them in person because in my country the phone is sold only online. Help choose a colour. Thanks.",
+      "author": "borizoto_",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 0,
+      "created_utc": 1787817113.0,
+      "created_time": "2026-08-27T07:51:53",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1vznhwv/choosing_colour_for_nothing_phone_3/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1vznhwv/choosing_colour_for_nothing_phone_3/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 16
+    },
+    {
+      "id": "1w0l8bf",
+      "title": "How to check battery health on the global version?",
+      "selftext": "it doesnt show up for me how under then battery health option just the smart charging mode and custom charging mode, how accurate is Devinfo when it comes to calculating battery health?",
+      "author": "WaveFew3916",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 0,
+      "created_utc": 1787907581.0,
+      "created_time": "2026-08-28T08:59:41",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0l8bf/how_to_check_battery_health_on_the_global_version/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0l8bf/how_to_check_battery_health_on_the_global_version/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 17
+    },
+    {
+      "id": "1w0l7zd",
+      "title": "Nothing phone 3a battery",
+      "selftext": "Hello, I bought a nothing phone 3a at the beginning of August. It's a great phone but it seems to drain my battery a lot. Does anyone else have this problem? Maybe I just need to wait until nothing os 5.0",
+      "author": "Filip_More",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 0,
+      "created_utc": 1787907547.0,
+      "created_time": "2026-08-28T08:59:07",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0l7zd/nothing_phone_3a_battery/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0l7zd/nothing_phone_3a_battery/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 18
+    },
+    {
+      "id": "1vzngh3",
+      "title": "My list of MUST HAVE apps on the phone(3) to make the phone 10x more useful",
+      "selftext": "Well this is the list of 3rd party apps that absolutely enhanced my experience with my phone(3) 1. Glyphtick - A pretty neat app to have your own custom clock skin instead of the bland clock nothing gives for the glyph - The developer has given quite a number of beautiful designs which are clean and lovely You can find this app on the playstore 2.Glyphify : By far one of the best apps I've used to maximise the use of the glyph matrix - I really wonder why Nothing hasn't implemented shit that a 3rd party developer could - Absolutely makes the glyph interface useful from a gimmick Some notable features I've seen - . Integrating Google maps to the glyph matrix and it shows directions - saved me a lot of battery on longer runs and just a glance was enough to give me a sense of direction . You can use the native clock app to set up timers and it's somehow more convenient than the inbuilt glyph timer . Glyph progress with multiple apps . Able to set a custom ringtone with a video of your choice and it would be translated to the glyoh matrix (alternative to this feature is a site called better glyph composer) 3.Essential Key+ This absolutely just remaps the essential key to whatever you like based on clicks and long presses - Developer is apparently the moderator of this subreddit as well App is pretty simple to use and does what it promised 4.Hail + Shizuku Well I absolutely hated how meta apps use up my battery and keep running in the background - Hail and shizuku for the save - I set it up to disable the apps once I lock the phone and poof - meta can no longer use my resources in the background and it did save me up quite a lot of battery - you can set up a shortcut to use the apps you need and disable it upon locking - only downside is you wont receive any notifications Notable ones - Glyphbeat Well it is a music visualiser which uses the glyph to show an animation while music is being played - pretty neat app as well but on the gimmick side Few apps might need a payment to use it to it's fullest - but I feel paying a 2 dollar fee is very negligible compared to what I paid for this phone - and I feel it's worth the purchase and I AM NOT BEING PAID BY ANY OF THESE DEVELOPERS FOR THIS POST",
+      "author": "Adalf_Hotler69420",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 0,
+      "created_utc": 1787816968.0,
+      "created_time": "2026-08-27T07:49:28",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1vzngh3/my_list_of_must_have_apps_on_the_phone3_to_make/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1vzngh3/my_list_of_must_have_apps_on_the_phone3_to_make/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 19
+    },
+    {
+      "id": "1vzozj6",
+      "title": "Nothing OS 5.0 brings video presets!",
+      "selftext": "This was actually a feature I’d been thinking about for a while. I wondered why something like this wasn’t available, since it could make videos look really cool. It wasn’t there even up until OS 4.1, and surprisingly, I haven’t seen anyone mention it. At least from what I’ve noticed, it looks really cool. Did this feature exist before OS 5?",
+      "author": "PotentialToe6582",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 10,
+      "created_utc": 1787822481.0,
+      "created_time": "2026-08-27T09:21:21",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1vzozj6/nothing_os_50_brings_video_presets/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1vzozj6/nothing_os_50_brings_video_presets/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 20
+    },
+    {
+      "id": "1w0ke94",
+      "title": "Do you have to sign up beforehand to avail Nothing OS 5 beta on NP3?",
+      "selftext": "I have seen so many NP 3 users updating to the OS 5.0 beta, but on my phone there is no option to upgrade to the beta version. So, I was wondering if you have to sign up beforehand to get the update.",
+      "author": "bandit_05",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 3,
+      "created_utc": 1787904525.0,
+      "created_time": "2026-08-28T08:08:45",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0ke94/do_you_have_to_sign_up_beforehand_to_avail/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0ke94/do_you_have_to_sign_up_beforehand_to_avail/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 21
+    },
+    {
+      "id": "1w0k7je",
+      "title": "Best ear buds for 4a Pro?",
+      "selftext": "I recently switched from an IPhone to the Nothing 4a Pro. I had already bought the AirPods 3 Pro earlier this year and I've had some problems using them on this Phone. Since Apple is certainly not gonna increase compatibility and Nothing can't do much either I am looking for different EarBuds. I know that the Samsung Galaxy Buds 4 pro are about as good, if not better, than the airpods, but they also seem to have some issues (though less than the airpods) when used on non samsung Phones. The new Ear 4a should work the best compatibility wise, but I fear they are going to be too much of a downgrade for me in terms of audio quality and ANC. What EarBuds would be best and how bad is it to use the samsung buds on non samsung devices? Thank you for the help",
+      "author": "DieTelekom",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 0,
+      "created_utc": 1787903864.0,
+      "created_time": "2026-08-28T07:57:44",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0k7je/best_ear_buds_for_4a_pro/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0k7je/best_ear_buds_for_4a_pro/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 22
+    },
+    {
+      "id": "1vzsjpq",
+      "title": "Nothing users right now...",
+      "selftext": "",
+      "author": "Roy_Editz",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 16,
+      "created_utc": 1787833618.0,
+      "created_time": "2026-08-27T12:26:58",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1vzsjpq/nothing_users_right_now/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1vzsjpq/nothing_users_right_now/",
+      "link_flair_text": null,
+      "is_self": false,
+      "hot_rank": 23
+    },
+    {
+      "id": "1w0ju2z",
+      "title": "Should i get the 4a pro or wait for the next line up?",
+      "selftext": "I’m not quite sure if this is the subreddit for, if not, please redirect me to the proper one, thank you! I’ve been thinking of upgrading my phone and recently I remembered the Nothing phones exist. From what I’ve seen, they are pretty decent. But i was wondering is it worth to buy a phone now, or wait for the next line up? From my research, they release phones July or March so tbh it isn’t that of a long wait.",
+      "author": "animeloveuwu",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 7,
+      "created_utc": 1787902455.0,
+      "created_time": "2026-08-28T07:34:15",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0ju2z/should_i_get_the_4a_pro_or_wait_for_the_next_line/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0ju2z/should_i_get_the_4a_pro_or_wait_for_the_next_line/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 24
+    },
+    {
+      "id": "1w0js09",
+      "title": "Nothing Phone 2 won't connect to Wi-Fi",
+      "selftext": "I've been having this error for 7 hours now, and it's preventing me from connecting to Wi-Fi.I can't use the hotspot; no networks appear, not even my own modem.I need to know if there is a solution. A few hours ago the Wi-Fi was working, then my phone ran out of battery and when I turned it back on, the Wi-Fi simply stopped connecting.I've already contacted Nothing and I'm waiting for a response. I need a solution. I've restarted it several times, done a factory reset, and even downgraded to Android 15, but nothing works; it won't connect to Wi-Fi. Only Bluetooth and mobile data work. I hope someone who has had this exact problem will post a solution; I honestly put a lot of effort into getting this phone.",
+      "author": "MarcoCloss234",
+      "score": 0,
+      "upvote_ratio": 0,
+      "num_comments": 0,
+      "created_utc": 1787902245.0,
+      "created_time": "2026-08-28T07:30:45",
+      "url": "https://www.reddit.com/r/NothingTech/comments/1w0js09/nothing_phone_2_wont_connect_to_wifi/",
+      "permalink": "https://www.reddit.com/r/NothingTech/comments/1w0js09/nothing_phone_2_wont_connect_to_wifi/",
+      "link_flair_text": null,
+      "is_self": true,
+      "hot_rank": 25
+    }
+  ],
+  "comments": {
+    "1vxw01a": [
+      {
+        "id": "t1_p5sew1u",
+        "author": "Brokeshadow",
+        "body": "Why are people being mad about the Phone 2 not getting it 😭 you were promised 3 updates, you got 3. Also OS 5 isn't where the support fully ends, you will still get the minor updates they make, like 5.1 and most of the app based updates too.",
+        "score": 0,
+        "created_utc": 1787660426.0
+      },
+      {
+        "id": "t1_p5sfg9t",
+        "author": "Extension-Army3700",
+        "body": "It was the same with phone 1 last year After a few months the hate stopped",
+        "score": 0,
+        "created_utc": 1787660607.0
+      },
+      {
+        "id": "t1_p673r2r",
+        "author": "youcallyourselfajerk",
+        "body": "What are you implying, that this backlash is unjustified? Good for you that you're included in the update timeline, but you can't blame us to at least attempt to get our voice heard. The only thing I know is if we don't complain, they have no reason to reconsider their decision. If they still don't change their mind, there'll be no reason for me to keep yelling at a wall and I'll just let it go and consider another phone brand when it's time for me to switch. That's how every consumer-brand relationship has ever worked in any healthy consumer market, it's as simple as that.",
+        "score": 0,
+        "created_utc": 1787832322.0
+      },
+      {
+        "id": "t1_p68nez4",
+        "author": "Brokeshadow",
+        "body": "Actually, fair, I think logistically there may be valid reasons why they might not wanna do that but what you say also sounds fair and I'd want extra support too so I have nothing. Go get our voice out!",
+        "score": 0,
+        "created_utc": 1787847552.0
+      },
+      {
+        "id": "t1_p68e5k5",
+        "author": "DevarshSuthar",
+        "body": "If the hardware is more than capable of supporting the update, holding back just because we got all that was promised doesn't seem fair. If 2a, which was almost half the price of 2 and a lesser cpu can get it, so should 2.",
+        "score": 0,
+        "created_utc": 1787845226.0
+      },
+      {
+        "id": "t1_p66vznm",
+        "author": "youcallyourselfajerk",
+        "body": "They promised us \" 3 years of Android updates and 4 years of security updates \". Phone (2) released in July 2023, with NOS 2 staggered across two android updates. Missing that time frame by about a few months, it feels petty to leave their flagship (2) out of the cycle, and hurts extra hard when the (a) and CMF lines of the same generation, with significantly less powerful specs all across the board, are included in the update. Besides, I don't care about android updates, I got Nothing specifically because I wanted as little of the Google ecosystem to show up in my phone in the first place, I care about NOS update. NOS 5 shapes out to be a milestone update compared to the relatively more subdued NOS 4. It would have been nice to finish this generation with a bang. Yes, they don't owe us a new android update, but considering the flagship nature of (2) and its closeness in design with (2a), it would have been a nice gesture to include the whole (2x) line in the timeline. Especially given their talk at the time of \"promoting a more sustainable smartphone industry, with recycled materials, and beautiful products that you feel proud to own\".",
+        "score": 0,
+        "created_utc": 1787829526.0
+      },
+      {
+        "id": "t1_p67lsib",
+        "author": "Brokeshadow",
+        "body": "I totally agree with you that the Phone 2 can handle the OS5 and it would be a lovely gesture to include it in the rollout. I assume the logistical issue is money. The profit they make off Phone 2 is calculated based on 3 years of support. I think adding another year would cut down on money there. Still, I see you, I would also love if my very capable phone was supported longer, it is a total win in every single way. What is so shit tho is so many people acting all rude and petty as if the OS 5 was already confirmed for the 2. Like they're acting all surprised as if it wasn't told to them before the phone even launched.",
+        "score": 0,
+        "created_utc": 1787837798.0
+      },
+      {
+        "id": "t1_p68fg03",
+        "author": "DevarshSuthar",
+        "body": "Cut down on money how? I think it will only ause old customers like me to averse from buying Nothing in the future.",
+        "score": 0,
+        "created_utc": 1787845553.0
+      },
+      {
+        "id": "t1_p6b41p3",
+        "author": "youcallyourselfajerk",
+        "body": "I do get that keeping update support on multiple phones can get costly, although Phone (2) was still sold at a consequent price and I'm sure one more update wouldn't have put them in the red either. Either way, even if they don't officially support it, I still hope they would at least offer some sort of unmaintained \"you're on your own\" support and let us free to install it at our own risks.",
+        "score": 0,
+        "created_utc": 1787870389.0
+      },
+      {
+        "id": "t1_p5slxqb",
+        "author": "Strange-Peanut-3348",
+        "body": "Reading from NP1 🥲",
+        "score": 0,
+        "created_utc": 1787662608.0
+      },
+      {
+        "id": "t1_p5tbaz1",
+        "author": "RainyBeast736",
+        "body": "https://giphy.com/gifs/3og0Iv2bqNQVZ3RWow",
+        "score": 0,
+        "created_utc": 1787669621.0
+      },
+      {
+        "id": "t1_p5tnqtw",
+        "author": "Jumpng_froghavnolegs",
+        "body": "https://giphy.com/gifs/OEKh3IVrmwszpXrV0Y",
+        "score": 0,
+        "created_utc": 1787672841.0
+      },
+      {
+        "id": "t1_p5rxjgo",
+        "author": "Difficult-Depth-7455",
+        "body": "Nothing always discriminating cmf man🥀",
+        "score": 0,
+        "created_utc": 1787653972.0
+      },
+      {
+        "id": "t1_p5s1asb",
+        "author": "Simply_Param",
+        "body": "I mean, they're prioritising users who are their highest paying/highest tier ones.",
+        "score": 0,
+        "created_utc": 1787655532.0
+      },
+      {
+        "id": "t1_p5xd9as",
+        "author": "menzaskaja",
+        "body": "god forbid the company makes the strategic choice to not release an unstable beta version with probably multiple possible issues regarding resource usage on their two worst phones they're selling aw man i cant install the new experimental floating tyres on my 2004 toyota corolla damn:(",
+        "score": 0,
+        "created_utc": 1787709735.0
+      },
+      {
+        "id": "t1_p5ryjbv",
+        "author": "html_malvax",
+        "body": "This is a channel for Nothing, and CMF might say so today. Today is the presentation of Nothing OS 5.0, right?",
+        "score": 0,
+        "created_utc": 1787654398.0
+      },
+      {
+        "id": "t1_p5z4yhr",
+        "author": "anuragsins1991",
+        "body": "it's better to not release beta on cmf/budget phones, bricking those phones will have a bigger impact on the person using them.",
+        "score": 0,
+        "created_utc": 1787737322.0
+      },
+      {
+        "id": "t1_p5sputx",
+        "author": "fruitless_tux",
+        "body": "I really hope that NOS5 isn’t as flawed as NOS4 and NOS4.1.",
+        "score": 0,
+        "created_utc": 1787663774.0
+      },
+      {
+        "id": "t1_p5s1tph",
+        "author": "Infamous_Bison_5650",
+        "body": "There's no flagship this year so can't they extend nothing phone 2 support by 1 year instead So we can buy the next flagship next year🤌",
+        "score": 0,
+        "created_utc": 1787655740.0
+      },
+      {
+        "id": "t1_p5s5byl",
+        "author": "soniiic",
+        "body": "Your phone doesn't stop working when the update comes out for other devices",
+        "score": 0,
+        "created_utc": 1787657081.0
+      },
+      {
+        "id": "t1_p5s6d6i",
+        "author": "Infamous_Bison_5650",
+        "body": "My dude it's called brand retention. Everyone knows the phones won't stop working. As I wont get the next android update and as nothing doesn't have a new flagship I might as well shift to another company and exchange this phone right so if nothing as a brand wants to keep me in their ecosystem while not having a new flagship they might as well give me the latest updates.",
+        "score": 0,
+        "created_utc": 1787657460.0
+      },
+      {
+        "id": "t1_p5smb3t",
+        "author": "19_Cornelius_19",
+        "body": "Who tf just keeps buying a new phone constantly? The phone came out 3 years ago... You're practically trying to get rid of a brand new phone for a newer phone just for the sake of it...",
+        "score": 0,
+        "created_utc": 1787662719.0
+      },
+      {
+        "id": "t1_p5tlp2k",
+        "author": "Infamous_Bison_5650",
+        "body": "Some of us have money to spend on phones and want the latest android and it's not out fault we like nothing and they didn't release a new flagship this year I don't know what's so hard to understand",
+        "score": 0,
+        "created_utc": 1787672323.0
+      },
+      {
+        "id": "t1_p5s9gep",
+        "author": "icedchocolatecake",
+        "body": "Why would they give you the latest updates?",
+        "score": 0,
+        "created_utc": 1787658579.0
+      },
+      {
+        "id": "t1_p5scqru",
+        "author": "Infamous_Bison_5650",
+        "body": "Because they don't have a new latest gen flagship I can upgrade to¿",
+        "score": 0,
+        "created_utc": 1787659716.0
+      },
+      {
+        "id": "t1_p5u5497",
+        "author": "icedchocolatecake",
+        "body": "They do. It's called the Phone (3). You're not entitled to anything.",
+        "score": 0,
+        "created_utc": 1787677164.0
+      },
+      {
+        "id": "t1_p5xm780",
+        "author": "Mythun4523",
+        "body": "Why would a phone 2 user upgrade to phone 3?",
+        "score": 0,
+        "created_utc": 1787712759.0
+      },
+      {
+        "id": "t1_p5xvprt",
+        "author": null,
+        "body": "[deleted]",
+        "score": 0,
+        "created_utc": 1787716244.0
+      },
+      {
+        "id": "t1_p5xxiiz",
+        "author": "Mythun4523",
+        "body": "I didn't ask for it? Are you obtuse?",
+        "score": 0,
+        "created_utc": 1787716944.0
+      },
+      {
+        "id": "t1_p5xynp0",
+        "author": "icedchocolatecake",
+        "body": "My bad, thought you were that same commenter.",
+        "score": 0,
+        "created_utc": 1787717396.0
+      },
+      {
+        "id": "t1_p5sfw2i",
+        "author": "Extension-Army3700",
+        "body": "You paid for 3 years so you get 3 years simple as that",
+        "score": 0,
+        "created_utc": 1787660748.0
+      },
+      {
+        "id": "t1_p5tm5ym",
+        "author": "Infamous_Bison_5650",
+        "body": "Nah bro many brands have given plus one year of updates when faced with backlash. You can research samsung phones if you want even their budget lines got 1 more year of updates due to community demand. What I don't understand is why you people are so hell bent on supporting the company when it doesn't concern your phone model!",
+        "score": 0,
+        "created_utc": 1787672443.0
+      },
+      {
+        "id": "t1_p5u4qiq",
+        "author": "Extension-Army3700",
+        "body": "You knew what you were buying so dont act surprised that you got exactly what you were promised. Its not like your phone will magically stop working because you dont get the newest update. Has it worked last year with the phone 1? No. So why would it work now. If you couldn't tell they want to get rid of the non essential AI devices as soon as possible. If you look at the newer updates its all AI \"improvements\" and bug fixes. You aren't missing out on anything. They do not want to create separate system versions for the non ai devices. The NOS 5.0 while yes, being a bigger update, taking away the AI features its almost all widget related.",
+        "score": 0,
+        "created_utc": 1787677069.0
+      },
+      {
+        "id": "t1_p66xd4s",
+        "author": "youcallyourselfajerk",
+        "body": "Phone (2) released in July 2023 alongside Nothing OS 2. Announcing NOS 5 only a month after that limit and including the less powerful (2a) and CMF 2 Pro feels like they are purposefully leaving Phone (2) out.",
+        "score": 0,
+        "created_utc": 1787830043.0
+      },
+      {
+        "id": "t1_p671h03",
+        "author": "Extension-Army3700",
+        "body": "It was clear from the start that it is 3 years of updates.",
+        "score": 0,
+        "created_utc": 1787831534.0
+      },
+      {
+        "id": "t1_p6750ed",
+        "author": "youcallyourselfajerk",
+        "body": "Maybe, but leaving out a flagship out of an update for a couple months difference still feels petty. It's not about a contract, I'm not going to sue Nothing into a class action lawsuit for daring not giving me the updates I'm entitled to. It's about optics and feeling respected as a consumer, if I'm feeling like a second class citizen, I'll just reconsider my brand loyalty and get my business somewhere else when it's time for me to switch. Simple as that.",
+        "score": 0,
+        "created_utc": 1787832744.0
+      },
+      {
+        "id": "t1_p5ryija",
+        "author": "General-Warning-2429",
+        "body": "RIP Phone 2. Also get fcked Nothing for supporting lower end phones.",
+        "score": 0,
+        "created_utc": 1787654388.0
+      },
+      {
+        "id": "t1_p5rz0ot",
+        "author": "Extension-Army3700",
+        "body": "They kept their 3 years of updates promise.",
+        "score": 0,
+        "created_utc": 1787654602.0
+      },
+      {
+        "id": "t1_p5rzyi3",
+        "author": "Sam_Stokman",
+        "body": "Yeah but thats the bare minimum, for a premium phone, they should extend the support.+",
+        "score": 0,
+        "created_utc": 1787654993.0
+      },
+      {
+        "id": "t1_p5s0qw3",
+        "author": "knowing_proceeding",
+        "body": "Yeah man, they’re also skipping the yearly number series. They should definitely extend OS support for number series.",
+        "score": 0,
+        "created_utc": 1787655310.0
+      },
+      {
+        "id": "t1_p5s1d6w",
+        "author": "Desperate-Line-1806",
+        "body": "Are you not aware of the parts crisis lol, it's even affecting major brands, nothing is struggling for sure",
+        "score": 0,
+        "created_utc": 1787655559.0
+      },
+      {
+        "id": "t1_p5s1nc4",
+        "author": "knowing_proceeding",
+        "body": "I don't think that's why they're skipping the yearly numbered series",
+        "score": 0,
+        "created_utc": 1787655671.0
+      },
+      {
+        "id": "t1_p5s1wfa",
+        "author": "Desperate-Line-1806",
+        "body": "Sure man, I'm pretty sure there's a more logical reasoning behind it when even Samsung, a ram manufacturer, doesn't have enough ram for themselves.",
+        "score": 0,
+        "created_utc": 1787655770.0
+      },
+      {
+        "id": "t1_p5vtc98",
+        "author": "Then-Pay-8400",
+        "body": "THAT'S NOT THE REASON!!!!!!! It's because \"they want every upgrade to feel significant\" and because \"4a is closer to a flagship\" /s",
+        "score": 0,
+        "created_utc": 1787692373.0
+      },
+      {
+        "id": "t1_p5vl957",
+        "author": "Mythun4523",
+        "body": "Yeah that's why they skipped a year between 2&3. The Ram crisis of 2024.",
+        "score": 0,
+        "created_utc": 1787690257.0
+      },
+      {
+        "id": "t1_p5w5454",
+        "author": "Desperate-Line-1806",
+        "body": "Nothing has always had their own hurdles with supplying parts, look up all the videos where carl himself talks about it. Also, AI was widely available for consumers in 2024, I wouldn't be surprised if they weren't sold enough ram for a 2024 release. Sure, major brands like Apple or Google could've negotiated, but nothing isn't there yet.",
+        "score": 0,
+        "created_utc": 1787695653.0
+      },
+      {
+        "id": "t1_p5s2n40",
+        "author": "knowing_proceeding",
+        "body": "It does play a role, but Nothing has said that they’re skipping the yearly numbered iteration because they want to make a major upgrade to the phone rather than just change the number with marginal changes every year.",
+        "score": 0,
+        "created_utc": 1787656063.0
+      },
+      {
+        "id": "t1_p5vth2a",
+        "author": "Then-Pay-8400",
+        "body": "Lol did you seriously believe that? Do you think Carl Pei would say \"yeah we can't afford RAM so no flagship\"? He made up some bullshit",
+        "score": 0,
+        "created_utc": 1787692409.0
+      },
+      {
+        "id": "t1_p5uzzpt",
+        "author": "BigCamel7695",
+        "body": "Nope they don't owe you anything. Take it it leave it.",
+        "score": 0,
+        "created_utc": 1787684821.0
+      },
+      {
+        "id": "t1_p5s0iot",
+        "author": "Desperate-Line-1806",
+        "body": "Literally no brand does this except apple for the iphone 11 because iOS 26 was a disaster.",
+        "score": 0,
+        "created_utc": 1787655218.0
+      }
+    ],
+    "1vxvg2v": [
+      {
+        "id": "t1_p5rx4nz",
+        "author": "Griezzy007",
+        "body": "https://preview.redd.it/laj33qdi0ilh1.png?width=2048&format=png&auto=webp&s=976119d7f8c587f12f44d6b46f6c74aac92ecad1",
+        "score": 0,
+        "created_utc": 1787653793.0
+      },
+      {
+        "id": "t1_p61vosh",
+        "author": "ShadowMonarch00",
+        "body": "I saw that; I'm on np2 and I'd like to get it,is there any way I can download it unofficially",
+        "score": 0,
+        "created_utc": 1787766518.0
+      },
+      {
+        "id": "t1_p64zs1y",
+        "author": "RohanRKO",
+        "body": "It depends on the custom rom community if they can port it.",
+        "score": 0,
+        "created_utc": 1787798907.0
+      },
+      {
+        "id": "t1_p66q6yf",
+        "author": "Griezzy007",
+        "body": "[ Removed by Reddit ]",
+        "score": 0,
+        "created_utc": 1787827223.0
+      },
+      {
+        "id": "t1_p5rujek",
+        "author": "Sea-Cartographer-883",
+        "body": "Widget widget widget",
+        "score": 0,
+        "created_utc": 1787652649.0
+      },
+      {
+        "id": "t1_p5wlra4",
+        "author": "py_blu",
+        "body": "Widgets are underrated, they got their recognition now",
+        "score": 0,
+        "created_utc": 1787700790.0
+      },
+      {
+        "id": "t1_p5rwvqj",
+        "author": "AbsurdismForTheW",
+        "body": "I hope they allow for any app to use widgets on lock screen, the nothing weather app keeps asking for Bluetooth and Wi-Fi scanning(a.k.a 'location accuracy or whatever tf google calls it), tf you need that for weather? EDIT: Seems like specifically Google's 'location accuracy' toggle might be causing this, again, don't see why it needs that, weather doesn't need very accurate location This is what I keep getting, location is on, the other two are not, I keep getting bombarded with this prompt every time I open the app. Also I've moved almost my entire stack of apps to FOSS alternatives, so hope they allow for custom apps widgets on lock screen https://preview.redd.it/tjrl9lok4klh1.png?width=1080&format=png&auto=webp&s=3967c5667723bd1e48101c249e21bb2aaeece81a",
+        "score": 0,
+        "created_utc": 1787653685.0
+      },
+      {
+        "id": "t1_p5t77x1",
+        "author": "preposterous420",
+        "body": "It doesn't ask for Bluetooth for me seemingly",
+        "score": 0,
+        "created_utc": 1787668555.0
+      },
+      {
+        "id": "t1_p5t7r3t",
+        "author": "AbsurdismForTheW",
+        "body": "Bluetooth scanning, not Bluetooth, Bluetooth scanning and Wi-Fi scanning are methods used to identify devices nearby you and thus accurately locate you to like within a small room, which is not even REMOTELY needed for a fkin weather app",
+        "score": 0,
+        "created_utc": 1787668696.0
+      },
+      {
+        "id": "t1_p5t80iu",
+        "author": "preposterous420",
+        "body": "Oohh I see thanks",
+        "score": 0,
+        "created_utc": 1787668765.0
+      },
+      {
+        "id": "t1_p5u97ij",
+        "author": "icedchocolatecake",
+        "body": "https://giphy.com/gifs/LT4RpvI9r1rbpm9OVn",
+        "score": 0,
+        "created_utc": 1787678191.0
+      },
+      {
+        "id": "t1_p5u9tr8",
+        "author": "AbsurdismForTheW",
+        "body": "🤣, okay bro, stay in your own world lmfao",
+        "score": 0,
+        "created_utc": 1787678345.0
+      },
+      {
+        "id": "t1_p5uarq6",
+        "author": "icedchocolatecake",
+        "body": "Seems to work for me. Stop spreading misinformation lmao. https://preview.redd.it/ks9ghd882klh1.png?width=1080&format=png&auto=webp&s=3534374826b10be7b77dc1b2f3c7c15c8245e935",
+        "score": 0,
+        "created_utc": 1787678577.0
+      },
+      {
+        "id": "t1_p5ubvfg",
+        "author": "AbsurdismForTheW",
+        "body": "Keep getting spammed with this fucking prompt every single time I open the goddamn app, MULTIPLE TIMES Seems like location accuracy is what's causing it https://preview.redd.it/csgm73r03klh1.png?width=1080&format=png&auto=webp&s=73963cb14f8adc12a9ed76bcc251e309c199e1e1",
+        "score": 0,
+        "created_utc": 1787678844.0
+      },
+      {
+        "id": "t1_p5uc0e3",
+        "author": "icedchocolatecake",
+        "body": "Do you have location off? No wonder it doesn't work lmaoo",
+        "score": 0,
+        "created_utc": 1787678878.0
+      },
+      {
+        "id": "t1_p5uc4ks",
+        "author": "AbsurdismForTheW",
+        "body": "Location is on",
+        "score": 0,
+        "created_utc": 1787678906.0
+      },
+      {
+        "id": "t1_p5uhygm",
+        "author": "icedchocolatecake",
+        "body": "Just you. Works for me.",
+        "score": 0,
+        "created_utc": 1787680331.0
+      },
+      {
+        "id": "t1_p5rvu03",
+        "author": "Jayden_hazard",
+        "body": "What's the point of blur if it's only for the widgets? What about notification drawer and app drawer?",
+        "score": 0,
+        "created_utc": 1787653229.0
+      },
+      {
+        "id": "t1_p600gsh",
+        "author": "Jan-KURD",
+        "body": "They are very slow in terms of introducing changes or even cosmetic changes. They lack so many base apps and instead use google ones, the community has already made those and i can't believe that Nothing doesn't have the resources to make simple apps.",
+        "score": 0,
+        "created_utc": 1787749018.0
+      },
+      {
+        "id": "t1_p5rwy30",
+        "author": "AppropriateOrder4452",
+        "body": "They've put a post in the community https://nothing.community/d/61730",
+        "score": 0,
+        "created_utc": 1787653713.0
+      },
+      {
+        "id": "t1_p5ru0j3",
+        "author": "mactrash888",
+        "body": "Does the battery widget now show battery level of apt-x adaptive headphones battery level ？",
+        "score": 0,
+        "created_utc": 1787652409.0
+      },
+      {
+        "id": "t1_p5rvy1q",
+        "author": "Big_Cauliflower_5436",
+        "body": "Watch 2 pro update 🥲🥲",
+        "score": 0,
+        "created_utc": 1787653278.0
+      },
+      {
+        "id": "t1_p5s4d11",
+        "author": "dimitronios",
+        "body": "How can I sign up for beta?",
+        "score": 0,
+        "created_utc": 1787656718.0
+      },
+      {
+        "id": "t1_p5ryr0t",
+        "author": "_Bnda_",
+        "body": "Not a bad Update but not Good as well. i hoped for more substance, most of the things are just visual changes. I hoped maybe essential apps with be out of Beta , or major improvement on Essential space, or some antive apps or major camera improvement good things are like OS looks so mcyh more beautiful, More colours with nothing feeling and they have talked about model update I am still hopeful , its just the first look, maybe they did things which weren't highlighted in the announcement",
+        "score": 0,
+        "created_utc": 1787654488.0
+      },
+      {
+        "id": "t1_p5rwqvs",
+        "author": "badavarascal16",
+        "body": "Boy oh boy, it really is nothing There are things apart from widgets ffs",
+        "score": 0,
+        "created_utc": 1787653627.0
+      },
+      {
+        "id": "t1_p5rvsco",
+        "author": "Zealousideal-Try7717",
+        "body": "Not bad better than 4.0",
+        "score": 0,
+        "created_utc": 1787653209.0
+      },
+      {
+        "id": "t1_p5rw0w9",
+        "author": "soulMAYANKyt",
+        "body": "Is this confirmed?",
+        "score": 0,
+        "created_utc": 1787653314.0
+      },
+      {
+        "id": "t1_p5rwpgl",
+        "author": "Ok_Low_3866",
+        "body": "This is what we know so far...",
+        "score": 0,
+        "created_utc": 1787653611.0
+      },
+      {
+        "id": "t1_p5rwrcs",
+        "author": "Silent_Strategy_6708",
+        "body": "I hope they give some new features for the glyph bar on 4A and 4B",
+        "score": 0,
+        "created_utc": 1787653633.0
+      },
+      {
+        "id": "t1_p5skby4",
+        "author": "Ok-N3xt",
+        "body": "Is anyone facing issue with NFC as when I turn off this option? I still need to unlock my phone in order for NFC to work. https://preview.redd.it/8rnkkvabpilh1.png?width=1260&format=png&auto=webp&s=d91365875cce7f4222d8a2862c90fad7e38134a6",
+        "score": 0,
+        "created_utc": 1787662127.0
+      },
+      {
+        "id": "t1_p5rzuf3",
+        "author": "East-School2040",
+        "body": "Secondo voi ci sarà un miglioramento dell'autonomia?",
+        "score": 0,
+        "created_utc": 1787654947.0
+      },
+      {
+        "id": "t1_p5s5bls",
+        "author": "badwolf68210",
+        "body": "Do we know if, after updating, it will still be possible to install APKs from sources other than the Play Store?",
+        "score": 0,
+        "created_utc": 1787657078.0
+      },
+      {
+        "id": "t1_p5sf8i5",
+        "author": "arkblemish",
+        "body": "What about nothing phone 2",
+        "score": 0,
+        "created_utc": 1787660538.0
+      },
+      {
+        "id": "t1_p5sfi19",
+        "author": "Griezzy007",
+        "body": "It won't receive any more major Android updates.",
+        "score": 0,
+        "created_utc": 1787660623.0
+      },
+      {
+        "id": "t1_p5sh946",
+        "author": "arkblemish",
+        "body": "Damm 😮",
+        "score": 0,
+        "created_utc": 1787661177.0
+      },
+      {
+        "id": "t1_p5si6b9",
+        "author": "LinkinMode",
+        "body": "looks pretty good, still don't really care for any of the AI/Essential stuff but everything else seems like solid QOL and aesthetic changes. being able to change the lockscreen clock colour is well overdue. excited to try the beta",
+        "score": 0,
+        "created_utc": 1787661467.0
+      },
+      {
+        "id": "t1_p5sn1jk",
+        "author": "OnlyAd7216",
+        "body": "Hang on, does this mean the Nothing 2 doesn't get an update. Why does the 2a if the 2 doesn't?",
+        "score": 0,
+        "created_utc": 1787662940.0
+      },
+      {
+        "id": "t1_p5snydq",
+        "author": "RenegadeUK",
+        "body": "Thanks very much for the above.",
+        "score": 0,
+        "created_utc": 1787663214.0
+      },
+      {
+        "id": "t1_p5t5mhy",
+        "author": "microwavecoven",
+        "body": "Has anyone noticed buggy performance in sound recorder since update? I just made a recording of guitar and drums and it's garbage. Worked fine before",
+        "score": 0,
+        "created_utc": 1787668133.0
+      },
+      {
+        "id": "t1_p5t9p7y",
+        "author": "Total-Cap-9644",
+        "body": "Let's hope they fix the weird camera processing this time 😕",
+        "score": 0,
+        "created_utc": 1787669203.0
+      },
+      {
+        "id": "t1_p5tfp9n",
+        "author": "Commercial-Heart5043",
+        "body": "I'm so excited, yay!",
+        "score": 0,
+        "created_utc": 1787670772.0
+      },
+      {
+        "id": "t1_p5u97gc",
+        "author": "qnx_guy",
+        "body": "What about Linux Terminal support on devices with Mediatek processor (CMF Phone 2 Pro, NP 3a Lite)?",
+        "score": 0,
+        "created_utc": 1787678190.0
+      },
+      {
+        "id": "t1_p5v6inj",
+        "author": "No_Ordinary_9277",
+        "body": "People complaining like if this is a Windows XP-WINDOWS 7 transition, bro, is just and android update. Im pretty sure we have a better OS than any chinese Copycat maker. And this is much better.",
+        "score": 0,
+        "created_utc": 1787686480.0
+      },
+      {
+        "id": "t1_p5xt7k4",
+        "author": "h_1995",
+        "body": "does this mean I can bring my own, private and perhaps local AI agent to handle and process Essential Space data? Overall this looks better than 4.0 reveal that was pretty much nothing than something.",
+        "score": 0,
+        "created_utc": 1787715291.0
+      },
+      {
+        "id": "t1_p5yxbvi",
+        "author": "ShadowMonarch00",
+        "body": "Can I get it for phone 2",
+        "score": 0,
+        "created_utc": 1787733551.0
+      },
+      {
+        "id": "t1_p62bhai",
+        "author": "JSCFORCE",
+        "body": "no.",
+        "score": 0,
+        "created_utc": 1787770502.0
+      },
+      {
+        "id": "t1_p5yxpfo",
+        "author": "ElectronicVoice1819",
+        "body": "i hope the performance is increased",
+        "score": 0,
+        "created_utc": 1787733743.0
+      },
+      {
+        "id": "t1_p5zfaqv",
+        "author": "Error_exe6666",
+        "body": "\"- Dedicated Glyph app for the Glyph Interface on the home screen and app drawer.\" LETS GOO",
+        "score": 0,
+        "created_utc": 1787741844.0
+      },
+      {
+        "id": "t1_p5rtxqq",
+        "author": "ad1ksn",
+        "body": "It's still unknown when the beta test will be released. What time is it today?",
+        "score": 0,
+        "created_utc": 1787652372.0
+      },
+      {
+        "id": "t1_p5rvmzx",
+        "author": "CaptainMGN",
+        "body": "Video said tomorrow for phone (3)",
+        "score": 0,
+        "created_utc": 1787653142.0
+      }
+    ],
+    "1w0ehxg": [
+      {
+        "id": "t1_p6cgmr1",
+        "author": "chirantaniga",
+        "body": "Unplug it",
+        "score": 0,
+        "created_utc": 1787886251.0
+      },
+      {
+        "id": "t1_p6cgvjo",
+        "author": "chootnath_09",
+        "body": "You've hit the limit so it is indicating that your phone is plugged in but it is not charging. Remove the charging limit from battery settings.",
+        "score": 0,
+        "created_utc": 1787886341.0
+      },
+      {
+        "id": "t1_p6cfko3",
+        "author": "Demonsong_483",
+        "body": "How did the charger get inside your phone? I think your phone ate your charger.",
+        "score": 0,
+        "created_utc": 1787885853.0
+      },
+      {
+        "id": "t1_p6cjg8s",
+        "author": "youknowwhoiam1208",
+        "body": "Check the flair 🥀😭",
+        "score": 0,
+        "created_utc": 1787887315.0
+      },
+      {
+        "id": "t1_p6ck2dr",
+        "author": "CelebrationNo9361",
+        "body": "Lol... Silly Programs https://giphy.com/gifs/wyATPMsWoVPXSkLJh3",
+        "score": 0,
+        "created_utc": 1787887546.0
+      },
+      {
+        "id": "t1_p6crzde",
+        "author": "Demonsong_483",
+        "body": "Ohh.....right. I edited",
+        "score": 0,
+        "created_utc": 1787890765.0
+      },
+      {
+        "id": "t1_p6dcspr",
+        "author": "np3_cmf1",
+        "body": "macOS style, I see",
+        "score": 0,
+        "created_utc": 1787900391.0
+      },
+      {
+        "id": "t1_p6dpmpt",
+        "author": "SpeechGlittering2136",
+        "body": "I think battery is pregnent.check with a doctor.",
+        "score": 0,
+        "created_utc": 1787906926.0
+      }
+    ],
+    "1w0d28h": [
+      {
+        "id": "t1_p6c2izs",
+        "author": "Intelligent_Air1535",
+        "body": "That's your alarm my friend",
+        "score": 0,
+        "created_utc": 1787881375.0
+      },
+      {
+        "id": "t1_p6c2w2d",
+        "author": "wookietiddy",
+        "body": "And it's constantly changing to 10 minutes ahead of the current time?",
+        "score": 0,
+        "created_utc": 1787881497.0
+      },
+      {
+        "id": "t1_p6c3f7n",
+        "author": "Intelligent_Air1535",
+        "body": "Maybe that's an existing alarm which is getting snoozed",
+        "score": 0,
+        "created_utc": 1787881670.0
+      },
+      {
+        "id": "t1_p6c3nw3",
+        "author": "wookietiddy",
+        "body": "I could see that, but it never goes off. It's been this way for hours. Always 10 minutes ahead of the current time, no alarms go off because it's always 10 minutes ahead.",
+        "score": 0,
+        "created_utc": 1787881750.0
+      },
+      {
+        "id": "t1_p6c458c",
+        "author": "Trust_Zealousideal",
+        "body": "It's not alarm, check another available post related to this issue. It's in the Sub. I can't tell it because I don't have these issue.",
+        "score": 0,
+        "created_utc": 1787881907.0
+      },
+      {
+        "id": "t1_p6dlzt4",
+        "author": "IAmDoing19057",
+        "body": "Something like an app which uses precise alarms to execute stuff is probably causing that. Similarly, I own alarm set to 0:00 by an app called Zenith.",
+        "score": 0,
+        "created_utc": 1787905041.0
+      },
+      {
+        "id": "t1_p6c2r6a",
+        "author": "LoutOfOrder",
+        "body": "It's likely caused by a third party app. If you search the term \"why is there an alarm time showing on my lockscreen when I don't have any alarms set\" you should get some pointers as to what might be causing it and how to stop it. I had the same issue and it was caused by the app Doze Stopper.",
+        "score": 0,
+        "created_utc": 1787881451.0
+      },
+      {
+        "id": "t1_p6d7ofj",
+        "author": "Old-Tax9892",
+        "body": "This",
+        "score": 0,
+        "created_utc": 1787897898.0
+      },
+      {
+        "id": "t1_p6c7nkf",
+        "author": "ahmedbintariq",
+        "body": "https://preview.redd.it/yxndqzzqx0mh1.png?width=1080&format=png&auto=webp&s=464cdd4cf198d0b2157af077071ddd098ad6645f Mine is always 5 min ahead, lol, apparently another app is registering an alarm Apps such as: Google Assistant / routines Sleep or bedtime apps Calendar/reminder apps Tasker Samsung/Google wellness features Automation apps can schedule system alarms without them appearing in your normal alarm list. For me it is tasker automation app, which I need, so i ignore the alarm notice.",
+        "score": 0,
+        "created_utc": 1787883082.0
+      },
+      {
+        "id": "t1_p6cvld2",
+        "author": "noobman803",
+        "body": "Wallpaper pleasee",
+        "score": 0,
+        "created_utc": 1787892321.0
+      },
+      {
+        "id": "t1_p6da3d8",
+        "author": "ahmedbintariq",
+        "body": "Here you go https://preview.redd.it/6tbjfy0v92mh1.jpeg?width=1600&format=pjpg&auto=webp&s=de09ef7de8af25db0c14901c88142f7cbebf6345",
+        "score": 0,
+        "created_utc": 1787899069.0
+      },
+      {
+        "id": "t1_p6d9q3l",
+        "author": "asherr_y2z",
+        "body": "Malaysian Nothing phone user?",
+        "score": 0,
+        "created_utc": 1787898891.0
+      },
+      {
+        "id": "t1_p6d9xsy",
+        "author": "ahmedbintariq",
+        "body": "lol yup",
+        "score": 0,
+        "created_utc": 1787898994.0
+      },
+      {
+        "id": "t1_p6da1ti",
+        "author": "asherr_y2z",
+        "body": "genuinely nice to see a fellow Malaysian nothing/cmf user once in awhile bc theres barely any Nothing users here lol",
+        "score": 0,
+        "created_utc": 1787899048.0
+      },
+      {
+        "id": "t1_p6daqjz",
+        "author": "ahmedbintariq",
+        "body": "I started off with Phone(1) when whenever someone asked what phone was it and saying nothing was such an amusing answer 😂 but you're right. We're a rare breed indeed",
+        "score": 0,
+        "created_utc": 1787899383.0
+      },
+      {
+        "id": "t1_p6dbb7f",
+        "author": "asherr_y2z",
+        "body": "ikr, some people would ask me too, what phone am i using and when i say CMF or Nothing they obviously wouldnt know however some did recognize my phone and SOME THOUGHT I WAS USING A 17 PRO BC IM USING THE ORANGE CMF PHONE 2 😭 even my mom uses the 4a and some people think its a Pixel.",
+        "score": 0,
+        "created_utc": 1787899665.0
+      },
+      {
+        "id": "t1_p6dbg35",
+        "author": "ahmedbintariq",
+        "body": "lol",
+        "score": 0,
+        "created_utc": 1787899732.0
+      },
+      {
+        "id": "t1_p6c3crh",
+        "author": "Large_Molasses_4845",
+        "body": "Alarm and global time",
+        "score": 0,
+        "created_utc": 1787881648.0
+      },
+      {
+        "id": "t1_p6d1o3d",
+        "author": "judahsantos",
+        "body": "That's your next Alarm",
+        "score": 0,
+        "created_utc": 1787895039.0
+      },
+      {
+        "id": "t1_p6ddjh8",
+        "author": "primordial_erection",
+        "body": "Buy a dumb phone my friend",
+        "score": 0,
+        "created_utc": 1787900758.0
+      }
+    ],
+    "1vzuguv": [
+      {
+        "id": "t1_p68e3w6",
+        "author": "QuarkyBoson",
+        "body": "Nothing Phone 2 user https://preview.redd.it/9s0xjm3qtxlh1.jpeg?width=569&format=pjpg&auto=webp&s=96f43891190d85a9d9feb1f2cdf09159f291e174",
+        "score": 0,
+        "created_utc": 1787845214.0
+      },
+      {
+        "id": "t1_p68nx0m",
+        "author": "Finbear2",
+        "body": "Personally it's underwhelming and I think it's lost some of its life. I probably should've made it more obvious but I just love being able to have a collector widget of just memes which is what I meant by best update yet :)",
+        "score": 0,
+        "created_utc": 1787847678.0
+      },
+      {
+        "id": "t1_p6cok8h",
+        "author": "IAmDoing19057",
+        "body": "Yeah I was surprised as well. The Phone (2) should be perfectly capable of running 5.0, and I think at least somebody would port it since it's one of the Nothing Phones with the most custom ROM support.",
+        "score": 0,
+        "created_utc": 1787889336.0
+      },
+      {
+        "id": "t1_p68j3c5",
+        "author": "MEEOWW-",
+        "body": "💯",
+        "score": 0,
+        "created_utc": 1787846467.0
+      },
+      {
+        "id": "t1_p6a7iqq",
+        "author": "Vladi_1000",
+        "body": "We hope someone from nothing community will port it like how someone still make ports for new One UI versions for S23 ant etc but I have low hopes for this",
+        "score": 0,
+        "created_utc": 1787861525.0
+      },
+      {
+        "id": "t1_p6cdpq5",
+        "author": "Equivalent-Night8461",
+        "body": "https://preview.redd.it/zqy5lvjk41mh1.jpeg?width=216&format=pjpg&auto=webp&s=378d7c6d9548548397456260b528b14dd2535009",
+        "score": 0,
+        "created_utc": 1787885182.0
+      },
+      {
+        "id": "t1_p6detyj",
+        "author": "CrazyBerserk",
+        "body": "https://preview.redd.it/cmovxx9sg2mh1.png?width=273&format=png&auto=webp&s=8e7896864c6005e892b457dcf9eebba7fd6551f7",
+        "score": 0,
+        "created_utc": 1787901397.0
+      },
+      {
+        "id": "t1_p681j5h",
+        "author": "sabrinamesmo",
+        "body": "me too",
+        "score": 0,
+        "created_utc": 1787841991.0
+      },
+      {
+        "id": "t1_p694a75",
+        "author": "GT-8000",
+        "body": "What font is it in the Glyph timer?",
+        "score": 0,
+        "created_utc": 1787851735.0
+      },
+      {
+        "id": "t1_p698ced",
+        "author": "Finbear2",
+        "body": "I think it's their new geist system font but it oud also be space grotesk",
+        "score": 0,
+        "created_utc": 1787852744.0
+      },
+      {
+        "id": "t1_p69b6ru",
+        "author": "GT-8000",
+        "body": "Found it. It's not the regular Geist but Geist Mono font. Thank you.",
+        "score": 0,
+        "created_utc": 1787853443.0
+      },
+      {
+        "id": "t1_p689wa2",
+        "author": "tommy655321",
+        "body": "I haven't gotten this",
+        "score": 0,
+        "created_utc": 1787844136.0
+      },
+      {
+        "id": "t1_p67q6dr",
+        "author": "np3_cmf1",
+        "body": "They've all been different for me. 2.6 to 3.0 wasn't major 3.5 to 4.0 was major with the playground and sharing via QR codes/hidden parsers like ntwidgets:// 4.1 (is that what the 3 was on) to 5.0 is really clean and it's back to 2.6 quality or so.",
+        "score": 0,
+        "created_utc": 1787839000.0
+      },
+      {
+        "id": "t1_p682was",
+        "author": "Radiant-Hamster-4835",
+        "body": "2.6 to 3.0 WAS MAJOR",
+        "score": 0,
+        "created_utc": 1787842343.0
+      },
+      {
+        "id": "t1_p68ke77",
+        "author": "Boneloop",
+        "body": "What are those apps you have?",
+        "score": 0,
+        "created_utc": 1787846797.0
+      },
+      {
+        "id": "t1_p68lc8p",
+        "author": "Finbear2",
+        "body": "The 4 apps on my home screen are pocketcasts (Just podcasts), substack (This app to read articles), kashcal (Open source caldav calendar) and page bound which is a book tracker :) Then te 4 on my little bottom bar are Gmail, WhatsApp, camera and obsidian (A little markdown note taking app) Hope this helpedddd :3",
+        "score": 0,
+        "created_utc": 1787847035.0
+      },
+      {
+        "id": "t1_p68mru7",
+        "author": "Boneloop",
+        "body": "Nice, i love obsidian i even use it in my work as note taker and registration of flow work like important dates, mails sent and important actions taken.",
+        "score": 0,
+        "created_utc": 1787847393.0
+      },
+      {
+        "id": "t1_p68zy3b",
+        "author": "SpotterNotebook",
+        "body": "the icons on the top right went from perfect to horrible imo, especially wifi and signal icons but like all of them suck",
+        "score": 0,
+        "created_utc": 1787850657.0
+      },
+      {
+        "id": "t1_p68ro8o",
+        "author": "daglaroglou",
+        "body": "it's good but still full of bugs, especially with music player widget",
+        "score": 0,
+        "created_utc": 1787848613.0
+      },
+      {
+        "id": "t1_p68zseu",
+        "author": "Simply_Param",
+        "body": "wait, how do I access and get the beta on my phone? i would love to try!",
+        "score": 0,
+        "created_utc": 1787850618.0
+      },
+      {
+        "id": "t1_p690j2m",
+        "author": "Finbear2",
+        "body": "If you have a nothing phone 3 you can follow the guide here :3 https://nothing.community/d/61761-nothing-os-50-open-beta-is-here",
+        "score": 0,
+        "created_utc": 1787850803.0
+      },
+      {
+        "id": "t1_p695kh9",
+        "author": "Simply_Param",
+        "body": "i do, this is useful. thank you!",
+        "score": 0,
+        "created_utc": 1787852054.0
+      },
+      {
+        "id": "t1_p6bgufo",
+        "author": "Palatablepancakes",
+        "body": "I can't get the beta to even work. When I hit \"check version\" it shows the update, but when I press \"Go to Update\" it just says my phone is up to date. If I go through system to the update it says my phone is up to date as well. I've joined the beta successfully but it just won't show the update.",
+        "score": 0,
+        "created_utc": 1787874394.0
+      },
+      {
+        "id": "t1_p6co8zt",
+        "author": "IAmDoing19057",
+        "body": "Awesome, but gotta reduce your screen time.",
+        "score": 0,
+        "created_utc": 1787889207.0
+      },
+      {
+        "id": "t1_p6d555k",
+        "author": "Far-Turnip-2898",
+        "body": "The previous version made my phone run very hot. Everything is working perfectly after installing the beta. I'm still figuring out the rest.",
+        "score": 0,
+        "created_utc": 1787896689.0
+      },
+      {
+        "id": "t1_p6d89zh",
+        "author": "TheObnoxiousPanda",
+        "body": "I applied to be a beta tester but was never invited.",
+        "score": 0,
+        "created_utc": 1787898188.0
+      },
+      {
+        "id": "t1_p6dbuqo",
+        "author": "AffectionateSign305",
+        "body": "I have phone 3 too how can I get this??",
+        "score": 0,
+        "created_utc": 1787899930.0
+      },
+      {
+        "id": "t1_p6dkc6w",
+        "author": "noiseezy",
+        "body": "Where did the G-search bar go?",
+        "score": 0,
+        "created_utc": 1787904191.0
+      },
+      {
+        "id": "t1_p6dnttn",
+        "author": "memessixtynine",
+        "body": "you can disable it or change it to something else (even in previous versions), I have brave browser so I use a bar for brave search",
+        "score": 0,
+        "created_utc": 1787905996.0
+      },
+      {
+        "id": "t1_p693c0c",
+        "author": "Independent-Eye-5605",
+        "body": "Worst update ever neither they improved gaming performance nor battery improvements nor 4k 60fps on every lens I have a 4a pro they only gave 1080 30fps ultrawide ultrwide is not supported even in 1080 60fps then what's the point of being called a pro",
+        "score": 0,
+        "created_utc": 1787851497.0
+      },
+      {
+        "id": "t1_p6ap110",
+        "author": "axoletel",
+        "body": "thats a hardware restriction and also the beta of nos5 aint even out on the 4a pro gng",
+        "score": 0,
+        "created_utc": 1787866034.0
+      }
+    ],
+    "1w0b6ap": [
+      {
+        "id": "t1_p6cdxlt",
+        "author": "ImaginationKnown5677",
+        "body": "At the very least, a battery replacement. And yes it is time to replace the phone.",
+        "score": 0,
+        "created_utc": 1787885261.0
+      },
+      {
+        "id": "t1_p6bmcyj",
+        "author": "bargethower",
+        "body": "shit yeah or a battery replacement at least, that's dangerous",
+        "score": 0,
+        "created_utc": 1787876161.0
+      },
+      {
+        "id": "t1_p6bmvv5",
+        "author": "mikitakamura",
+        "body": "Battery is not swollen (not as far i can see with my eyes). The glass panel just pop off.",
+        "score": 0,
+        "created_utc": 1787876327.0
+      },
+      {
+        "id": "t1_p6crp08",
+        "author": "I__G",
+        "body": "Yes",
+        "score": 0,
+        "created_utc": 1787890641.0
+      },
+      {
+        "id": "t1_p6crp0n",
+        "author": "Terrible_Cabinet_741",
+        "body": "It really is time for replacement as it is not really safe imo, like atleast a battery replacement is necessary if you don't want to replace the phone. Even if the battery is not swollen then too the battery is already pretty old ig and it requires a replacement.",
+        "score": 0,
+        "created_utc": 1787890641.0
+      },
+      {
+        "id": "t1_p6cta8m",
+        "author": "mikitakamura",
+        "body": "I just checked again. The battery is in fact, swollen. Just not that obvious. Has to take a very close look. Thats why i didnt notice it until today. Will look for a repair store asap.",
+        "score": 0,
+        "created_utc": 1787891326.0
+      },
+      {
+        "id": "t1_p6d0ow4",
+        "author": "Terrible_Cabinet_741",
+        "body": "Yeah that's good that you are replacing the battery!",
+        "score": 0,
+        "created_utc": 1787894583.0
+      },
+      {
+        "id": "t1_p6d75k2",
+        "author": "Math701s",
+        "body": "Well congrats, the glass is already off, now the battery replacement will be slightly easier.",
+        "score": 0,
+        "created_utc": 1787897647.0
+      },
+      {
+        "id": "t1_p6d7z5d",
+        "author": "creet_seneseca",
+        "body": "Is the battery swollen?",
+        "score": 0,
+        "created_utc": 1787898041.0
+      },
+      {
+        "id": "t1_p6dck2d",
+        "author": "mikitakamura",
+        "body": "Yeah a lil bit. I just noticed that after taking a second and more detailed look/inspection.",
+        "score": 0,
+        "created_utc": 1787900275.0
+      },
+      {
+        "id": "t1_p6de7w5",
+        "author": "creet_seneseca",
+        "body": "Replace the battery with a qualified technician or at a service center.",
+        "score": 0,
+        "created_utc": 1787901092.0
+      }
+    ],
+    "1w0izvu": [
+      {
+        "id": "t1_p6delgk",
+        "author": "primordial_erection",
+        "body": "Nightmare for me",
+        "score": 0,
+        "created_utc": 1787901280.0
+      }
+    ],
+    "1w0js3x": [
+      {
+        "id": "t1_p6dm4li",
+        "author": "ErebusMalison",
+        "body": "The screen is working, which is a good sign. Likely it's just glass and depending on where you live, it could cost you 10-20$ from a local technician to replace the glass",
+        "score": 0,
+        "created_utc": 1787905110.0
+      },
+      {
+        "id": "t1_p6do3du",
+        "author": "Apart_Enthusiasm1446",
+        "body": "I checked online and found glass replacement for 3$ tho im not sure if it's the main screen replacement or is simply a screen gaurd. I mean it's not clearly written or im just not understanding. My uncle is a technician and he said \"these cannot be replaced\" soo I was pretty down cause of it",
+        "score": 0,
+        "created_utc": 1787906137.0
+      },
+      {
+        "id": "t1_p6dodc6",
+        "author": "ErebusMalison",
+        "body": "It's the outer glass, costs 3$ here in my country as well. But the tricky part is removing the current without any damage to the internal display panel. Experts can replace it within 5-10min",
+        "score": 0,
+        "created_utc": 1787906280.0
+      },
+      {
+        "id": "t1_p6dpa4n",
+        "author": "Apart_Enthusiasm1446",
+        "body": "I see, well there are no \"expert with certification\" near me and neither any service centre for nothing (like in my entire state probably ) soo it is what it is",
+        "score": 0,
+        "created_utc": 1787906747.0
+      },
+      {
+        "id": "t1_p6dpkvv",
+        "author": "ErebusMalison",
+        "body": "By experts I mean, those who does these things on a regular basis. Where I live, there are shops specifically for this and display replacements",
+        "score": 0,
+        "created_utc": 1787906900.0
+      },
+      {
+        "id": "t1_p6dpvei",
+        "author": "Apart_Enthusiasm1446",
+        "body": "Okaay i see, I'll see some shops",
+        "score": 0,
+        "created_utc": 1787907047.0
+      },
+      {
+        "id": "t1_p6dgjb6",
+        "author": "AutoModerator",
+        "body": "Don't forget to check out r/CMFTech for more in-depth CMF by Nothing device discussion! I am a bot, and this action was performed automatically. Please contact the moderators of this subreddit if you have any questions or concerns.",
+        "score": 0,
+        "created_utc": 1787902254.0
+      }
+    ],
+    "1vzwajv": [
+      {
+        "id": "t1_p684c2z",
+        "author": "mysrsg94",
+        "body": "Someone solved the issue by enabling the developer option.",
+        "score": 0,
+        "created_utc": 1787842709.0
+      },
+      {
+        "id": "t1_p684s0a",
+        "author": "sallauddin26",
+        "body": "Is that so. Can you submit the subreddit/link to the post/article ?",
+        "score": 0,
+        "created_utc": 1787842822.0
+      },
+      {
+        "id": "t1_p686lr4",
+        "author": "mysrsg94",
+        "body": "https://preview.redd.it/7skvgzg0oxlh1.png?width=1860&format=png&auto=webp&s=14ebebe8264911fba228c4e2fe441cd5c4299df4",
+        "score": 0,
+        "created_utc": 1787843293.0
+      },
+      {
+        "id": "t1_p686xjp",
+        "author": "sallauddin26",
+        "body": "Thanks!",
+        "score": 0,
+        "created_utc": 1787843378.0
+      },
+      {
+        "id": "t1_p6dfhl7",
+        "author": "northcarolinapcgamer",
+        "body": "And remember it’s beta software so there’s gonna be bugs 🐞",
+        "score": 0,
+        "created_utc": 1787901725.0
+      },
+      {
+        "id": "t1_p6a3pyb",
+        "author": "Hungry_Square6972",
+        "body": "https://preview.redd.it/ydcd3i1d3zlh1.png?width=1260&format=png&auto=webp&s=c5e05090eb3c651d9d0f8824416ae21cfc1c0ce9 Welcome to the gang",
+        "score": 0,
+        "created_utc": 1787860574.0
+      },
+      {
+        "id": "t1_p6a3r72",
+        "author": "Hungry_Square6972",
+        "body": "https://preview.redd.it/911qj15f3zlh1.png?width=1260&format=png&auto=webp&s=066d921b3186a457c1b56571bf45c7387573729e",
+        "score": 0,
+        "created_utc": 1787860582.0
+      },
+      {
+        "id": "t1_p6a3w6d",
+        "author": "Hungry_Square6972",
+        "body": "https://preview.redd.it/jjgujrzf3zlh1.png?width=1260&format=png&auto=webp&s=b7aaa8653f9ee4d323d28db7a89643940b295f99 This is another thing when apps open after 30-40 second, it wont work",
+        "score": 0,
+        "created_utc": 1787860617.0
+      },
+      {
+        "id": "t1_p6c74dx",
+        "author": "sallauddin26",
+        "body": "Enabling developer options fixed the issue for me",
+        "score": 0,
+        "created_utc": 1787882902.0
+      },
+      {
+        "id": "t1_p6d0z7i",
+        "author": "Hungry_Square6972",
+        "body": "do we have to always keep it enabled? because some banking apps and government apps needs developer options to be turned off to start the app",
+        "score": 0,
+        "created_utc": 1787894714.0
+      },
+      {
+        "id": "t1_p6dflhw",
+        "author": "northcarolinapcgamer",
+        "body": "If you don’t want to then downgrade",
+        "score": 0,
+        "created_utc": 1787901781.0
+      },
+      {
+        "id": "t1_p6dhokm",
+        "author": "Hungry_Square6972",
+        "body": "will doing this, format the phone ?",
+        "score": 0,
+        "created_utc": 1787902838.0
+      },
+      {
+        "id": "t1_p6dfq6a",
+        "author": "northcarolinapcgamer",
+        "body": "I been using a lot of apps with that on and haven’t had a issue I use SoFi and that’s a very popular banking app so and I use Google pay to and haven’t had any issues",
+        "score": 0,
+        "created_utc": 1787901847.0
+      },
+      {
+        "id": "t1_p6agqnz",
+        "author": "microwavecoven",
+        "body": "Recorder records everything distorted now",
+        "score": 0,
+        "created_utc": 1787863841.0
+      },
+      {
+        "id": "t1_p6cp034",
+        "author": "No_Climate_7015",
+        "body": "Yes it will fix",
+        "score": 0,
+        "created_utc": 1787889517.0
+      }
+    ],
+    "1vzvr85": [
+      {
+        "id": "t1_p68k3ou",
+        "author": "adaaamb",
+        "body": "Ask u/carpe02",
+        "score": 0,
+        "created_utc": 1787846724.0
+      },
+      {
+        "id": "t1_p68iknh",
+        "author": "Icy_Atmosphere_2094",
+        "body": "spent a lot of time searching it myself and found that it is a chinese brand called ROARINGWILD A ARCH",
+        "score": 0,
+        "created_utc": 1787846337.0
+      },
+      {
+        "id": "t1_p682we7",
+        "author": "Large_Molasses_4845",
+        "body": "Feels like decathlon",
+        "score": 0,
+        "created_utc": 1787842344.0
+      },
+      {
+        "id": "t1_p68f15f",
+        "author": "fenirani",
+        "body": "My goodness gracious",
+        "score": 0,
+        "created_utc": 1787845449.0
+      },
+      {
+        "id": "t1_p67zxcw",
+        "author": "SnooChipmunks8985",
+        "body": "this is similar https://www.amazon.ca/Oakley-Mens-Range-Pullover-Sweater/dp/B083Q8XLHV?th=1&psc=1",
+        "score": 0,
+        "created_utc": 1787841576.0
+      },
+      {
+        "id": "t1_p68o36v",
+        "author": "NectarineLarge9624",
+        "body": "Looks dop anyway",
+        "score": 0,
+        "created_utc": 1787847720.0
+      },
+      {
+        "id": "t1_p68p8yf",
+        "author": "Jayden_hazard",
+        "body": "Decathlon",
+        "score": 0,
+        "created_utc": 1787848007.0
+      },
+      {
+        "id": "t1_p69ba0z",
+        "author": "Just-Some-Tech-Guy",
+        "body": "You could try ask r/findfashion",
+        "score": 0,
+        "created_utc": 1787853465.0
+      },
+      {
+        "id": "t1_p68h2df",
+        "author": "lucjf",
+        "body": "Asics",
+        "score": 0,
+        "created_utc": 1787845960.0
+      },
+      {
+        "id": "t1_p68ggux",
+        "author": null,
+        "body": "[deleted]",
+        "score": 0,
+        "created_utc": 1787845810.0
+      },
+      {
+        "id": "t1_p68m7zq",
+        "author": "Green_215",
+        "body": "It's not this brochacho",
+        "score": 0,
+        "created_utc": 1787847255.0
+      }
+    ],
+    "1vzozj6": [
+      {
+        "id": "t1_p66gcbe",
+        "author": "np3_cmf1",
+        "body": "this feature did not exist previous; except when selecting a preset and holding the shutter down on a photo, which I used quite a bit",
+        "score": 0,
+        "created_utc": 1787822741.0
+      },
+      {
+        "id": "t1_p66jbhu",
+        "author": "PotentialToe6582",
+        "body": "Hope they bring this up better",
+        "score": 0,
+        "created_utc": 1787824178.0
+      },
+      {
+        "id": "t1_p66hlfd",
+        "author": "Grigius",
+        "body": "Sure, because it's also possible with OS 4. If you try to create a video preset and add a filter, it works. What you can't do is use a photo preset to make a video. It must be specifically created as a video preset. A limitation that I hope will be resolved with OS 5 is the problem regarding resolution and frame rate. You can create a video preset with filters, but only at 1080p 30 fps.",
+        "score": 0,
+        "created_utc": 1787823355.0
+      },
+      {
+        "id": "t1_p66jm1l",
+        "author": "np3_cmf1",
+        "body": "my Italian friend! I never checked to see what video content I received with my method ... I guess that this was I can get 4k60, or?",
+        "score": 0,
+        "created_utc": 1787824313.0
+      },
+      {
+        "id": "t1_p66jp51",
+        "author": "Grigius",
+        "body": "😁",
+        "score": 0,
+        "created_utc": 1787824353.0
+      },
+      {
+        "id": "t1_p66j9ez",
+        "author": "PotentialToe6582",
+        "body": "Even now it limits to 1080p 30fps, hope they make it available in a better resolution at the public release.",
+        "score": 0,
+        "created_utc": 1787824150.0
+      },
+      {
+        "id": "t1_p66q0o6",
+        "author": "Je-03",
+        "body": "This is doable in OS 4. Just change the long shutter press from burst shot to record video in the camera settings. Then go to the preset you want yo use and long press the shutter button to start recording. Downside is it's locked at 1080p30fps",
+        "score": 0,
+        "created_utc": 1787827149.0
+      },
+      {
+        "id": "t1_p66xyh9",
+        "author": "Dividebyzero23",
+        "body": "If you're talking about the video preset, it has been on my 4a since I got it",
+        "score": 0,
+        "created_utc": 1787830261.0
+      },
+      {
+        "id": "t1_p677v1f",
+        "author": "w32lllll",
+        "body": "same",
+        "score": 0,
+        "created_utc": 1787833668.0
+      },
+      {
+        "id": "t1_p678pkl",
+        "author": "Finbear2",
+        "body": "You can always do this by holding the shutter button and sliding it over to the lock symbol in the photo mode tho you may need to make sure it's set to video recording not burst shit in settings :3",
+        "score": 0,
+        "created_utc": 1787833937.0
+      }
+    ],
+    "1w0ke94": [
+      {
+        "id": "t1_p6dpzp6",
+        "author": "_DaniilGaltsev_",
+        "body": "I can't stand watching people ask the same stupid question every day because of their inattention.",
+        "score": 0,
+        "created_utc": 1787907108.0
+      },
+      {
+        "id": "t1_p6dm0l8",
+        "author": "starboyx_nope",
+        "body": "Nahhh... 1. Go to website, there will be download option for nos5 beta... Then install it like apk 2. Then go to settings, in \"special features\" I think so there will be new section called BETA blah blah.... 3. Select the option and check and go for further steps.. 4. Now finally go to the normal system update section... Now you can see the 5.0 Beta Update package... Note: There will be an option to rollback the 5.0 update in case if you don't like it... But the system data will get erased... Keep in mind.",
+        "score": 0,
+        "created_utc": 1787905052.0
+      },
+      {
+        "id": "t1_p6dmi7s",
+        "author": "Green_215",
+        "body": "You have to download and install the beta hub APK from nothing website. Then go to Settings --> System --> Nothing Beta Hub --> Enroll. Then finally go to the update page and install it",
+        "score": 0,
+        "created_utc": 1787905305.0
+      }
+    ],
+    "1vzsjpq": [
+      {
+        "id": "t1_p678phg",
+        "author": "Desperate-Line-1806",
+        "body": "I've never seen any community make this much of a fuss for a toggle. Turn it off, you'll never see it again. Saying that blur does not fit nothing's branding is just ridiculous, they're known for transparent hardware.",
+        "score": 0,
+        "created_utc": 1787833936.0
+      },
+      {
+        "id": "t1_p67xz5u",
+        "author": "PuzzleheadedPen2798",
+        "body": "Maybe a hot take but I wish that the blur toggle would also make the notification area/quick settings and app drawer transparent. Currently the way it only applies to widgets it seems pretty incomplete.",
+        "score": 0,
+        "created_utc": 1787841071.0
+      },
+      {
+        "id": "t1_p684tg5",
+        "author": "Desperate-Line-1806",
+        "body": "Not a hot take by my standards, I got 10 downvotes yesterday for saying this exact same thing because apparently it's gonna ruin the performance of non-flagships and it's gonna be an iOS copy. Because Tim Apple invented blur.",
+        "score": 0,
+        "created_utc": 1787842832.0
+      },
+      {
+        "id": "t1_p68fzrm",
+        "author": "PuzzleheadedPen2798",
+        "body": "Yeah it's not like Apple invented blur or transparency and Nothing's already adding blur in some capacity anyways, might as well be consistent. As for performance or battery, phones more than half a decade ago managed just fine. Even entry level Samsung phones in the past few years have no issues with blur, and OneUI is a heavier skin. So I don't get it, plus it'd be optional anyways. Also adding transparency doesn't mean they're adding liquid ass, but that's another stupid take so...",
+        "score": 0,
+        "created_utc": 1787845690.0
+      },
+      {
+        "id": "t1_p67ajbo",
+        "author": "Roy_Editz",
+        "body": "Enjoy the meme bro",
+        "score": 0,
+        "created_utc": 1787834505.0
+      },
+      {
+        "id": "t1_p6790ho",
+        "author": "EclipsedLuminance",
+        "body": "They aren't forcing you, you can toggle it off.",
+        "score": 0,
+        "created_utc": 1787834032.0
+      },
+      {
+        "id": "t1_p6axc5m",
+        "author": "menzaskaja",
+        "body": "This company's fanbase is the most toxic passive-aggressive community I've ever seen >company adds new optional feature >oh my god they changed something i hope they get bankrupt and i hope carl pei gets cheated on by rob >company addresses issue >oh my god they never change things why are they so conservative i hope carl pei gets cheated on by rob's wife like honestly my only problems with Nothing OS and their phones are the occasional hiccups (which happen in every OS and every phone brand) and the fact that you can't change the font freely. other than that nothing has been improving a lot of stuff and even though its not perfect we have to take into account that the company is barely 6 years old and is already pretty significant. people are crying over how nothing didnt release a flagship phone this year, but if they released one people would be crying over the fact that its either really expensive (due to RAM prices, which affect everything) or that it didnt improve a whole lot investing at 1 upvote expecting -3000 and a death threat in dms",
+        "score": 0,
+        "created_utc": 1787868385.0
+      },
+      {
+        "id": "t1_p689o9p",
+        "author": "danavposter",
+        "body": "Lmfao I actually wish they made the blur more glasslike, considering 2000s design is back in vogue",
+        "score": 0,
+        "created_utc": 1787844080.0
+      },
+      {
+        "id": "t1_p67lzrw",
+        "author": "Andromeda-G",
+        "body": "Hohahahaha",
+        "score": 0,
+        "created_utc": 1787837854.0
+      },
+      {
+        "id": "t1_p683w2o",
+        "author": "icedchocolatecake",
+        "body": "https://giphy.com/gifs/cF3boK46ighoSNMmUK",
+        "score": 0,
+        "created_utc": 1787842596.0
+      },
+      {
+        "id": "t1_p679dnp",
+        "author": "np3_cmf1",
+        "body": "what is \"bur effect\"?",
+        "score": 0,
+        "created_utc": 1787834148.0
+      },
+      {
+        "id": "t1_p68craf",
+        "author": "AleksLevet",
+        "body": "Ah you created a new account again?",
+        "score": 0,
+        "created_utc": 1787844870.0
+      },
+      {
+        "id": "t1_p69t3rn",
+        "author": "FloopsFooglies",
+        "body": "An effect that b l urs Edit: shit I'm illiterate",
+        "score": 0,
+        "created_utc": 1787857902.0
+      },
+      {
+        "id": "t1_p6avhxw",
+        "author": "Roy_Editz",
+        "body": "Actually I posted this meme before but I mistyped \"blur as bur\" and he commented on that before me deleting that. Thats why he commented the same on it and people are downvoting cz obviously they have no clue.",
+        "score": 0,
+        "created_utc": 1787867851.0
+      },
+      {
+        "id": "t1_p67aec8",
+        "author": "Roy_Editz",
+        "body": "Do not reveal the secret",
+        "score": 0,
+        "created_utc": 1787834463.0
+      },
+      {
+        "id": "t1_p67c420",
+        "author": "np3_cmf1",
+        "body": "bur, bur, bur goes the idiocy in complainers heads",
+        "score": 0,
+        "created_utc": 1787834985.0
+      }
+    ],
+    "1w0ju2z": [
+      {
+        "id": "t1_p6di8ob",
+        "author": "Formal_Ad3909",
+        "body": "Things to consider: 1. Memory prices hike (upto threefold). You never know what the price hike of smartphones would look like during june/july 2027. Keep this in mind. 2. Budget: if you have a good budget you could definitely buy it now or save more for the upcoming flagship next year. NOTHING is gonna launch upto 6 phones next year. 3. Task/Requirements: it totally depends on you, if any current great phone in the market within the budget can satisfy your needs go for it. Current flagship with like more 4 major OS updates left is Nothing 3. 4a pro isn't a flagship, keep in mind. As Carl Pei said : \"The best time to buy a phone was yesterday and the second best time to buy a phone is today\"",
+        "score": 0,
+        "created_utc": 1787903122.0
+      },
+      {
+        "id": "t1_p6dkhtk",
+        "author": "PurDreft",
+        "body": "quoting that guy as actual advice is really something - i think what he said is good for his own interests.",
+        "score": 0,
+        "created_utc": 1787904272.0
+      },
+      {
+        "id": "t1_p6dpoab",
+        "author": "Formal_Ad3909",
+        "body": "Nah chill, I just saw a yt video of him saying this. Kinda related from my own practical experience. April - May was the only period where price hike was decent(adjustable) since may end I searched for phones myself and saw the incredible crisis of stock and hike of this nature. If you like a genuine good phone now so why not buy it now, who knows what's gonna happen in 6 months?",
+        "score": 0,
+        "created_utc": 1787906948.0
+      },
+      {
+        "id": "t1_p6dqwch",
+        "author": "PurDreft",
+        "body": "if u buy a phone next year - it is a new battery phone, new processor phone, start of the software support cycle etc. if u buy the phone now then by the time you get to next year - battery one year old, one year closer to end of software support, worse specs. and the price will be what? maybe 50 eur more? but you don't consider buying the same phone now or one year later! for ex - i bought the ugly KP3 after launch but also kept an eye on it for some months- it was around 800-900 eur for 512 GB. Now it is 588 eur! And this 588 is from the exact same place i bought it last year for 850!! And sold by amazon, so not some dodgy seller. so was it a good idea that i bought it last year? definitely not. especially since it's a crappy boring phone unlike KP2 which can light up a whole room with its led strips in the dark. But that's another story.",
+        "score": 0,
+        "created_utc": 1787907566.0
+      },
+      {
+        "id": "t1_p6dq7i8",
+        "author": "animeloveuwu",
+        "body": "Yeah, you’re right. I didn’t even take into consideration about how the price could jump. Thank you for your input",
+        "score": 0,
+        "created_utc": 1787907217.0
+      },
+      {
+        "id": "t1_p6djwho",
+        "author": "Remarkable_Spell5224",
+        "body": "Faut changer s'il y a un intérêt surtout. Et si c'est le cas oui achète le il est génial",
+        "score": 0,
+        "created_utc": 1787903967.0
+      },
+      {
+        "id": "t1_p6dkqwi",
+        "author": "PurDreft",
+        "body": "the media is saying nothing won't be making phones anymore soon and when they said the same about 1+, it turned out to be true...",
+        "score": 0,
+        "created_utc": 1787904404.0
+      }
+    ]
+  }
+}
